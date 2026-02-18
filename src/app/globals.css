@@ -1,15 +1,46 @@
+/* Google Fonts - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600&display=swap');
+
+/* Tailwind CSS - after url imports */
 @import "tailwindcss";
 
+/* Publico Headline Web is a commercial font, using fallback */
+@font-face {
+  font-family: 'Publico Headline Web';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Publico Headline Web Light'), local('Georgia');
+}
+
 :root {
+  /* AXA Brand Colors */
+  --axa-blue: #00008f;
+  --axa-white: #ffffff;
+
+  /* Background */
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Progress bar */
+  --progress-bg: rgba(255, 255, 255, 0.3);
+  --progress-fill: #ffffff;
+
+  /* Spacing */
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 24px;
+  --spacing-3xl: 32px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-axa-blue: var(--axa-blue);
+
+  --font-sans: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+  --font-headline: 'Publico Headline Web', Georgia, 'Times New Roman', serif;
+  --font-source-sans: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +53,62 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* Hero Banner Gradient Overlay */
+.hero-gradient-overlay {
+  background-image:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.8) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+/* Custom font utilities */
+.font-headline {
+  font-family: 'Publico Headline Web', Georgia, 'Times New Roman', serif;
+}
+
+.font-brand-text {
+  font-family: 'Publico Text Web', Georgia, 'Times New Roman', serif;
+}
+
+.font-source-sans {
+  font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+}
+
+/* Dissolve transition for carousel */
+.carousel-slide {
+  transition: opacity 300ms linear;
+}
+
+.carousel-slide-enter {
+  opacity: 0;
+}
+
+.carousel-slide-active {
+  opacity: 1;
+}
+
+.carousel-slide-exit {
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up-delay {
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    opacity: 0; /* meaningful start state */
 }
