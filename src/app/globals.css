@@ -31,6 +31,14 @@
   --spacing-xl: 20px;
   --spacing-2xl: 24px;
   --spacing-3xl: 32px;
+
+  /* Featured Section (from Figma design tokens) */
+  --text-tertiary: #606776;
+  --text-secondary: #434956;
+  --text-primary: #1a1d21;
+  --bg-decorative-medium: #f7f7f8;
+  --stroke-primary: #00008f;
+  --stroke-strong: #ff1721;
 }
 
 @theme inline {
@@ -94,21 +102,23 @@ body {
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .animate-fade-in-up-delay {
-    animation: fadeInUp 0.8s ease-out 0.2s forwards;
-    opacity: 0; /* meaningful start state */
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+  /* meaningful start state */
 }

@@ -5,6 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
 
+/* ──────────────────────────────────────────────
+   Mobile: Accordion sections data
+   ────────────────────────────────────────────── */
 interface AccordionSection {
     id: string;
     title: string;
@@ -16,45 +19,70 @@ const accordionSections: AccordionSection[] = [
         id: "we-are-axa",
         title: "WE ARE AXA",
         links: [
-            { label: "About Us", href: "/about" },
-            { label: "Our History", href: "/history" },
-            { label: "Careers", href: "/careers" },
+            { label: "AXA and you", href: "/about" },
+            { label: "Need help?", href: "/help" },
+            { label: "Join our team", href: "/careers" },
+            { label: "Complaints", href: "/complaints" },
         ],
     },
     {
-        id: "use-your-insurance",
-        title: "USE YOUR INSURANCE",
-        links: [
-            { label: "Make a Claim", href: "/claims" },
-            { label: "Find a Doctor", href: "/doctors" },
-            { label: "Policy Documents", href: "/documents" },
-        ],
-    },
-    {
-        id: "individual-products",
-        title: "AXA INDIVIDUAL PRODUCTS",
+        id: "insurance",
+        title: "INSURANCE",
         links: [
             { label: "Motor Insurance", href: "/motor" },
-            { label: "Health Insurance", href: "/health" },
-            { label: "Life Insurance", href: "/life" },
+            { label: "Medical Insurance", href: "/medical" },
             { label: "Home Insurance", href: "/home" },
+            { label: "Life Insurance", href: "/life" },
+            { label: "SME Insurance", href: "/sme" },
+            { label: "Foreigner Insurance", href: "/foreigner" },
+            { label: "Travel Insurance", href: "/travel" },
         ],
     },
     {
-        id: "business-products",
-        title: "AXA BUSINESS PRODUCTS",
+        id: "reach-us",
+        title: "REACH US",
         links: [
-            { label: "Commercial Insurance", href: "/commercial" },
-            { label: "Employee Benefits", href: "/benefits" },
-            { label: "Corporate Solutions", href: "/corporate" },
+            { label: "Contact us", href: "/contact" },
+            { label: "AXA Branches", href: "/branches" },
+            { label: "Get a Callback", href: "/callback" },
+        ],
+    },
+];
+
+/* ──────────────────────────────────────────────
+   Desktop: Column data (same content, flat)
+   ────────────────────────────────────────────── */
+const desktopColumns = [
+    {
+        id: "we-are-axa",
+        title: "WE ARE AXA",
+        links: [
+            { label: "AXA and you", href: "/about" },
+            { label: "Need help?", href: "/help" },
+            { label: "Join our team", href: "/careers" },
+            { label: "Complaints", href: "/complaints" },
         ],
     },
     {
-        id: "axa-team",
-        title: "AXA TEAM",
+        id: "insurance",
+        title: "INSURANCE",
         links: [
-            { label: "Suppliers", href: "/suppliers" },
-            { label: "Agents", href: "/agents" },
+            { label: "Motor Insurance", href: "/motor" },
+            { label: "Medical Insurance", href: "/medical" },
+            { label: "Home Insurance", href: "/home" },
+            { label: "Life Insurance", href: "/life" },
+            { label: "SME Insurance", href: "/sme" },
+            { label: "Foreigner Insurance", href: "/foreigner" },
+            { label: "Travel Insurance", href: "/travel" },
+        ],
+    },
+    {
+        id: "reach-us",
+        title: "REACH US",
+        links: [
+            { label: "Contact us", href: "/contact" },
+            { label: "AXA Branches", href: "/branches" },
+            { label: "Get a Callback", href: "/callback" },
         ],
     },
 ];
@@ -62,7 +90,7 @@ const accordionSections: AccordionSection[] = [
 const footerLinks = [
     { label: "Usage policies", href: "/usage-policies" },
     { label: "FAQ", href: "/faq" },
-    { label: "Regulation", href: "/regulation" },
+    { label: "Legal", href: "/legal" },
     { label: "Site Map", href: "/sitemap" },
     { label: "Privacy Notice", href: "/privacy" },
     { label: "Help us to improve", href: "/feedback" },
@@ -88,15 +116,6 @@ const socialLinks = [
         ),
     },
     {
-        id: "youtube",
-        href: "https://youtube.com/axa",
-        icon: (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-            </svg>
-        ),
-    },
-    {
         id: "instagram",
         href: "https://instagram.com/axa",
         icon: (
@@ -107,6 +126,18 @@ const socialLinks = [
     },
 ];
 
+/* ──────────────────────────────────────────────
+   Phone icon for desktop "Call us"
+   ────────────────────────────────────────────── */
+const PHONE_ICON = (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+);
+
+/* ──────────────────────────────────────────────
+   Mobile: Accordion Item
+   ────────────────────────────────────────────── */
 function AccordionItem({ section }: { section: AccordionSection }) {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -156,114 +187,164 @@ function AccordionItem({ section }: { section: AccordionSection }) {
     );
 }
 
+/* ──────────────────────────────────────────────
+   Footer Component
+   ────────────────────────────────────────────── */
 export function Footer() {
     return (
-        <footer className="bg-black text-white">
-            {/* Social Follow Section */}
-            <div className="px-4 pt-12 pb-8 text-center">
-                <p className="mb-6 text-sm text-white/60">Follow AXA</p>
-                <div className="flex items-center justify-center gap-6">
-                    {socialLinks.map((social) => (
-                        <a
-                            key={social.id}
-                            href={social.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white transition-colors hover:text-white/70"
-                            aria-label={`Follow AXA on ${social.id}`}
+        <footer className="bg-[#04060c] text-white">
+
+            {/* ═══════════════════════════════════
+                MOBILE LAYOUT (< lg)
+               ═══════════════════════════════════ */}
+            <div className="lg:hidden">
+                {/* Social Follow Section */}
+                <div className="px-4 pt-12 pb-8 text-center">
+                    <p className="mb-6 font-source-sans text-[16px] text-white/60">Follow AXA</p>
+                    <div className="flex items-center justify-center gap-6">
+                        {socialLinks.map((social) => (
+                            <a
+                                key={social.id}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-white transition-colors hover:text-white/70"
+                                aria-label={`Follow AXA on ${social.id}`}
+                            >
+                                {social.icon}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Accessibility & Contact */}
+                <div className="px-4 pb-8 text-center">
+                    <p className="mb-2 font-source-sans text-[16px] text-white/60">
+                        Accessibility statement :<br />
+                        Compliant (AA)
+                    </p>
+                    <p className="font-source-sans text-[16px] text-white/60">Call us at 04 - 727 000</p>
+                </div>
+
+                {/* Accordion Navigation */}
+                <nav className="px-4" aria-label="Footer navigation">
+                    {accordionSections.map((section) => (
+                        <AccordionItem key={section.id} section={section} />
+                    ))}
+                </nav>
+
+                {/* Footer Links */}
+                <div className="flex flex-col items-center gap-4 px-4 py-8">
+                    {footerLinks.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className="font-source-sans text-[16px] text-white/60 transition-colors hover:text-white"
                         >
-                            {social.icon}
-                        </a>
+                            {link.label}
+                        </Link>
                     ))}
                 </div>
-            </div>
 
-            {/* Accessibility & Contact */}
-            <div className="px-4 pb-8 text-center">
-                <p className="mb-2 text-sm text-white/60">
-                    Accessibility statement :<br />
-                    Compliant (AA)
-                </p>
-                <p className="text-sm text-white/60">Call us at 800 900 1292</p>
-            </div>
-
-            {/* Accordion Navigation */}
-            <nav className="px-4" aria-label="Footer navigation">
-                {accordionSections.map((section) => (
-                    <AccordionItem key={section.id} section={section} />
-                ))}
-            </nav>
-
-            {/* Certification Badges */}
-            <div className="flex items-center justify-center gap-4 px-4 py-8">
-                <div className="flex items-center gap-4 opacity-80 grayscale transition-all hover:grayscale-0 hover:opacity-100">
-                    {/* Top Employer - Placeholder (Extraction failed) */}
-                    <div className="flex h-8 items-center rounded bg-white/10 px-2">
-                        <span className="text-xs font-bold">TOP</span>
-                        <span className="text-[8px] ml-1">EMPLOYER</span>
-                    </div>
-
-                    {/* Downloaded Badges */}
-                    <div className="relative h-8 w-12">
-                        <Image
-                            src="/images/badge-aenor.png"
-                            alt="AENOR"
-                            fill
-                            sizes="100px"
-                            className="object-contain"
-                        />
-                    </div>
-                    <div className="relative h-8 w-12">
-                        <Image
-                            src="/images/badge-bureau.png"
-                            alt="Bureau Veritas"
-                            fill
-                            sizes="100px"
-                            className="object-contain"
-                        />
-                    </div>
-                    <div className="relative h-8 w-8">
-                        <Image
-                            src="/images/badge-q.png"
-                            alt="Quality"
-                            fill
-                            sizes="100px"
-                            className="object-contain"
-                        />
-                    </div>
-                    <div className="relative h-8 w-8">
-                        <Image
-                            src="/images/badge-check.png"
-                            alt="Certified"
-                            fill
-                            sizes="100px"
-                            className="object-contain"
-                        />
-                    </div>
-
-                    {/* Calidad AXA - Placeholder (Extraction failed) */}
-                    <div className="flex h-8 items-center rounded bg-white/10 px-2">
-                        <span className="text-xs">Calidad</span>
-                    </div>
+                {/* Copyright */}
+                <div className="border-t border-white/10 px-4 py-6 text-center">
+                    <p className="font-source-sans text-[16px] text-white/60">© 2026,AXA, All Rights Reserved</p>
                 </div>
             </div>
 
-            {/* Footer Links */}
-            <div className="flex flex-col items-center gap-4 px-4 py-8">
-                {footerLinks.map((link) => (
-                    <Link
-                        key={link.href}
-                        href={link.href}
-                        className="text-sm text-white/60 transition-colors hover:text-white"
-                    >
-                        {link.label}
-                    </Link>
-                ))}
-            </div>
+            {/* ═══════════════════════════════════
+                DESKTOP LAYOUT (lg+)
+               ═══════════════════════════════════ */}
+            <div className="hidden lg:flex lg:flex-col lg:gap-[50px] lg:px-[128px] lg:pt-[92px]">
 
-            {/* Copyright */}
-            <div className="border-t border-white/10 px-4 py-6 text-center">
-                <p className="text-sm text-white/60">© 2026, All Rights Reserved</p>
+                {/* Top Section: 4-column layout */}
+                <div className="flex w-full items-start justify-between">
+
+                    {/* Column 1: Follow AXA + Accessibility + Call */}
+                    <div className="flex w-[250px] flex-col gap-4">
+                        {/* Follow AXA */}
+                        <div className="flex flex-col gap-2 px-3">
+                            <p className="font-source-sans text-[16px] text-white/60">
+                                Follow AXA
+                            </p>
+                            <div className="flex items-center">
+                                {socialLinks.map((social) => (
+                                    <a
+                                        key={social.id}
+                                        href={social.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center justify-center rounded-full p-3 text-white transition-colors hover:text-white/70"
+                                        aria-label={`Follow AXA on ${social.id}`}
+                                    >
+                                        {social.icon}
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Accessibility */}
+                        <div className="px-3">
+                            <p className="font-source-sans text-[16px] leading-normal text-white/60">
+                                Accessibility statement :Compliant (AA)
+                            </p>
+                        </div>
+
+                        {/* Call us */}
+                        <div className="flex items-center gap-2.5">
+                            <p className="font-source-sans text-[16px] leading-[24px] text-white">
+                                Call us
+                            </p>
+                            <div className="flex items-center gap-1 text-[#dddfe4]">
+                                {PHONE_ICON}
+                                <span className="font-source-sans text-[16px] font-semibold leading-[24px]">
+                                    04 - 727 000
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Columns 2–4: Link menus */}
+                    <div className="flex items-start gap-12">
+                        {desktopColumns.map((col) => (
+                            <div key={col.id} className="flex w-[160px] flex-col gap-6">
+                                <p className="font-source-sans text-[16px] font-bold uppercase leading-normal text-white/60">
+                                    {col.title}
+                                </p>
+                                <ul className="flex flex-col gap-4">
+                                    {col.links.map((link) => (
+                                        <li key={link.href}>
+                                            <Link
+                                                href={link.href}
+                                                className="font-source-sans text-[16px] leading-normal text-white transition-colors hover:text-white/70"
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Bottom bar */}
+                <div className="flex w-full items-center justify-center py-6 font-source-sans text-[16px] text-white">
+                    <div className="flex flex-1 items-start gap-10">
+                        {footerLinks.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="transition-colors hover:text-white/70"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
+                    <p className="shrink-0 text-right">
+                        © 2026,AXA, All Rights Reserved
+                    </p>
+                </div>
             </div>
         </footer>
     );

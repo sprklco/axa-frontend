@@ -10,9 +10,9 @@ import { heroSlides } from "@/data/heroSlides";
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen flex-col bg-gray-50 pb-24">
+    <main className="relative flex min-h-screen flex-col bg-gray-50 pb-22 lg:pb-0">
       {/* Top Tabs - non-sticky, white bg, stays above hero */}
-      <TopTabs />
+      {/* <TopTabs /> */}
 
       {/* Wrapper for sticky navbar + hero + featured section */}
       <div className="relative flex flex-col">

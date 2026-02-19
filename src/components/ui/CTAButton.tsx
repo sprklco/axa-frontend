@@ -16,7 +16,7 @@ export function CTAButton({ children, href, className }: CTAButtonProps) {
         <Link
             href={href}
             className={cn(
-                "flex h-14 w-full items-center justify-center",
+                "flex h-14 w-full items-center justify-center lg:w-auto",
                 "rounded-full bg-white px-8 py-4",
                 "font-source-sans text-base font-semibold leading-6 text-[#00008f]",
                 "transition-all duration-150",

@@ -76,7 +76,7 @@ export function HeroBanner({ slides }: HeroBannerProps) {
 
     return (
         <section
-            className="relative flex min-h-[548px] w-full flex-col items-center overflow-hidden md:min-h-[704px]"
+            className="relative flex min-h-[548px] w-full flex-col items-center overflow-hidden md:min-h-[704px] lg:items-start"
             aria-label="Hero banner carousel"
             aria-roledescription="carousel"
         >
@@ -95,7 +95,7 @@ export function HeroBanner({ slides }: HeroBannerProps) {
             </div>
 
             {/* Content Container */}
-            <div className="relative flex flex-1 flex-col justify-end px-4 pb-8 pt-[170px] md:px-8 md:pb-12 lg:max-w-[1200px] lg:px-16">
+            <div className="relative flex w-full flex-1 flex-col justify-end px-4 pb-8 pt-[170px] md:px-8 md:pb-12 lg:max-w-[1440px] lg:mx-auto lg:px-[72px] lg:pb-12">
                 {/* Text Content with Dissolve Transition */}
                 <div
                     key={`text-${currentSlide}`}
@@ -105,12 +105,12 @@ export function HeroBanner({ slides }: HeroBannerProps) {
                     aria-label={`Slide ${currentSlide + 1} of ${totalSlides}`}
                 >
                     {/* Eyebrow */}
-                    <p className="font-source-sans text-base font-semibold leading-6">
+                    <p className="font-source-sans text-base font-semibold leading-6 lg:text-2xl lg:leading-8 lg:font-normal">
                         {activeSlide.eyebrow}
                     </p>
 
                     {/* Headline */}
-                    <h1 className="font-headline text-[40px] font-light leading-[48px] tracking-[-1.5px] md:text-[56px] md:leading-[64px] lg:max-w-[800px]">
+                    <h1 className="font-headline text-[40px] font-light leading-[48px] tracking-[-1.5px] md:text-[56px] md:leading-[64px] lg:text-[64px] lg:leading-[72px] lg:max-w-[730px]">
                         {activeSlide.headline.split("\n").map((line, i) => (
                             <span key={i}>
                                 {line}
@@ -120,13 +120,13 @@ export function HeroBanner({ slides }: HeroBannerProps) {
                     </h1>
 
                     {/* Description */}
-                    <p className="font-source-sans text-base font-normal leading-6 md:max-w-[600px] lg:max-w-[800px]">
+                    <p className="font-source-sans text-base font-normal leading-6 md:max-w-[600px] lg:text-lg lg:leading-[26px] lg:max-w-[600px]">
                         {activeSlide.description}
                     </p>
                 </div>
 
                 {/* CTA Button */}
-                <div key={`cta-${currentSlide}`} className="mt-4 flex flex-col gap-4 md:mt-8 animate-fade-in-up-delay">
+                <div key={`cta-${currentSlide}`} className="mt-4 flex flex-col gap-4 md:mt-8 lg:mt-8 lg:flex-row animate-fade-in-up-delay">
                     <CTAButton href={activeSlide.ctaHref}>
                         {activeSlide.ctaText}
                     </CTAButton>

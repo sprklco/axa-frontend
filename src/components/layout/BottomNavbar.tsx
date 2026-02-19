@@ -13,7 +13,7 @@ import { ChatButton } from "./bottom-nav/ChatButton";
  */
 export function BottomNavbar() {
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-50" role="navigation" aria-label="Quick actions">
+        <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden" role="navigation" aria-label="Quick actions">
             {/* Container for accessibility button positioning */}
             <div className="relative">
                 {/* Accessibility button - floats above the bar */}

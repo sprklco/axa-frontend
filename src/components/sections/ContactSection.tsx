@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { cn } from "@/lib/cn";
-
 
 export function ContactSection() {
     return (
@@ -20,26 +18,26 @@ export function ContactSection() {
                 </div>
 
                 {/* Content Overlay */}
-                <div className="relative z-10 flex flex-col items-center justify-center px-4 py-[56px]">
-                    <div className="flex flex-col gap-6 w-full">
+                <div className="relative z-10 flex flex-col items-center justify-end px-4 py-[56px] lg:px-[72px] lg:pt-[134px] lg:pb-[96px]">
+                    <div className="flex flex-col gap-6 w-full lg:flex-row lg:items-center lg:justify-center lg:gap-6">
 
                         {/* Card 1: Need Help */}
-                        <div className="relative flex w-full  flex-col items-center gap-6 rounded-lg bg-[rgba(83,83,83,0.5)] px-8 py-10 backdrop-blur-xl">
+                        <div className="relative flex w-full flex-col items-center gap-4 rounded-lg bg-[rgba(83,83,83,0.5)] px-8 py-10 backdrop-blur-[32px] lg:w-[416px] lg:shrink-0 lg:gap-4 lg:rounded-[12px] lg:px-8 lg:py-12">
                             {/* Text Content */}
-                            <div className="flex flex-col items-center gap-1.5 text-center text-white">
-                                <h3 className="font-brand-text text-[24px] font-bold leading-[32px]">
+                            <div className="flex flex-col items-center gap-2 text-center text-white lg:gap-2">
+                                <h3 className="font-brand-text text-[24px] font-bold leading-[32px] lg:text-[32px] lg:leading-[40px]">
                                     Need help?
                                 </h3>
-                                <p className="font-source-sans text-[17px] leading-[26px]">
-                                    If you have any emergency or need more help in the quotation process
+                                <p className="font-source-sans text-[17px] leading-[26px] lg:text-[18px] lg:leading-[26px]">
+                                    If you have any emergency or need more help in the  the quotation process
                                 </p>
                             </div>
 
                             {/* Buttons */}
-                            <div className="flex w-full flex-col items-center justify-center gap-4">
+                            <div className="flex w-full flex-col items-center justify-center gap-4 lg:mt-4 lg:flex-row lg:gap-3">
                                 {/* Call Button */}
-                                <button className="flex w-fit items-center justify-center gap-3 rounded-full bg-white px-8 py-3.5 transition-transform active:scale-95">
-                                    <div className="relative h-3 w-3">
+                                <button className="flex w-fit items-center justify-center gap-2 rounded-full bg-white px-6 py-3 transition-transform hover:scale-[1.02] active:scale-95 lg:h-[48px] lg:px-6 lg:py-3">
+                                    <div className="relative h-3.5 w-3.5 lg:h-6 lg:w-6">
                                         <Image
                                             src="/images/contact/fill-call.svg"
                                             alt=""
@@ -53,7 +51,7 @@ export function ContactSection() {
                                 </button>
 
                                 {/* Callback Button */}
-                                <button className="flex w-fit items-center justify-center rounded-full border border-white px-8 py-3.5 transition-all hover:bg-white/10 active:scale-95">
+                                <button className="flex w-fit items-center justify-center rounded-full border border-white px-6 py-3 transition-all hover:bg-white/10 active:scale-95 lg:h-[48px] lg:px-6 lg:py-3">
                                     <span className="font-source-sans text-[16px] font-semibold text-white">
                                         Request a callback
                                     </span>
@@ -62,19 +60,19 @@ export function ContactSection() {
                         </div>
 
                         {/* Card 2: Online Payment */}
-                        <div className="relative flex w-full flex-col items-center gap-6 rounded-lg bg-[rgba(83,83,83,0.5)] px-8 py-10 backdrop-blur-xl">
-                            <div className="flex flex-col items-center gap-1.5 text-center text-white">
-                                <h3 className="font-brand-text text-[24px] font-bold leading-[32px]">
+                        <div className="relative flex w-full flex-col items-center gap-4 rounded-lg bg-[rgba(83,83,83,0.5)] px-8 py-10 backdrop-blur-[32px] lg:w-[416px] lg:shrink-0 lg:gap-4 lg:rounded-[12px] lg:px-8 lg:py-12">
+                            <div className="flex flex-col items-center gap-2 text-center text-white lg:gap-2">
+                                <h3 className="font-brand-text text-[24px] font-bold leading-[32px] lg:text-[32px] lg:leading-[40px]">
                                     Online Payment
                                 </h3>
-                                <p className="font-source-sans text-[16px] leading-[24px]">
+                                <p className="font-source-sans text-[16px] leading-[24px] lg:text-[18px] lg:leading-[26px]">
                                     Coming Soon
                                 </p>
                             </div>
 
-                            <div className="flex w-full flex-col items-center justify-center gap-4">
+                            <div className="flex w-full flex-col items-center justify-center gap-4 lg:mt-4 lg:flex-row lg:gap-3">
                                 {/* Pay Now Button */}
-                                <button className="flex w-fit items-center justify-center rounded-full bg-white px-8 py-3.5 transition-transform active:scale-95">
+                                <button className="flex w-fit items-center justify-center rounded-full bg-white px-6 py-3 transition-transform hover:scale-[1.02] active:scale-95 lg:h-[48px] lg:px-6 lg:py-3">
                                     <span className="font-source-sans text-[16px] font-semibold text-[#00008f]">
                                         Pay Now
                                     </span>

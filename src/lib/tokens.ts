@@ -40,7 +40,7 @@ export const animation = {
     transitionEasing: "linear",
 } as const;
 
-// Typography
+// Typography — mobile (default)
 export const typography = {
     eyebrow: {
         fontSize: 16,
@@ -58,6 +58,34 @@ export const typography = {
         fontSize: 16,
         fontWeight: 400,
         lineHeight: 24,
+        letterSpacing: 0,
+    },
+    button: {
+        fontSize: 16,
+        fontWeight: 600,
+        lineHeight: 24,
+        letterSpacing: 0,
+    },
+} as const;
+
+// Typography — desktop (lg+)
+export const typographyDesktop = {
+    eyebrow: {
+        fontSize: 24,
+        fontWeight: 400,
+        lineHeight: 32,
+        letterSpacing: 0,
+    },
+    headline: {
+        fontSize: 64,
+        fontWeight: 300,
+        lineHeight: 72,
+        letterSpacing: -1.5,
+    },
+    body: {
+        fontSize: 18,
+        fontWeight: 400,
+        lineHeight: 26,
         letterSpacing: 0,
     },
     button: {
