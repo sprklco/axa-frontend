@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavItem } from "@/types/navigation";
 import { cn } from "@/lib/cn";
+import { Button } from "@/components/ui/CTAButton";
 import { ChevronRight, ChevronLeft, Plus, Search, X } from "lucide-react";
 
 interface MobileMenuProps {
@@ -154,12 +155,12 @@ export function MobileMenu({ items, isOpen, onClose }: MobileMenuProps) {
                             {history.length === 0 && (
                                 <>
                                     <div className="px-4 py-8 flex flex-col items-center gap-4">
-                                        <button className="w-full h-14 rounded-full border border-[#00008f] text-[#00008f] font-semibold flex items-center justify-center gap-2 hover:bg-[#00008f]/5 transition-colors">
-                                            <span>Pay your insurance</span>
-                                        </button>
-                                        <button className="w-full h-14 rounded-full bg-[#00008f] text-white font-semibold flex items-center justify-center hover:bg-[#00008f]/90 transition-colors">
+                                        <Button variant="secondary" size="lg" fullWidth>
+                                            Pay your insurance
+                                        </Button>
+                                        <Button variant="primary" size="lg" fullWidth>
                                             Quote now
-                                        </button>
+                                        </Button>
                                     </div>
 
                                     {/* Info / Meta Section */}
