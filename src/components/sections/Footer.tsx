@@ -258,7 +258,7 @@ export function Footer() {
             <div className="hidden lg:flex lg:flex-col lg:gap-[50px] lg:px-[128px] lg:pt-[92px]">
 
                 {/* Top Section: 4-column layout */}
-                <div className="flex w-full items-start justify-between">
+                <div className="flex w-full items-start ">
 
                     {/* Column 1: Follow AXA + Accessibility + Call */}
                     <div className="flex w-[250px] flex-col gap-4">

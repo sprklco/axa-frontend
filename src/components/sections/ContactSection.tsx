@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Button } from "@/components/ui/CTAButton";
 
 export function ContactSection() {
     return (
@@ -36,26 +37,28 @@ export function ContactSection() {
                             {/* Buttons */}
                             <div className="flex w-full flex-col items-center justify-center gap-4 lg:mt-4 lg:flex-row lg:gap-3">
                                 {/* Call Button */}
-                                <button className="flex w-fit items-center justify-center gap-2 rounded-full bg-white px-6 py-3 transition-transform hover:scale-[1.02] active:scale-95 lg:h-[48px] lg:px-6 lg:py-3">
-                                    <div className="relative h-3.5 w-3.5 lg:h-6 lg:w-6">
-                                        <Image
-                                            src="/images/contact/fill-call.svg"
-                                            alt=""
-                                            fill
-                                            className="object-contain"
-                                        />
-                                    </div>
-                                    <span className="font-source-sans text-[16px] font-semibold text-[#00008f]">
-                                        04 - 727 000
-                                    </span>
-                                </button>
+                                <Button
+                                    variant="ghost"
+                                    size="md"
+                                    className="w-fit"
+                                    icon={
+                                        <div className="relative h-3.5 w-3.5 lg:h-6 lg:w-6">
+                                            <Image
+                                                src="/images/contact/fill-call.svg"
+                                                alt=""
+                                                fill
+                                                className="object-contain"
+                                            />
+                                        </div>
+                                    }
+                                >
+                                    04 - 727 000
+                                </Button>
 
                                 {/* Callback Button */}
-                                <button className="flex w-fit items-center justify-center rounded-full border border-white px-6 py-3 transition-all hover:bg-white/10 active:scale-95 lg:h-[48px] lg:px-6 lg:py-3">
-                                    <span className="font-source-sans text-[16px] font-semibold text-white">
-                                        Request a callback
-                                    </span>
-                                </button>
+                                <Button variant="inverse" size="md" className="w-fit">
+                                    Request a callback
+                                </Button>
                             </div>
                         </div>
 
@@ -72,11 +75,9 @@ export function ContactSection() {
 
                             <div className="flex w-full flex-col items-center justify-center gap-4 lg:mt-4 lg:flex-row lg:gap-3">
                                 {/* Pay Now Button */}
-                                <button className="flex w-fit items-center justify-center rounded-full bg-white px-6 py-3 transition-transform hover:scale-[1.02] active:scale-95 lg:h-[48px] lg:px-6 lg:py-3">
-                                    <span className="font-source-sans text-[16px] font-semibold text-[#00008f]">
-                                        Pay Now
-                                    </span>
-                                </button>
+                                <Button variant="ghost" size="md" className="w-fit">
+                                    Pay Now
+                                </Button>
                             </div>
                         </div>
                     </div>

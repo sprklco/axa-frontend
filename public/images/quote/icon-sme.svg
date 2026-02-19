@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="cardiology">
+<mask id="mask0_17813_54646" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+<rect id="Bounding box" width="24" height="24" fill="var(--fill-0, #D9D9D9)"/>
+</mask>
+<g mask="url(#mask0_17813_54646)">
+<path id="Vector" d="M12.2888 9.38172L5.37678 5.89081M12.2888 9.38172L19.2008 5.89081M12.2888 9.38172C11.1368 13.4545 7.10478 16.9454 4.80078 18.109M5.37678 5.89081L12.2888 2.3999L19.2008 5.89081M5.37678 5.89081C6.52878 8.21812 6.52878 14.6181 4.80078 18.109M19.2008 5.89081C19.2008 7.70521 18.8896 10.4627 17.7011 13.4279M4.80078 18.109L11.7128 21.5999M17.7011 13.4279C17.7029 15.174 18.6248 18.109 18.6248 18.109L11.7128 21.5999M17.7011 13.4279C16.6029 16.1678 14.7557 19.0852 11.7128 21.5999M17.7011 13.4279V13.4228" stroke="var(--stroke-0, #00008F)" stroke-width="1.25" stroke-linecap="round"/>
+</g>
+</g>
+</svg>

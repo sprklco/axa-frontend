@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { insuranceTypes } from "@/data/insuranceTypes";
+import { Button } from "@/components/ui/CTAButton";
 
 /* ──────────────────────────────────────────────
    Inline SVG icons for each insurance type tab.
@@ -134,12 +135,12 @@ export function FeaturedSection() {
 
                             {/* Action Buttons */}
                             <div className="grid grid-cols-2 gap-4">
-                                <button className="flex h-12 w-full items-center justify-center rounded-full border border-[#00008f] bg-white text-base font-bold text-[#00008f] transition-colors hover:bg-blue-50">
+                                <Button variant="secondary" size="md" fullWidth className="font-bold">
                                     Quote online
-                                </button>
-                                <button className="flex h-12 w-full items-center justify-center rounded-full border border-[#ff1721] bg-white text-base font-bold text-[#ff1721] transition-colors hover:bg-red-50">
+                                </Button>
+                                <Button variant="danger" size="md" fullWidth className="font-bold">
                                     Get a callback
-                                </button>
+                                </Button>
                             </div>
 
                             {/* Phone Contact */}
@@ -155,57 +156,57 @@ export function FeaturedSection() {
 
                         {/* Desktop — Icon Tab Bars + Buttons */}
                         <div className="hidden lg:flex lg:flex-col lg:gap-8">
-                            {/* Tab Bar Row 1 */}
-                            <div className="relative flex items-center gap-0 rounded-lg bg-[#f7f7f8] p-2">
-                                {row1.map((type) => (
-                                    <button
-                                        key={type.id}
-                                        onClick={() => setActiveTab(type.id)}
-                                        className={cn(
-                                            "relative z-10 flex items-center gap-2 rounded-xl px-4 py-3 text-lg leading-[26px] transition-colors",
-                                            activeTab === type.id
-                                                ? "bg-[#00008f] text-white"
-                                                : "text-[#00008f] hover:bg-white/60"
-                                        )}
-                                        aria-pressed={activeTab === type.id}
-                                    >
-                                        <span className="shrink-0">{tabIcons[type.id]}</span>
-                                        <span className="font-source-sans whitespace-nowrap">{type.label}</span>
-                                    </button>
-                                ))}
-                            </div>
+                            {/* Tab Rows Wrapper — inline-flex so it shrink-wraps to the wider row */}
+                            <div className="inline-flex flex-col gap-8">
+                                {/* Tab Bar Row 1 */}
+                                <div className="relative flex items-center gap-0 rounded-lg bg-[#f7f7f8] p-2">
+                                    {row1.map((type) => (
+                                        <button
+                                            key={type.id}
+                                            onClick={() => setActiveTab(type.id)}
+                                            className={cn(
+                                                "relative z-10 flex items-center gap-2 rounded-xl px-4 py-3 text-lg leading-[26px] transition-colors",
+                                                activeTab === type.id
+                                                    ? "bg-[#00008f] text-white"
+                                                    : "text-[#00008f] hover:bg-white/60"
+                                            )}
+                                            aria-pressed={activeTab === type.id}
+                                        >
+                                            <span className="shrink-0">{tabIcons[type.id]}</span>
+                                            <span className="font-source-sans whitespace-nowrap">{type.label}</span>
+                                        </button>
+                                    ))}
+                                </div>
 
-                            {/* Tab Bar Row 2 */}
-                            <div className="relative flex items-center gap-0 rounded-lg bg-[#f7f7f8] p-2">
-                                {row2.map((type) => (
-                                    <button
-                                        key={type.id}
-                                        onClick={() => setActiveTab(type.id)}
-                                        className={cn(
-                                            "relative z-10 flex items-center gap-2 rounded-xl px-4 py-3 text-lg leading-[26px] transition-colors",
-                                            activeTab === type.id
-                                                ? "bg-[#00008f] text-white"
-                                                : "text-[#00008f] hover:bg-white/60"
-                                        )}
-                                        aria-pressed={activeTab === type.id}
-                                    >
-                                        <span className="shrink-0">{tabIcons[type.id]}</span>
-                                        <span className="font-source-sans whitespace-nowrap">{type.label}</span>
-                                    </button>
-                                ))}
+                                {/* Tab Bar Row 2 */}
+                                <div className="relative flex items-center gap-0 rounded-lg bg-[#f7f7f8] p-2">
+                                    {row2.map((type) => (
+                                        <button
+                                            key={type.id}
+                                            onClick={() => setActiveTab(type.id)}
+                                            className={cn(
+                                                "relative z-10 flex items-center gap-2 rounded-xl px-4 py-3 text-lg leading-[26px] transition-colors",
+                                                activeTab === type.id
+                                                    ? "bg-[#00008f] text-white"
+                                                    : "text-[#00008f] hover:bg-white/60"
+                                            )}
+                                            aria-pressed={activeTab === type.id}
+                                        >
+                                            <span className="shrink-0">{tabIcons[type.id]}</span>
+                                            <span className="font-source-sans whitespace-nowrap">{type.label}</span>
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
 
                             {/* Action Buttons */}
                             <div className="flex items-center gap-6">
-                                <a
-                                    href="#"
-                                    className="flex h-12 items-center justify-center rounded-full border border-[#00008f] px-6 font-source-sans text-[16px] font-semibold leading-6 text-[#00008f] transition-colors hover:bg-blue-50"
-                                >
+                                <Button variant="secondary" size="md" href="#">
                                     Quote online
-                                </a>
-                                <button className="flex h-12 items-center justify-center rounded-full border border-[#ff1721] px-6 font-source-sans text-[16px] font-semibold leading-6 text-[#ff1721] transition-colors hover:bg-red-50">
+                                </Button>
+                                <Button variant="danger" size="md">
                                     Get a callback
-                                </button>
+                                </Button>
                             </div>
 
                             {/* Phone Contact */}
