@@ -156,8 +156,8 @@ export function FeaturedSection() {
 
                         {/* Desktop — Icon Tab Bars + Buttons */}
                         <div className="hidden lg:flex lg:flex-col lg:gap-8">
-                            {/* Tab Rows Wrapper — inline-flex so it shrink-wraps to the wider row */}
-                            <div className="inline-flex flex-col gap-8">
+                            {/* Tab Rows Wrapper */}
+                            <div className="flex w-fit flex-col gap-8">
                                 {/* Tab Bar Row 1 */}
                                 <div className="relative flex items-center gap-0 rounded-lg bg-[#f7f7f8] p-2">
                                     {row1.map((type) => (
@@ -165,7 +165,7 @@ export function FeaturedSection() {
                                             key={type.id}
                                             onClick={() => setActiveTab(type.id)}
                                             className={cn(
-                                                "relative z-10 flex items-center gap-2 rounded-xl px-4 py-3 text-lg leading-[26px] transition-colors",
+                                                "relative z-10 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-lg leading-[26px] transition-colors",
                                                 activeTab === type.id
                                                     ? "bg-[#00008f] text-white"
                                                     : "text-[#00008f] hover:bg-white/60"
@@ -185,7 +185,7 @@ export function FeaturedSection() {
                                             key={type.id}
                                             onClick={() => setActiveTab(type.id)}
                                             className={cn(
-                                                "relative z-10 flex items-center gap-2 rounded-xl px-4 py-3 text-lg leading-[26px] transition-colors",
+                                                "relative z-10 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-lg leading-[26px] transition-colors",
                                                 activeTab === type.id
                                                     ? "bg-[#00008f] text-white"
                                                     : "text-[#00008f] hover:bg-white/60"

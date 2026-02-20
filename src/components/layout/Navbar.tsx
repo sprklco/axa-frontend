@@ -328,28 +328,30 @@ export function MainNavbar() {
                                 aria-expanded={isQuoteOpen}
                                 aria-haspopup="true"
                             >
-                                Quote your insurance
-                                {/* Dropdown chevron */}
-                                <svg
-                                    width="12"
-                                    height="8"
-                                    viewBox="0 0 12 8"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    aria-hidden="true"
-                                    className={cn(
-                                        "transition-transform duration-200",
-                                        isQuoteOpen && "rotate-180"
-                                    )}
-                                >
-                                    <path
-                                        d="M1 1.5L6 6.5L11 1.5"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
+                                <span className="inline-flex items-center gap-2">
+                                    Quote your insurance
+                                    {/* Dropdown chevron */}
+                                    <svg
+                                        width="12"
+                                        height="8"
+                                        viewBox="0 0 12 8"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        aria-hidden="true"
+                                        className={cn(
+                                            "shrink-0 transition-transform duration-200",
+                                            isQuoteOpen && "rotate-180"
+                                        )}
+                                    >
+                                        <path
+                                            d="M1 1.5L6 6.5L11 1.5"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </span>
                             </Button>
 
                             {/* Quote Dropdown Panel */}
