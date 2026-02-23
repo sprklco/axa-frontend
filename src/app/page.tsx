@@ -6,7 +6,6 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { Footer } from "@/components/sections/Footer";
 import { TopTabs, MainNavbar } from "@/components/layout/Navbar";
 import { MetaHeader } from "@/components/layout/MetaHeader";
-import { BottomNavbar } from "@/components/layout/BottomNavbar";
 import { heroSlides } from "@/data/heroSlides";
 
 export default function Home() {
@@ -43,9 +42,6 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
-
-      {/* Bottom sticky navigation bar */}
-      <BottomNavbar />
     </main>
   );
 }
