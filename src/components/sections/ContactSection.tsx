@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/CTAButton";
+import { Container } from "@/components/layout/Container";
 
 export function ContactSection() {
     return (
@@ -19,7 +20,7 @@ export function ContactSection() {
                 </div>
 
                 {/* Content Overlay */}
-                <div className="relative z-10 flex flex-col items-center justify-end px-4 py-[56px] lg:px-[72px] lg:pt-[134px] lg:pb-[96px]">
+                <Container className="relative z-10 flex flex-col items-center justify-end py-[56px] lg:pt-[134px] lg:pb-[96px]">
                     <div className="flex flex-col gap-6 w-full lg:flex-row lg:items-center lg:justify-center lg:gap-6">
 
                         {/* Card 1: Need Help */}
@@ -87,7 +88,7 @@ export function ContactSection() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Container>
             </div>
         </section>
     );

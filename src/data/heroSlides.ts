@@ -10,39 +10,29 @@ export const heroSlides: HeroSlide[] = [
         eyebrow: "We are AXA",
         headline: "Protecting what\nmatters most",
         description:
-            "As a leading insurance company in Lebanon we strive to provide you integral protection solutions in motor, Property, Health and Life.",
+            "As a leading insurance company in Lebanon we strive to provide you integral protection solutions in Motor, Property, Health and Life.",
         ctaText: "We are AXA",
         ctaHref: "/about",
-        backgroundImage: "/images/hero-bg-1.png",
+        backgroundImage: "/images/family-1.png",
     },
     {
         id: "slide-2",
-        eyebrow: "Motor Insurance",
-        headline: "Drive with\nconfidence",
+        eyebrow: "Travel Insurance",
+        headline: "Protection \nwherever you go",
         description:
-            "Comprehensive motor insurance coverage that protects you and your vehicle on every journey.",
-        ctaText: "Get a Quote",
-        ctaHref: "/motor",
-        backgroundImage: "/images/hero-bg-1.png",
+            "Comprehensive travel insurance covering medical emergencies, cancellations, and unexpected travel disruptions.",
+        ctaText: "Learn More",
+        ctaHref: "/travel",
+        backgroundImage: "/images/hero-travel-1.png",
     },
     {
         id: "slide-3",
-        eyebrow: "Health Insurance",
-        headline: "Your health,\nour priority",
-        description:
-            "Access quality healthcare with our comprehensive health insurance plans designed for you and your family.",
-        ctaText: "Learn More",
-        ctaHref: "/health",
-        backgroundImage: "/images/hero-bg-1.png",
-    },
-    {
-        id: "slide-4",
         eyebrow: "Life Insurance",
-        headline: "Secure your\nfamily's future",
+        headline: "Security for\nthe future",
         description:
-            "Protect your loved ones with life insurance solutions that provide financial security for generations.",
-        ctaText: "Explore Plans",
+            "Comprehensive life insurance designed to provide financial protection and lasting peace of mind for your family.",
+        ctaText: "Learn More",
         ctaHref: "/life",
-        backgroundImage: "/images/hero-bg-1.png",
-    },
+        backgroundImage: "/images/hero-life-1.png",
+    }
 ];

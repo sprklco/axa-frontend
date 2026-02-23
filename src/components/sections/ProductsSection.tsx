@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/cn";
+import { Container } from "@/components/layout/Container";
 
 /* ──────────────────────────────────────────────
    Product data
@@ -110,7 +111,7 @@ export function ProductsSection() {
     return (
         <section className="bg-white py-16 lg:py-0">
             {/* ─── Mobile layout (< lg) ─── */}
-            <div className="mx-auto max-w-lg overflow-hidden lg:hidden">
+            <Container className="overflow-hidden lg:hidden">
                 {/* Header */}
                 <div className="mb-8 px-4 text-center">
                     <p className="mb-2 font-source-sans text-[16px] font-semibold text-[#606776]">
@@ -204,10 +205,10 @@ export function ProductsSection() {
                         );
                     })}
                 </div>
-            </div>
+            </Container>
 
             {/* ─── Desktop layout (lg+) ─── */}
-            <div className="hidden lg:flex lg:flex-col lg:gap-16 lg:px-[72px] lg:py-16">
+            <Container className="hidden lg:flex lg:flex-col lg:gap-16 lg:py-16">
                 {/* Header — left-aligned */}
                 <div className="flex flex-col gap-3">
                     <p className="font-source-sans text-[18px] font-semibold leading-[26px] text-[#606776]">
@@ -223,7 +224,7 @@ export function ProductsSection() {
                     {/* Scrollable cards container */}
                     <div
                         ref={desktopScrollRef}
-                        className="flex items-start gap-4 overflow-x-auto pb-4 scrollbar-hide"
+                        className="flex min-h-[400px] items-start gap-4 overflow-x-auto pb-4 scrollbar-hide"
                     >
                         {/* Description text — left column, only visible on desktop */}
                         <div className="hidden shrink-0 self-end lg:flex lg:w-[346px] lg:flex-col lg:gap-1 lg:pb-0">
@@ -294,7 +295,7 @@ export function ProductsSection() {
                         })}
                     </div>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }

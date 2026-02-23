@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
+import { Container } from "@/components/layout/Container";
 
 /* ──────────────────────────────────────────────
    Mobile: Accordion sections data
@@ -255,7 +256,7 @@ export function Footer() {
             {/* ═══════════════════════════════════
                 DESKTOP LAYOUT (lg+)
                ═══════════════════════════════════ */}
-            <div className="hidden lg:flex lg:flex-col lg:gap-[50px] lg:px-[128px] lg:pt-[92px]">
+            <Container className="hidden lg:flex lg:flex-col lg:gap-[50px] lg:px-[128px] lg:pt-[92px]">
 
                 {/* Top Section: 4-column layout */}
                 <div className="flex w-full items-start ">
@@ -345,7 +346,7 @@ export function Footer() {
                         © 2026,AXA, All Rights Reserved
                     </p>
                 </div>
-            </div>
+            </Container>
         </footer>
     );
 }

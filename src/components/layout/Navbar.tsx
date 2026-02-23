@@ -246,7 +246,7 @@ export function MainNavbar() {
     ];
 
     return (
-        <div ref={navRef} className="sticky top-[14px] z-50 bg-transparent px-4 pb-4">
+        <div ref={navRef} className="sticky top-[14px] z-50 bg-transparent px-4 lg:px-[72px] pb-4 pt-[7px]">
             <header
                 className="flex h-16 lg:h-[72px] items-center justify-between rounded-xl bg-white px-4 lg:px-6 shadow-sm"
                 role="banner"
@@ -452,7 +452,7 @@ export function MainNavbar() {
                 onMouseEnter={cancelClose}
                 onMouseLeave={scheduleClose}
                 className={cn(
-                    "absolute left-0 right-0 top-full z-50 hidden lg:block overflow-hidden transition-all duration-300 ease-in-out mx-4",
+                    "absolute left-0 right-0 top-full z-50 hidden lg:block overflow-hidden transition-all duration-300 ease-in-out px-4 lg:px-[72px]",
                     isDropdownOpen
                         ? "max-h-[500px] opacity-100"
                         : "max-h-0 opacity-0 pointer-events-none"
