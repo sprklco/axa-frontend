@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/cn";
+import { Container } from "@/components/layout/Container";
 
 /* ──────────────────────────────────────────────
    Tabs (mobile only)
@@ -183,7 +184,7 @@ export function QuickActionsSection() {
     return (
         <section className="bg-white py-16 lg:py-16">
             {/* ─── Mobile layout (< lg) ─── */}
-            <div className="mx-auto max-w-lg px-4 lg:hidden">
+            <Container className="lg:hidden">
                 {/* Header */}
                 <div className="mb-8 text-center">
                     <p className="mb-2 font-source-sans text-[18px] font-semibold text-[#606776]">
@@ -249,10 +250,10 @@ export function QuickActionsSection() {
                         ))}
                     </div>
                 </div>
-            </div>
+            </Container>
 
             {/* ─── Desktop layout (lg+) ─── */}
-            <div className="hidden lg:flex lg:flex-col lg:items-center lg:gap-16 lg:px-[72px] lg:py-[64px]">
+            <Container className="hidden lg:flex lg:flex-col lg:items-center lg:gap-16 lg:py-[64px]">
                 {/* Header */}
                 <div className="flex flex-col items-center gap-3 text-center">
                     <p className="font-source-sans text-[18px] font-semibold leading-[26px] text-[#606776]">
@@ -295,7 +296,7 @@ export function QuickActionsSection() {
                         </a>
                     ))}
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }

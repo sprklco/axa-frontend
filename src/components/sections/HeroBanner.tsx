@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { animation } from "@/lib/tokens";
+import { Container } from "@/components/layout/Container";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { PauseButton } from "@/components/ui/PauseButton";
 import { CTAButton } from "@/components/ui/CTAButton";
@@ -82,20 +83,18 @@ export function HeroBanner({ slides }: HeroBannerProps) {
         >
             {/* Background Image with Gradient Overlay */}
             <div className="absolute inset-0" aria-hidden="true">
-                {/* Base hero image - same for all slides in this version */}
+                {/* Dynamically loads image per slide */}
                 <Image
-                    src="/images/hero-overlay.png"
+                    src={activeSlide.backgroundImage}
                     alt=""
                     fill
                     className="object-cover"
                     priority
                 />
-                {/* Gradient Overlay */}
-                <div className="hero-gradient-overlay absolute inset-0" />
             </div>
 
             {/* Content Container */}
-            <div className="relative flex w-full flex-1 flex-col justify-end px-4 pb-8 pt-[170px] md:px-8 md:pb-12 lg:max-w-[1440px] lg:mx-auto lg:px-[72px] lg:pb-12">
+            <Container className="relative flex w-full flex-1 flex-col justify-end pb-8 pt-[170px] md:px-8 md:pb-12 lg:pb-12">
                 {/* Text Content with Dissolve Transition */}
                 <div
                     key={`text-${currentSlide}`}
@@ -158,7 +157,7 @@ export function HeroBanner({ slides }: HeroBannerProps) {
                         <PauseButton isPaused={isPaused} onToggle={togglePause} />
                     </div>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }

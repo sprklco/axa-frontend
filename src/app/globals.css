@@ -66,9 +66,7 @@ body {
 
 /* Hero Banner Gradient Overlay */
 .hero-gradient-overlay {
-  background-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.8) 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 /* Custom font utilities */

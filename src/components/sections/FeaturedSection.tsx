@@ -5,6 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { insuranceTypes } from "@/data/insuranceTypes";
 import { Button } from "@/components/ui/CTAButton";
+import { Container } from "@/components/layout/Container";
 
 /* ──────────────────────────────────────────────
    Inline SVG icons for each insurance type tab.
@@ -74,7 +75,7 @@ export function FeaturedSection() {
     return (
         <section className="relative z-10 pt-10 px-4 pb-10 lg:px-0 lg:pt-0 lg:pb-0">
             {/* Desktop gray background wrapper — visible lg+ only */}
-            <div className="mx-auto max-w-lg lg:max-w-none lg:bg-[#f7f7f8] lg:px-[72px] lg:py-[72px]">
+            <Container className="lg:max-w-none lg:bg-[#f7f7f8] lg:py-[72px]">
                 {/* Card */}
                 <div
                     className={cn(
@@ -227,7 +228,7 @@ export function FeaturedSection() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }
