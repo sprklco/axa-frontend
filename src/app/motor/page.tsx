@@ -1,8 +1,4 @@
 import { SubhomeHeroBanner } from "@/components/sections/SubhomeHeroBanner";
-import { Footer } from "@/components/sections/Footer";
-import { MainNavbar } from "@/components/layout/Navbar";
-import { MetaHeader } from "@/components/layout/MetaHeader";
-import { BottomNavbar } from "@/components/layout/BottomNavbar";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/layout/Container";
 import { FeatureTabsSection } from "@/components/sections/FeatureTabsSection";
@@ -14,14 +10,8 @@ import { BenefitsSection } from "@/components/sections/BenefitsSection";
 
 export default function MotorPage() {
     return (
-        <main className="relative flex min-h-screen flex-col bg-gray-50 pb-22 lg:pb-0">
+        <main className="flex flex-col flex-1">
             <div className="relative flex flex-col">
-                {/* Meta Header - top bar above main navbar */}
-                <MetaHeader />
-
-                {/* Main Navbar - sticky */}
-                <MainNavbar />
-
                 {/* Motor Hero Section - positioned behind navbar */}
                 <div className="-mt-[108px] lg:-mt-[150px]">
                     <SubhomeHeroBanner
@@ -87,10 +77,6 @@ export default function MotorPage() {
                     ]}
                 />
             </div>
-
-            {/* Footer */}
-            <Footer />
-
         </main>
     );
 }
