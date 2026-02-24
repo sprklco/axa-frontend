@@ -18,6 +18,7 @@ export default function MotorPage() {
                         title="Motor Insurance"
                         heading="Drive with confidence"
                         description="Motor insurance that protects you from unexpected costs, so you can drive with confidence."
+                        ctaText="Start now"
                     />
                 </div>
 
@@ -56,21 +57,21 @@ export default function MotorPage() {
                     benefits={[
                         {
                             id: "trusted",
-                            iconUrl: "http://localhost:3845/assets/159d3b20a5a152162bb2c8fd4475556b96588388.svg",
+                            iconUrl: "/images/benefits/trusted.svg",
                             title: "Trusted",
                             description: "repair shops",
                             IconStyle: { aspectRatio: 1 }
                         },
                         {
                             id: "fast",
-                            iconUrl: "http://localhost:3845/assets/c074610c4fe0d61bb34ffab294d1f5f7668a2930.svg",
+                            iconUrl: "/images/benefits/fast.svg",
                             title: "Fast",
                             description: "motor claim recovery",
                             IconStyle: { aspectRatio: 1 }
                         },
                         {
                             id: "quality",
-                            iconUrl: "http://localhost:3845/assets/ff7d332ccda26dcfcbb7c8558efa746b005dcddc.svg",
+                            iconUrl: "/images/benefits/quality.svg",
                             title: "Quality",
                             description: "in bodywork and painting",
                         },

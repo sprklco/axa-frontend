@@ -22,6 +22,10 @@ export interface ComparisonData {
     features: FeatureRow[];
     packages: PackageColumn[];
     ctaText?: string;
+    labelWidthClassName?: string;
+    packageWidthClassName?: string;
+    headerWidthClassName?: string;
+    minWidthClassName?: string;
 }
 
 export interface ComparisonTableSectionProps {
@@ -30,6 +34,11 @@ export interface ComparisonTableSectionProps {
 
 export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
     if (!data || !data.packages || data.packages.length === 0) return null;
+
+    const labelWidthClass = data.labelWidthClassName || "w-[180px]";
+    const packageWidthClass = data.packageWidthClassName || "w-[160px]";
+    const headerWidthClass = data.headerWidthClassName || "w-[137px]";
+    const minWidthClass = data.minWidthClassName || "min-w-[1000px] md:min-w-max";
 
     return (
         <section className="w-full bg-white py-12 md:py-20 lg:py-24">
@@ -46,17 +55,17 @@ export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
 
                 {/* Table Container - Enable X scrolling for responsive */}
                 <div className="flex w-full justify-center overflow-x-auto pb-6 scrollbar-hide px-4 md:px-0">
-                    <div className="min-w-[1000px] md:min-w-max mx-auto">
+                    <div className={`${minWidthClass} mx-auto`}>
                         {/* Table Header Row (Plan Names) */}
                         <div className="flex items-end pt-2">
                             {/* Empty top-left cell for feature names column */}
-                            <div className="w-[180px] shrink-0" aria-hidden="true" />
+                            <div className={`${labelWidthClass} shrink-0`} aria-hidden="true" />
                             {data.packages.map((pkg) => (
                                 <div
                                     key={pkg.id}
-                                    className="flex w-[160px] shrink-0 items-end justify-center"
+                                    className={`flex ${packageWidthClass} shrink-0 items-end justify-center`}
                                 >
-                                    <div className="flex h-[40px] w-[137px] items-center justify-center rounded-t-lg bg-[#0c0e45]">
+                                    <div className={`flex h-[40px] justify-center items-center rounded-t-lg bg-[#0c0e45] ${headerWidthClass} px-2`}>
                                         <span className="font-brand-text text-[16px] font-bold leading-[26px] text-white text-center">
                                             {pkg.label}
                                         </span>
@@ -74,7 +83,7 @@ export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
                                     <div key={feature.id} className="flex min-h-[50px]">
                                         {/* Feature Name Cell (Sticky conceptually) */}
                                         <div
-                                            className={`flex w-[180px] shrink-0 flex-col items-start justify-center px-2 py-3 ${isAlternateRow ? "bg-[#f8faff]" : "bg-white"
+                                            className={`flex shrink-0 flex-col items-start justify-center px-2 py-3 ${labelWidthClass} ${isAlternateRow ? "bg-[#f8faff]" : "bg-white"
                                                 }`}
                                         >
                                             <span className="font-source-sans text-[12px] md:text-[14px] leading-snug text-[#1d2433]">
@@ -93,7 +102,7 @@ export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
                                             return (
                                                 <div
                                                     key={`${pkg.id}-${feature.id}`}
-                                                    className={`flex w-[160px] shrink-0 flex-col items-center justify-center px-2 py-3 ${isAlternateRow ? "bg-[#f8faff]" : "bg-white"
+                                                    className={`flex shrink-0 flex-col items-center justify-center px-2 py-3 ${packageWidthClass} ${isAlternateRow ? "bg-[#f8faff]" : "bg-white"
                                                         }`}
                                                 >
                                                     {value === true ? (

@@ -51,8 +51,8 @@ const NAV_CHIPS: NavChipConfig[] = [
             ctaLabel: "Quote now",
             ctaHref: "#",
             links: [
-                { label: "Individual medical insurance", href: "#" },
-                { label: "Corporate medical insurance", href: "#" },
+                { label: "Individual medical insurance", href: "/medical-individuals" },
+                { label: "Corporate medical insurance", href: "/health-corporate" },
             ],
         },
     },
