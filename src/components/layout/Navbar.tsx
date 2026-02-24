@@ -7,53 +7,6 @@ import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/CTAButton";
 import { MobileMenu } from "./MobileMenu";
 
-type NavTab = "individuals" | "corporate";
-
-/**
- * Top section with Individuals/Corporate tabs
- * White background, non-sticky, sits above everything
- */
-export function TopTabs() {
-    const [activeTab, setActiveTab] = useState<NavTab>("individuals");
-
-    return (
-        <div className="w-full bg-white px-4 py-3">
-            <div className="flex items-center gap-1">
-                <button
-                    onClick={() => setActiveTab("individuals")}
-                    className={cn(
-                        "rounded-md px-4 py-2 text-sm font-semibold transition-colors",
-                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00008f]/50",
-                        activeTab === "individuals"
-                            ? "bg-[#00008f] text-white"
-                            : "bg-transparent text-[#00008f] hover:bg-gray-100"
-                    )}
-                    aria-pressed={activeTab === "individuals"}
-                >
-                    Individuals
-                </button>
-                <button
-                    onClick={() => setActiveTab("corporate")}
-                    className={cn(
-                        "rounded-md px-4 py-2 text-sm font-semibold transition-colors",
-                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00008f]/50",
-                        activeTab === "corporate"
-                            ? "bg-[#00008f] text-white"
-                            : "bg-transparent text-[#00008f] hover:bg-gray-100"
-                    )}
-                    aria-pressed={activeTab === "corporate"}
-                >
-                    Corporate
-                </button>
-            </div>
-        </div>
-    );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Nav chip dropdown data                                             */
-/* ------------------------------------------------------------------ */
-
 interface NavChipDropdown {
     /** Left block */
     image: string;
@@ -74,7 +27,7 @@ interface NavChipConfig {
 const NAV_CHIPS: NavChipConfig[] = [
     {
         label: "Motor",
-        href: "#",
+        href: "/motor",
         dropdown: {
             image: "/images/motor-insurance.png",
             subtitle: "Motor Quotation",
@@ -88,7 +41,21 @@ const NAV_CHIPS: NavChipConfig[] = [
             ],
         },
     },
-    { label: "Health", href: "#" },
+    {
+        label: "Medical",
+        href: "#",
+        dropdown: {
+            image: "/images/health-insurance.png",
+            subtitle: "Health Quotation",
+            heading: "Calculate your health insurance now",
+            ctaLabel: "Quote now",
+            ctaHref: "#",
+            links: [
+                { label: "Individual medical insurance", href: "#" },
+                { label: "Corporate medical insurance", href: "#" },
+            ],
+        },
+    },
     { label: "Home", href: "#" },
     { label: "Life", href: "#" },
     { label: "SME", href: "#" },
@@ -196,7 +163,7 @@ export function MainNavbar() {
         },
         {
             label: "Motor",
-            href: "#",
+            href: "/motor",
             children: [
                 { label: "Car Insurance", href: "#" },
                 { label: "Motorcycle Insurance", href: "#" },
@@ -268,7 +235,8 @@ export function MainNavbar() {
                     {/* Nav Chips */}
                     <nav className="flex items-center gap-5 mr-6" aria-label="Main navigation">
                         {NAV_CHIPS.map((chip) => (
-                            <button
+                            <Link
+                                href={chip.href}
                                 key={chip.label}
                                 onMouseEnter={() => chip.dropdown ? openChip(chip.label) : closeDropdown()}
                                 onMouseLeave={scheduleClose}
@@ -282,7 +250,7 @@ export function MainNavbar() {
                                 aria-haspopup={chip.dropdown ? "true" : undefined}
                             >
                                 {chip.label}
-                            </button>
+                            </Link>
                         ))}
                     </nav>
 
