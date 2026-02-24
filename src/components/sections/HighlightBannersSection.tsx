@@ -88,10 +88,23 @@ export function HighlightBannersSection({
             <div className="pointer-events-none absolute inset-0 rounded-[8px] bg-black/10" />
           </div>
 
-          <div className="flex flex-1 flex-col justify-between gap-6">
+            <div className="flex flex-1 flex-col justify-between gap-6">
             <div className="flex flex-col gap-4">
-              <div className="flex items-start gap-4">
-                <div className="mt-1 h-[47px] w-[51px] rounded-sm bg-gradient-to-b from-[#ff1721] to-[#ff6171]" />
+              <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center h-[32px] w-[38px]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 51 47"
+                    className="h-[32px] w-auto"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M35.1919 0H51C50.7954 0.355851 50.1725 1.13294 49.903 1.48984L47.7898 4.30122L40.46 14.0554L15.7014 47H0C0.684482 46.0397 1.45686 45.0426 2.16702 44.0943L6.10362 38.8357L18.0382 22.8978L29.3963 7.72791L33.1128 2.76417C33.7886 1.86145 34.4957 0.880691 35.1919 0Z"
+                      fill="#FF1721"
+                    />
+                  </svg>
+                </div>
                 <h2 className="font-headline text-[32px] leading-[40px] text-[#1a1d21]">
                   {banner.title}
                 </h2>
