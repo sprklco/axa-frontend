@@ -17,10 +17,11 @@ export interface PlanInfo {
 }
 
 export interface FeatureTabsSectionProps {
+    heading?: string;
     plans: PlanInfo[];
 }
 
-export function FeatureTabsSection({ plans }: FeatureTabsSectionProps) {
+export function FeatureTabsSection({ heading, plans }: FeatureTabsSectionProps) {
     // Default to the first plan if any exist
     const [activeTab, setActiveTab] = useState<string>(plans?.[0]?.id || "");
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -34,6 +35,13 @@ export function FeatureTabsSection({ plans }: FeatureTabsSectionProps) {
     return (
         <section className="w-full bg-white py-12 md:py-20">
             <Container className="flex flex-col items-center gap-8 md:gap-12">
+                {/* Heading */}
+                {heading && (
+                    <h2 className="font-headline text-[32px] font-bold leading-[40px] text-[#1a1d21] text-center whitespace-pre-wrap px-4">
+                        {heading}
+                    </h2>
+                )}
+
                 {/* Tabs */}
                 {plans.length > 1 && (
                     <div className="flex items-center gap-2 rounded-full bg-[#fafafa] p-2 overflow-x-auto max-w-full scrollbar-hide">

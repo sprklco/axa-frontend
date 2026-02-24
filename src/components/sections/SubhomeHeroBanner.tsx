@@ -10,6 +10,8 @@ export interface SubhomeHeroBannerProps {
     heading?: string;
     description?: string;
     imageSrc?: string;
+    ctaText?: string;
+    ctaHref?: string;
 }
 
 export function SubhomeHeroBanner({
@@ -17,6 +19,8 @@ export function SubhomeHeroBanner({
     heading,
     description,
     imageSrc = "/images/motor-hero-bg.png",
+    ctaText,
+    ctaHref = "#",
 }: SubhomeHeroBannerProps) {
     return (
         <section className="relative flex min-h-[500px] w-full flex-col items-center overflow-hidden md:min-h-[742px] lg:items-start">
@@ -58,13 +62,15 @@ export function SubhomeHeroBanner({
                             {description}
                         </p>
                     )}
-                    <div className="mt-4">
-                        {/* The CTAButton is natively using "ghost" which maps precisely to the "Primary Button Inverse" in the design */}
-                        {/* We use Variant Ghost: bg-white text-axa-blue */}
-                        <Button variant="ghost" size="md">
-                            Start now
-                        </Button>
-                    </div>
+                    {ctaText && (
+                        <div className="mt-4">
+                            {/* The CTAButton is natively using "ghost" which maps precisely to the "Primary Button Inverse" in the design */}
+                            {/* We use Variant Ghost: bg-white text-axa-blue */}
+                            <Button variant="ghost" size="md" href={ctaHref}>
+                                {ctaText}
+                            </Button>
+                        </div>
+                    )}
                 </div>
 
                 {/* Fast Leads - Form positioned towards bottom right on desktop */}
