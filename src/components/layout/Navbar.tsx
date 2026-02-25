@@ -56,7 +56,7 @@ const NAV_CHIPS: NavChipConfig[] = [
             ],
         },
     },
-    { label: "Home", href: "#" },
+    { label: "Home", href: "/home-insurance" },
     { label: "Life", href: "#" },
     { label: "SME", href: "#" },
     { label: "Foreigner", href: "#" },
@@ -181,7 +181,7 @@ export function MainNavbar() {
             label: "Damages",
             href: "#",
             children: [
-                { label: "Home Insurance", href: "#" },
+                { label: "Home Insurance", href: "/home-insurance" },
                 { label: "Business Insurance", href: "#" },
             ]
         },
