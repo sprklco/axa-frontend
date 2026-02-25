@@ -120,3 +120,18 @@ body {
   opacity: 0;
   /* meaningful start state */
 }
+
+/* Programs section custom scrollbar */
+.programs-scrollbar::-webkit-scrollbar {
+  width: 7px;
+}
+
+.programs-scrollbar::-webkit-scrollbar-track {
+  background: rgba(180, 183, 188, 0.4);
+  border-radius: 40px;
+}
+
+.programs-scrollbar::-webkit-scrollbar-thumb {
+  background: #00008f;
+  border-radius: 40px;
+}
