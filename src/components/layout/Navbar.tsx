@@ -42,7 +42,7 @@ const NAV_CHIPS: NavChipConfig[] = [
         },
     },
     {
-        label: "Medical",
+        label: "Health",
         href: "#",
         dropdown: {
             image: "/images/health-insurance.png",
@@ -51,7 +51,7 @@ const NAV_CHIPS: NavChipConfig[] = [
             ctaLabel: "Quote now",
             ctaHref: "#",
             links: [
-                { label: "Individual medical insurance", href: "/medical-individuals" },
+                { label: "Individual medical insurance", href: "/health-individuals" },
                 { label: "Corporate medical insurance", href: "/health-corporate" },
             ],
         },
@@ -170,7 +170,7 @@ export function MainNavbar() {
             ]
         },
         {
-            label: "Medical",
+            label: "Health",
             href: "#",
             children: [
                 { label: "Health Insurance", href: "#" },
