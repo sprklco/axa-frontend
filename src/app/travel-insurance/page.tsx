@@ -14,8 +14,7 @@ const travelHeroSection = {
     heading: "Protection wherever you go",
     description:
         "Travel insurance designed to protect you wherever your journey takes you.",
-    imageSrc:
-        "https://www.figma.com/api/mcp/asset/1dcbd1bc-eaf2-47c5-bec1-18a29d3548bd",
+    imageSrc: "/images/travel-insurance-hero.png",
 } as const;
 
 const travelBenefitsSection = {
