@@ -57,11 +57,11 @@ const NAV_CHIPS: NavChipConfig[] = [
         },
     },
     { label: "Home", href: "/home-insurance" },
-    { label: "Life", href: "/life-insurance" },
-    { label: "SME", href: "#" },
-    { label: "Foreigner", href: "/foreigner-insurance" },
-    { label: "Travel", href: "#" },
-    { label: "Marine", href: "#" },
+    { label: "Life", href: "#" },
+    { label: "SME", href: "/sme-insurance" },
+    { label: "Foreigner", href: "#" },
+    { label: "Travel", href: "/travel-insurance" },
+    { label: "Marine", href: "/marine-insurance" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -182,7 +182,7 @@ export function MainNavbar() {
             href: "#",
             children: [
                 { label: "Home Insurance", href: "/home-insurance" },
-                { label: "Business Insurance", href: "#" },
+                { label: "SME Insurance", href: "/sme-insurance" },
             ]
         },
         {
