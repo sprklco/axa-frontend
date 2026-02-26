@@ -4,54 +4,15 @@ import Image from "next/image";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/layout/Container";
+import type { ProductsSectionData } from "@/types/products";
 
-/* ──────────────────────────────────────────────
-   Product data
-   ────────────────────────────────────────────── */
-const PRODUCTS = [
-    {
-        id: "motor",
-        title: "Motor Insurance",
-        image: "/images/motor-insurance.png",
-        description: "Move with confidence and safety",
-        subtext:
-            "Our insurances adapt to your life so that you always gain in well-being.",
-    },
-    {
-        id: "health",
-        title: "Health Insurance",
-        image: "/images/health-insurance.png",
-        description: "Your health, our priority",
-        subtext:
-            "Access quality healthcare with our comprehensive health insurance plans.",
-    },
-    {
-        id: "travel",
-        title: "Travel Insurance",
-        image: "/images/travel-insurance.png",
-        description: "Journey with peace of mind",
-        subtext:
-            "Coverage for medical emergencies, trip cancellations, and lost luggage while you travel.",
-    },
-    {
-        id: "life",
-        title: "Life Insurance",
-        image: "/images/life-insurance.png",
-        description: "Protect your loved ones",
-        subtext:
-            "Ensure your family's future with our reliable life insurance policies.",
-    },
-    {
-        id: "home",
-        title: "Home Insurance",
-        image: "/images/home-insurance.png",
-        description: "Secure your sanctuary",
-        subtext:
-            "Protect your home and belongings with comprehensive coverage you can count on.",
-    },
-];
+interface ProductsSectionProps {
+    data: ProductsSectionData;
+    className?: string;
+}
 
-export function ProductsSection() {
+export function ProductsSection({ data, className }: ProductsSectionProps) {
+    const { eyebrow, title, products } = data;
     const scrollRef = useRef<HTMLDivElement>(null);
     const desktopScrollRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -106,19 +67,19 @@ export function ProductsSection() {
         return () => observer.disconnect();
     }, [animateScrollHint]);
 
-    const activeProduct = PRODUCTS[desktopActiveIndex];
+    const activeProduct = products[desktopActiveIndex];
 
     return (
-        <section className="bg-white py-16 lg:py-0">
+        <section className={cn("bg-white py-16 lg:py-0", className)}>
             {/* ─── Mobile layout (< lg) ─── */}
             <Container className="overflow-hidden lg:hidden">
                 {/* Header */}
                 <div className="mb-8 px-4 text-center">
                     <p className="mb-2 font-source-sans text-[16px] font-semibold text-[#606776]">
-                        Our insurances
+                        {eyebrow}
                     </p>
                     <h2 className="mb-8 font-headline text-[34px] font-light leading-[42px] text-[#1a1d21]">
-                        Solutions designed for you
+                        {title}
                     </h2>
                 </div>
 
@@ -132,7 +93,7 @@ export function ProductsSection() {
                         paddingRight: "calc(50% - 150px)",
                     }}
                 >
-                    {PRODUCTS.map((product, index) => {
+                    {products.map((product, index) => {
                         const isActive = index === activeIndex;
                         return (
                             <div
@@ -212,10 +173,10 @@ export function ProductsSection() {
                 {/* Header — left-aligned */}
                 <div className="flex flex-col gap-3">
                     <p className="font-source-sans text-[18px] font-semibold leading-[26px] text-[#606776]">
-                        Our insurances
+                        {eyebrow}
                     </p>
                     <h2 className="font-headline text-[48px] font-light leading-[56px] text-[#1a1d21]">
-                        Solutions designed for you
+                        {title}
                     </h2>
                 </div>
 
@@ -237,7 +198,7 @@ export function ProductsSection() {
                         </div>
 
                         {/* Product cards */}
-                        {PRODUCTS.map((product, index) => {
+                        {products.map((product, index) => {
                             const isExpanded = index === desktopActiveIndex;
                             return (
                                 <button

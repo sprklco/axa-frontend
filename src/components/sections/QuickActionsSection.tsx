@@ -3,15 +3,12 @@
 import { useState } from "react";
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/layout/Container";
+import type { QuickActionsSectionData, QuickActionCard } from "@/types/quickActions";
 
-/* ──────────────────────────────────────────────
-   Tabs (mobile only)
-   ────────────────────────────────────────────── */
-const TABS = [
-    { id: "motor", label: "Motor" },
-    { id: "health", label: "Health" },
-    { id: "home", label: "Home" },
-];
+interface QuickActionsSectionProps {
+    data: QuickActionsSectionData;
+    className?: string;
+}
 
 /* ──────────────────────────────────────────────
    Card icons — shared between mobile & desktop
@@ -160,44 +157,37 @@ const ARROW_ICON = (
 );
 
 /* ──────────────────────────────────────────────
-   Mobile cards data (4 cards, original)
+   Icon key → SVG map (rendering concern)
    ────────────────────────────────────────────── */
-const MOBILE_CARDS = [
-    { id: "car-accident", title: "Car accident", subtitle: "What to do?", icon: ICON_CAR_ACCIDENT, href: "#" },
-    { id: "mechanical-failure", title: "Mechanical failure", subtitle: "What to do?", icon: ICON_MECHANICAL, href: "#" },
-    { id: "assistance", title: "Assistance", subtitle: "Generate report", icon: ICON_ASSISTANCE, href: "#" },
-    { id: "claim", title: "Claim registration", subtitle: "Request help", icon: ICON_CLAIM, href: "#" },
-];
+const ICON_MAP: Record<string, React.ReactNode> = {
+    "car-accident": ICON_CAR_ACCIDENT,
+    "mechanical": ICON_MECHANICAL,
+    "assistance": ICON_ASSISTANCE,
+    "claim": ICON_CLAIM,
+};
 
-/* ──────────────────────────────────────────────
-   Desktop cards data (3 cards, from Figma)
-   ────────────────────────────────────────────── */
-const DESKTOP_CARDS = [
-    { id: "declare-claim", title: "Declare a claim", subtitle: "Generate report", icon: ICON_CLAIM, href: "#" },
-    { id: "get-support", title: "Get Support", subtitle: "Call center support", icon: ICON_ASSISTANCE, href: "#" },
-    { id: "submit-complaint", title: "Submit a complaint", subtitle: "What to do?", icon: ICON_CAR_ACCIDENT, href: "#" },
-];
-
-export function QuickActionsSection() {
-    const [activeTab, setActiveTab] = useState("motor");
+export function QuickActionsSection({ data, className }: QuickActionsSectionProps) {
+    const { eyebrow, title, tabs, mobileCards, desktopCards } = data;
+    const [activeTab, setActiveTab] = useState(tabs[0]?.id ?? "");
 
     return (
-        <section className="bg-white py-16 lg:py-16">
+        <section className={cn("bg-white py-16 lg:py-16", className)}>
             {/* ─── Mobile layout (< lg) ─── */}
             <Container className="lg:hidden">
                 {/* Header */}
                 <div className="mb-8 text-center">
                     <p className="mb-2 font-source-sans text-[18px] font-semibold text-[#606776]">
-                        Get the assistance you need instantly
+                        {eyebrow}
                     </p>
                     <h2 className="mb-8 font-headline text-[34px] font-light leading-[42px] text-[#1a1d21]">
-                        Do you have an emergency?
+                        {title}
                     </h2>
+
 
                     {/* Tabs */}
                     <div className="inline-flex items-center rounded-full bg-[#f7f7f8] p-2">
                         <div className="flex items-center gap-2">
-                            {TABS.map((tab) => {
+                            {tabs.map((tab) => {
                                 const isActive = activeTab === tab.id;
                                 return (
                                     <button
@@ -221,7 +211,7 @@ export function QuickActionsSection() {
                 {/* Carousel */}
                 <div className="-mx-4 flex overflow-x-auto px-4 pb-4 scrollbar-hide">
                     <div className="flex gap-3">
-                        {MOBILE_CARDS.map((card) => (
+                        {mobileCards.map((card) => (
                             <a
                                 key={card.id}
                                 href={card.href}
@@ -229,7 +219,7 @@ export function QuickActionsSection() {
                             >
                                 {/* Icon */}
                                 <div className="relative h-12 w-12 text-[#00008f]">
-                                    {card.icon}
+                                    {ICON_MAP[card.iconKey]}
                                 </div>
 
                                 {/* Content */}
@@ -257,16 +247,17 @@ export function QuickActionsSection() {
                 {/* Header */}
                 <div className="flex flex-col items-center gap-3 text-center">
                     <p className="font-source-sans text-[18px] font-semibold leading-[26px] text-[#606776]">
-                        Get the assistance you need instantly
+                        {eyebrow}
                     </p>
                     <h2 className="font-headline text-[48px] font-light leading-[56px] text-[#1a1d21]">
-                        Do you have an emergency?
+                        {title}
                     </h2>
+
                 </div>
 
                 {/* Cards */}
                 <div className="flex w-full max-w-[1296px] items-start justify-center gap-4">
-                    {DESKTOP_CARDS.map((card) => (
+                    {desktopCards.map((card) => (
                         <a
                             key={card.id}
                             href={card.href}
@@ -275,7 +266,7 @@ export function QuickActionsSection() {
                             <div className="flex w-[262px] flex-col items-start justify-center gap-4">
                                 {/* Icon */}
                                 <div className="relative h-[112px] w-[112px] text-[#00008f]">
-                                    {card.icon}
+                                    {ICON_MAP[card.iconKey]}
                                 </div>
 
                                 {/* Text + Arrow */}

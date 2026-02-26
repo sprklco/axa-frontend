@@ -4,6 +4,10 @@ import { QuickActionsSection } from "@/components/sections/QuickActionsSection";
 import { ProductsSection } from "@/components/sections/ProductsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { heroSlides } from "@/data/heroSlides";
+import { featuredSectionData } from "@/data/featuredSection";
+import { quickActionsData } from "@/data/quickActions";
+import { productsSectionData } from "@/data/products";
+import { contactSectionData } from "@/data/contactSection";
 
 export default function Home() {
   return (
@@ -19,16 +23,16 @@ export default function Home() {
         </div>
 
         {/* Featured Section (Quote Calculator) - overlaps hero bottom or sits below */}
-        <FeaturedSection />
+        <FeaturedSection data={featuredSectionData} />
 
         {/* Quick Actions (Carousel) */}
-        <QuickActionsSection />
+        <QuickActionsSection data={quickActionsData} />
 
         {/* Products (Carousel) */}
-        <ProductsSection />
+        <ProductsSection data={productsSectionData} />
 
         {/* Contact Section */}
-        <ContactSection />
+        <ContactSection data={contactSectionData} />
       </div>
     </main>
   );

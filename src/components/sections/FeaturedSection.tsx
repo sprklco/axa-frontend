@@ -6,6 +6,12 @@ import { cn } from "@/lib/cn";
 import { insuranceTypes } from "@/data/insuranceTypes";
 import { Button } from "@/components/ui/CTAButton";
 import { Container } from "@/components/layout/Container";
+import type { FeaturedSectionData } from "@/types/featured";
+
+interface FeaturedSectionProps {
+    data: FeaturedSectionData;
+    className?: string;
+}
 
 /* ──────────────────────────────────────────────
    Inline SVG icons for each insurance type tab.
@@ -66,14 +72,23 @@ const tabIcons: Record<string, React.ReactNode> = {
     ),
 };
 
-export function FeaturedSection() {
+export function FeaturedSection({ data, className }: FeaturedSectionProps) {
+    const {
+        eyebrow, title, description, mobileDescription,
+        image, imageAlt, phoneLabel, phoneNumber,
+        phoneLabelMobile, phoneNumberMobile,
+        quoteLabel, callbackLabel,
+        callbackFormSendLabel, callbackFormTermsText,
+        callbackFormNamePlaceholder, callbackFormPhonePlaceholder, callbackFormEmailPlaceholder,
+    } = data;
     const [activeTab, setActiveTab] = useState("motor");
+    const [showCallbackForm, setShowCallbackForm] = useState(false);
 
     const row1 = insuranceTypes.filter((t) => t.row === 1);
     const row2 = insuranceTypes.filter((t) => t.row === 2);
 
     return (
-        <section className="relative z-10 pt-10 px-4 pb-10 lg:px-0 lg:pt-0 lg:pb-0">
+        <section className={cn("relative z-10 pt-10 px-4 pb-10 lg:px-0 lg:pt-0 lg:pb-0", className)}>
             {/* Desktop gray background wrapper — visible lg+ only */}
             <Container className="lg:max-w-none lg:bg-[#f7f7f8] lg:py-[72px]">
                 {/* Card */}
@@ -86,8 +101,8 @@ export function FeaturedSection() {
                     {/* Left — Image (desktop only) */}
                     <div className="hidden lg:block lg:relative lg:h-[664px] lg:w-[512px] lg:shrink-0 lg:overflow-hidden lg:rounded-lg">
                         <Image
-                            src="/images/featured-quote.png"
-                            alt="Woman smiling in a car"
+                            src={image}
+                            alt={imageAlt}
                             fill
                             className="object-cover"
                             sizes="512px"
@@ -99,18 +114,17 @@ export function FeaturedSection() {
                         {/* Header Group */}
                         <div className="mb-8 text-center lg:mb-0 lg:text-left">
                             <p className="mb-2 font-source-sans text-[16px] font-semibold leading-6 text-[#606776]">
-                                Request a quote
+                                {eyebrow}
                             </p>
                             <h2 className="mb-4 font-headline text-[34px] font-light leading-[42px] text-[#1a1d21] lg:text-[40px] lg:leading-[48px]">
-                                What type of insurance{" "}
-                                <span className="lg:block">do you need?</span>
+                                {title}
                             </h2>
                             <p className="font-source-sans text-base text-[#606776] lg:text-lg lg:leading-[26px] lg:text-[#434956]">
                                 <span className="lg:hidden">
-                                    At AXA we give you the option to quote online or by phone.
+                                    {mobileDescription}
                                 </span>
                                 <span className="hidden lg:inline">
-                                    Get a quotation for your desired insurance policy.
+                                    {description}
                                 </span>
                             </p>
                         </div>
@@ -137,19 +151,82 @@ export function FeaturedSection() {
                             {/* Action Buttons */}
                             <div className="grid grid-cols-2 gap-4">
                                 <Button variant="secondary" size="md" fullWidth className="font-bold">
-                                    Quote online
+                                    {quoteLabel}
                                 </Button>
-                                <Button variant="danger" size="md" fullWidth className="font-bold">
-                                    Get a callback
+                                <Button
+                                    variant="danger"
+                                    size="md"
+                                    fullWidth
+                                    className="font-bold"
+                                    onClick={() => setShowCallbackForm(!showCallbackForm)}
+                                >
+                                    {callbackLabel}
+                                    {showCallbackForm && (
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
+                                            <line x1="18" y1="6" x2="6" y2="18" />
+                                            <line x1="6" y1="6" x2="18" y2="18" />
+                                        </svg>
+                                    )}
                                 </Button>
                             </div>
+
+                            {/* Callback Form */}
+                            {showCallbackForm && (
+                                <div className="space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
+                                    <div className="space-y-3">
+                                        <div className="flex items-center gap-0 rounded-lg bg-[#f7f7f8] h-[48px] overflow-hidden">
+                                            <div className="flex items-center gap-2 px-4 flex-1 border-r border-[rgba(43,48,59,0.15)]">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(43,48,59,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                                    <circle cx="12" cy="7" r="4" />
+                                                </svg>
+                                                <input
+                                                    type="text"
+                                                    placeholder={callbackFormNamePlaceholder}
+                                                    className="bg-transparent text-[16px] font-source-sans text-[#1a1d21] placeholder:text-[rgba(43,48,59,0.4)] outline-none w-full leading-[24px]"
+                                                />
+                                            </div>
+                                            <div className="flex items-center gap-2 px-4 flex-1 border-r border-[rgba(43,48,59,0.15)]">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(43,48,59,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                                </svg>
+                                                <input
+                                                    type="tel"
+                                                    placeholder={callbackFormPhonePlaceholder}
+                                                    className="bg-transparent text-[16px] font-source-sans text-[#1a1d21] placeholder:text-[rgba(43,48,59,0.4)] outline-none w-full leading-[24px]"
+                                                />
+                                            </div>
+                                            <div className="flex items-center gap-2 px-4 flex-1">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(43,48,59,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                                                </svg>
+                                                <input
+                                                    type="email"
+                                                    placeholder={callbackFormEmailPlaceholder}
+                                                    className="bg-transparent text-[16px] font-source-sans text-[#1a1d21] placeholder:text-[rgba(43,48,59,0.4)] outline-none w-full leading-[24px]"
+                                                />
+                                            </div>
+                                        </div>
+                                        <Button variant="secondary" size="md" fullWidth>
+                                            {callbackFormSendLabel}
+                                        </Button>
+                                    </div>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" className="w-5 h-5 rounded border-[rgba(43,48,59,0.4)] accent-[#00008f]" />
+                                        <span className="font-source-sans text-[14px] leading-[22px] text-[#434956]">
+                                            {callbackFormTermsText}
+                                        </span>
+                                    </label>
+                                </div>
+                            )}
 
                             {/* Phone Contact */}
                             <div className="text-center">
                                 <p className="text-sm font-semibold text-[#1a1d21]">
-                                    You can also call us at{" "}
-                                    <a href="tel:8009448471" className="text-[#00008f] hover:underline">
-                                        800 944 8471
+                                    {phoneLabelMobile}{" "}
+                                    <a href={`tel:${phoneNumberMobile.replace(/\s/g, "")}`} className="text-[#00008f] hover:underline">
+                                        {phoneNumberMobile}
                                     </a>
                                 </p>
                             </div>
@@ -202,33 +279,105 @@ export function FeaturedSection() {
 
                             {/* Action Buttons */}
                             <div className="flex items-center gap-6">
-                                <Button variant="secondary" size="md" href="#">
-                                    Quote online
+                                <Button
+                                    variant="secondary"
+                                    size="md"
+                                    href="#"
+                                    className={showCallbackForm ? "opacity-30 pointer-events-none border-[rgba(0,0,0,0.3)] text-[rgba(0,0,0,0.3)]" : ""}
+                                >
+                                    {quoteLabel}
                                 </Button>
-                                <Button variant="danger" size="md">
-                                    Get a callback
-                                </Button>
+                                <button
+                                    onClick={() => setShowCallbackForm(!showCallbackForm)}
+                                    className={cn(
+                                        "flex items-center gap-2 rounded-full border px-6 py-3 font-source-sans text-[16px] font-semibold leading-[24px] transition-all",
+                                        showCallbackForm
+                                            ? "border-[#ff1721] bg-[rgba(255,23,33,0.05)] text-[#ff1721]"
+                                            : "border-[#ff1721] text-[#ff1721] hover:bg-[rgba(255,23,33,0.05)]"
+                                    )}
+                                >
+                                    {callbackLabel}
+                                    {showCallbackForm && (
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <line x1="18" y1="6" x2="6" y2="18" />
+                                            <line x1="6" y1="6" x2="18" y2="18" />
+                                        </svg>
+                                    )}
+                                </button>
                             </div>
+
+                            {/* Callback Form */}
+                            {showCallbackForm && (
+                                <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200">
+                                    <div className="flex items-center gap-4">
+                                        <div className="flex items-center gap-0 rounded-lg bg-[#f7f7f8] h-[56px] flex-1 overflow-hidden">
+                                            <div className="flex items-center gap-2 px-4 h-full flex-none border-r border-[rgba(43,48,59,0.15)]">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(43,48,59,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                                    <circle cx="12" cy="7" r="4" />
+                                                </svg>
+                                                <input
+                                                    type="text"
+                                                    placeholder={callbackFormNamePlaceholder}
+                                                    className="bg-transparent text-[16px] font-source-sans text-[#1a1d21] placeholder:text-[rgba(43,48,59,0.4)] outline-none w-[80px] leading-[24px]"
+                                                />
+                                            </div>
+                                            <div className="flex items-center gap-2 px-4 h-full flex-none border-r border-[rgba(43,48,59,0.15)]">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(43,48,59,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                                </svg>
+                                                <input
+                                                    type="tel"
+                                                    placeholder={callbackFormPhonePlaceholder}
+                                                    className="bg-transparent text-[16px] font-source-sans text-[#1a1d21] placeholder:text-[rgba(43,48,59,0.4)] outline-none w-[80px] leading-[24px]"
+                                                />
+                                            </div>
+                                            <div className="flex items-center gap-2 px-4 h-full flex-1">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(43,48,59,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                                                </svg>
+                                                <input
+                                                    type="email"
+                                                    placeholder={callbackFormEmailPlaceholder}
+                                                    className="bg-transparent text-[16px] font-source-sans text-[#1a1d21] placeholder:text-[rgba(43,48,59,0.4)] outline-none w-full leading-[24px]"
+                                                />
+                                            </div>
+                                        </div>
+                                        <button
+                                            className="flex items-center justify-center rounded-full border border-[rgba(0,0,0,0.3)] px-6 py-3 font-source-sans text-[16px] font-semibold leading-[24px] text-[rgba(0,0,0,0.3)] transition-colors hover:border-[#00008f] hover:text-[#00008f]"
+                                        >
+                                            {callbackFormSendLabel}
+                                        </button>
+                                    </div>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" className="w-5 h-5 rounded border-[rgba(43,48,59,0.4)] accent-[#00008f] shrink-0" />
+                                        <span className="font-source-sans text-[14px] leading-[22px] text-[#434956]">
+                                            {callbackFormTermsText}
+                                        </span>
+                                    </label>
+                                </div>
+                            )}
 
                             {/* Phone Contact */}
                             <div className="flex items-center gap-1">
                                 <span className="font-source-sans text-lg leading-[26px] text-[#1a1d21]">
-                                    Call us anytime 24/7 at
+                                    {phoneLabel}
                                 </span>
                                 <a
-                                    href="tel:04727000"
+                                    href={`tel:${phoneNumber.replace(/[\s-]/g, "")}`}
                                     className="inline-flex items-center gap-1 font-source-sans text-[16px] font-semibold leading-6 text-[#00008f] hover:underline"
                                 >
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                                     </svg>
-                                    04 - 727 000
+                                    {phoneNumber}
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </Container>
-        </section>
+        </section >
     );
 }

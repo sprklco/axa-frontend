@@ -3,15 +3,41 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/CTAButton";
 import { Container } from "@/components/layout/Container";
+import type { ContactSectionData } from "@/types/contact";
 
-export function ContactSection() {
+interface ContactSectionProps {
+    data: ContactSectionData;
+    className?: string;
+}
+
+/** Phone icon shared across phone-type buttons */
+const PhoneIcon = () => (
+    <svg
+        width="14"
+        height="14"
+        viewBox="0 0 14 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-3.5 w-3.5 lg:h-6 lg:w-6"
+        aria-hidden="true"
+    >
+        <path
+            d="M13.1833 14C11.563 14 9.96204 13.6468 8.38056 12.9403C6.79907 12.2338 5.36019 11.2324 4.06389 9.93611C2.76759 8.63982 1.7662 7.20093 1.05972 5.61944C0.353241 4.03796 0 2.43704 0 0.816667C0 0.583333 0.0777778 0.388889 0.233333 0.233333C0.388889 0.0777778 0.583333 0 0.816667 0H3.96667C4.14815 0 4.31018 0.0615741 4.45278 0.184722C4.59537 0.30787 4.67963 0.453704 4.70556 0.622222L5.21111 3.34444C5.23704 3.55185 5.23056 3.72685 5.19167 3.86944C5.15278 4.01204 5.08148 4.13519 4.97778 4.23889L3.09167 6.14444C3.35093 6.62407 3.6588 7.0875 4.01528 7.53472C4.37176 7.98194 4.76389 8.41296 5.19167 8.82778C5.59352 9.22963 6.01481 9.60231 6.45556 9.94583C6.8963 10.2894 7.36296 10.6037 7.85556 10.8889L9.68333 9.06111C9.8 8.94445 9.95231 8.85694 10.1403 8.79861C10.3282 8.74028 10.513 8.72407 10.6944 8.75L13.3778 9.29444C13.5593 9.3463 13.7083 9.44028 13.825 9.57639C13.9417 9.7125 14 9.86481 14 10.0333V13.1833C14 13.4167 13.9222 13.6111 13.7667 13.7667C13.6111 13.9222 13.4167 14 13.1833 14ZM2.35278 4.66667L3.63611 3.38333L3.30556 1.55556H1.575C1.63981 2.08704 1.73056 2.61204 1.84722 3.13056C1.96389 3.64907 2.13241 4.16111 2.35278 4.66667ZM9.31389 11.6278C9.81944 11.8481 10.3347 12.0231 10.8597 12.1528C11.3847 12.2824 11.913 12.3667 12.4444 12.4056V10.6944L10.6167 10.325L9.31389 11.6278Z"
+            fill="currentColor"
+        />
+    </svg>
+);
+
+export function ContactSection({ data, className }: ContactSectionProps) {
+    const { backgroundImage, cards } = data;
+
     return (
-        <section className="relative w-full overflow-hidden bg-white">
+        <section className={`relative w-full overflow-hidden bg-white ${className ?? ""}`}>
             {/* Background Image Container */}
             <div className="relative w-full">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/images/contact/background.png"
+                        src={backgroundImage}
                         alt="Contact Background"
                         fill
                         className="object-cover object-center"
@@ -22,71 +48,40 @@ export function ContactSection() {
                 {/* Content Overlay */}
                 <Container className="relative z-10 flex flex-col items-center justify-end py-[56px] lg:pt-[134px] lg:pb-[96px]">
                     <div className="flex flex-col gap-6 w-full lg:flex-row lg:items-center lg:justify-center lg:gap-6">
+                        {cards.map((card, index) => (
+                            <div
+                                key={index}
+                                className="relative flex w-full flex-col items-center gap-4 rounded-lg bg-[rgba(83,83,83,0.5)] px-8 py-10 backdrop-blur-[32px] lg:w-[416px] lg:shrink-0 lg:gap-4 lg:rounded-[12px] lg:px-8 lg:py-12"
+                            >
+                                {/* Text Content */}
+                                <div className="flex flex-col items-center gap-2 text-center text-white lg:gap-2">
+                                    <h3 className="font-brand-text text-[24px] font-bold leading-[32px] lg:text-[32px] lg:leading-[40px]">
+                                        {card.title}
+                                    </h3>
+                                    <p className="font-source-sans text-[17px] leading-[26px] lg:text-[18px] lg:leading-[26px]">
+                                        {card.description}
+                                    </p>
+                                </div>
 
-                        {/* Card 1: Need Help */}
-                        <div className="relative flex w-full flex-col items-center gap-4 rounded-lg bg-[rgba(83,83,83,0.5)] px-8 py-10 backdrop-blur-[32px] lg:w-[416px] lg:shrink-0 lg:gap-4 lg:rounded-[12px] lg:px-8 lg:py-12">
-                            {/* Text Content */}
-                            <div className="flex flex-col items-center gap-2 text-center text-white lg:gap-2">
-                                <h3 className="font-brand-text text-[24px] font-bold leading-[32px] lg:text-[32px] lg:leading-[40px]">
-                                    Need help?
-                                </h3>
-                                <p className="font-source-sans text-[17px] leading-[26px] lg:text-[18px] lg:leading-[26px]">
-                                    If you have any emergency or need more help in the  the quotation process
-                                </p>
-                            </div>
-
-                            {/* Buttons */}
-                            <div className="flex w-full flex-col items-center justify-center gap-4 lg:mt-4 lg:flex-row lg:gap-3">
-                                {/* Call Button */}
-                                <Button
-                                    variant="ghost"
-                                    size="md"
-                                    className="w-fit"
-                                    icon={
-                                        <svg
-                                            width="14"
-                                            height="14"
-                                            viewBox="0 0 14 14"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="h-3.5 w-3.5 lg:h-6 lg:w-6"
-                                            aria-hidden="true"
+                                {/* Buttons */}
+                                <div className="flex w-full flex-col items-center justify-center gap-4 lg:mt-4 lg:flex-row lg:gap-3">
+                                    {card.buttons.map((btn, btnIndex) => (
+                                        <Button
+                                            key={btnIndex}
+                                            variant={btn.variant}
+                                            size="md"
+                                            className="w-fit"
+                                            {...(btn.phoneHref ? {
+                                                icon: <PhoneIcon />,
+                                                href: btn.phoneHref,
+                                            } : {})}
                                         >
-                                            <path
-                                                d="M13.1833 14C11.563 14 9.96204 13.6468 8.38056 12.9403C6.79907 12.2338 5.36019 11.2324 4.06389 9.93611C2.76759 8.63982 1.7662 7.20093 1.05972 5.61944C0.353241 4.03796 0 2.43704 0 0.816667C0 0.583333 0.0777778 0.388889 0.233333 0.233333C0.388889 0.0777778 0.583333 0 0.816667 0H3.96667C4.14815 0 4.31018 0.0615741 4.45278 0.184722C4.59537 0.30787 4.67963 0.453704 4.70556 0.622222L5.21111 3.34444C5.23704 3.55185 5.23056 3.72685 5.19167 3.86944C5.15278 4.01204 5.08148 4.13519 4.97778 4.23889L3.09167 6.14444C3.35093 6.62407 3.6588 7.0875 4.01528 7.53472C4.37176 7.98194 4.76389 8.41296 5.19167 8.82778C5.59352 9.22963 6.01481 9.60231 6.45556 9.94583C6.8963 10.2894 7.36296 10.6037 7.85556 10.8889L9.68333 9.06111C9.8 8.94445 9.95231 8.85694 10.1403 8.79861C10.3282 8.74028 10.513 8.72407 10.6944 8.75L13.3778 9.29444C13.5593 9.3463 13.7083 9.44028 13.825 9.57639C13.9417 9.7125 14 9.86481 14 10.0333V13.1833C14 13.4167 13.9222 13.6111 13.7667 13.7667C13.6111 13.9222 13.4167 14 13.1833 14ZM2.35278 4.66667L3.63611 3.38333L3.30556 1.55556H1.575C1.63981 2.08704 1.73056 2.61204 1.84722 3.13056C1.96389 3.64907 2.13241 4.16111 2.35278 4.66667ZM9.31389 11.6278C9.81944 11.8481 10.3347 12.0231 10.8597 12.1528C11.3847 12.2824 11.913 12.3667 12.4444 12.4056V10.6944L10.6167 10.325L9.31389 11.6278Z"
-                                                fill="currentColor"
-                                            />
-                                        </svg>
-                                    }
-                                >
-                                    04 - 727 000
-                                </Button>
-
-                                {/* Callback Button */}
-                                <Button variant="inverse" size="md" className="w-fit">
-                                    Request a callback
-                                </Button>
+                                            {btn.label}
+                                        </Button>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-
-                        {/* Card 2: Online Payment */}
-                        <div className="relative flex w-full flex-col items-center gap-4 rounded-lg bg-[rgba(83,83,83,0.5)] px-8 py-10 backdrop-blur-[32px] lg:w-[416px] lg:shrink-0 lg:gap-4 lg:rounded-[12px] lg:px-8 lg:py-12">
-                            <div className="flex flex-col items-center gap-2 text-center text-white lg:gap-2">
-                                <h3 className="font-brand-text text-[24px] font-bold leading-[32px] lg:text-[32px] lg:leading-[40px]">
-                                    Online Payment
-                                </h3>
-                                <p className="font-source-sans text-[16px] leading-[24px] lg:text-[18px] lg:leading-[26px]">
-                                    Coming Soon
-                                </p>
-                            </div>
-
-                            <div className="flex w-full flex-col items-center justify-center gap-4 lg:mt-4 lg:flex-row lg:gap-3">
-                                {/* Pay Now Button */}
-                                <Button variant="ghost" size="md" className="w-fit">
-                                    Pay Now
-                                </Button>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </Container>
             </div>
