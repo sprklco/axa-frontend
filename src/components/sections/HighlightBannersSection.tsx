@@ -15,6 +15,7 @@ export interface HighlightBanner {
   bullets: string[];
   optionalHeading?: string;
   optionalBullets?: string[];
+  footnote?: string;
   ctaLabel: string;
   ctaHref: string;
 }
@@ -122,6 +123,12 @@ export function HighlightBannersSection({
                   <li key={index}>{bullet}</li>
                 ))}
               </ul>
+
+              {banner.footnote && (
+                <p className="font-source-sans text-[18px] leading-[26px] text-[#1a1d21]">
+                  {banner.footnote}
+                </p>
+              )}
 
               {banner.optionalHeading && (
                 <div className="font-source-sans text-[18px] leading-[26px] text-[#1a1d21]">

@@ -60,7 +60,7 @@ const NAV_CHIPS: NavChipConfig[] = [
     { label: "Life", href: "#" },
     { label: "SME", href: "/sme-insurance" },
     { label: "Foreigner", href: "#" },
-    { label: "Travel", href: "#" },
+    { label: "Travel", href: "/travel-insurance" },
     { label: "Marine", href: "#" },
 ];
 
@@ -79,7 +79,7 @@ const QUOTE_ITEMS = [
     { label: "Medical Quotation", icon: "/images/quote/icon-medical.svg", href: "#" },
     { label: "Home Quotation", icon: "/images/quote/icon-home.svg", href: "#" },
     { label: "Life Quotation", icon: "/images/quote/icon-life.svg", href: "#" },
-    { label: "SME Quotation", icon: "/images/quote/icon-sme.svg", href: "/sme-insurance" },
+    { label: "SME Quotation", icon: "/images/quote/icon-sme.svg", href: "#" },
     { label: "Foreigner Quotation", icon: "/images/quote/icon-foreigner.svg", href: "#" },
     { label: "Travel Quotation", icon: "/images/quote/icon-travel.svg", href: "#" },
     { label: "Marine Quotation", icon: "/images/quote/icon-marine.svg", href: "#" },
