@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { ProductIntroSection } from "@/components/sections/ProductIntroSection";
 import { TabbedProductCardsSection } from "@/components/sections/TabbedProductCardsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { contactSectionData } from "@/data/contactSection";
 import {
     lifeInsuranceTabs,
     lifeInsuranceCards,
@@ -72,7 +73,7 @@ export default function LifeInsurancePage() {
                 />
 
                 {/* Contact Section */}
-                <ContactSection />
+                <ContactSection data={contactSectionData} />
             </div>
         </main>
     );
