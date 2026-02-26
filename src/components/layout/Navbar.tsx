@@ -61,7 +61,7 @@ const NAV_CHIPS: NavChipConfig[] = [
     { label: "SME", href: "/sme-insurance" },
     { label: "Foreigner", href: "#" },
     { label: "Travel", href: "/travel-insurance" },
-    { label: "Marine", href: "#" },
+    { label: "Marine", href: "/marine-insurance" },
 ];
 
 /* ------------------------------------------------------------------ */
