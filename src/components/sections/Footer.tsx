@@ -93,7 +93,7 @@ const footerLinks = [
     { label: "FAQ", href: "/faq" },
     { label: "Legal", href: "/legal" },
     { label: "Site Map", href: "/sitemap" },
-    { label: "Privacy Notice", href: "/privacy" },
+    { label: "Privacy Notice", href: "/privacy-policy" },
     { label: "Help us to improve", href: "/feedback" },
 ];
 
