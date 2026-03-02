@@ -35,7 +35,7 @@ export default function MotorPage() {
                 </div>
 
                 {/* Motor Plans Section */}
-                <FeatureTabsSection plans={motorPlans} />
+                <FeatureTabsSection plans={motorPlans} autoScroll />
 
                 {/* Motor Packages Comparison Table */}
                 <ComparisonTableSection data={motorPackagesData} />

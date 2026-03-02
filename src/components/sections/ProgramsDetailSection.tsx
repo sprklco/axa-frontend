@@ -3,33 +3,55 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
-import type { ProgramDetail } from "@/data/healthProgramsDetails";
-import { corporateSidebarLabels } from "@/data/healthProgramsDetails";
+import type {
+    ProgramDetail,
+    ProgramGroup,
+} from "@/data/healthProgramsDetails";
 
 interface ProgramsDetailSectionProps {
-    programs: ProgramDetail[];
+    groups: ProgramGroup[];
     className?: string;
 }
 
+/** Active selection state — which group and optionally which sub-tab */
+interface ActiveSelection {
+    groupIndex: number;
+    /** null means the parent/group itself is selected */
+    subTabIndex: number | null;
+}
+
+function getActiveProgram(
+    groups: ProgramGroup[],
+    sel: ActiveSelection
+): ProgramDetail | undefined {
+    const group = groups[sel.groupIndex];
+    if (!group) return undefined;
+    if (sel.subTabIndex === null) return group.detail;
+    return group.subTabs[sel.subTabIndex];
+}
+
 export function ProgramsDetailSection({
-    programs,
+    groups,
     className,
 }: ProgramsDetailSectionProps) {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [active, setActive] = useState<ActiveSelection>({
+        groupIndex: 0,
+        subTabIndex: null,
+    });
     const contentRef = useRef<HTMLDivElement>(null);
-    const activeProgram = programs[activeIndex];
+    const activeProgram = getActiveProgram(groups, active);
 
-    // Reset scroll and active index when programs list changes (tab switch)
+    // Reset selection when groups change (tab switch between Individual/Corporate)
     useEffect(() => {
-        setActiveIndex(0);
-    }, [programs]);
+        setActive({ groupIndex: 0, subTabIndex: null });
+    }, [groups]);
 
     // Reset scroll when switching programs
     useEffect(() => {
         if (contentRef.current) {
             contentRef.current.scrollTop = 0;
         }
-    }, [activeIndex]);
+    }, [active]);
 
     return (
         <section
@@ -41,28 +63,67 @@ export function ProgramsDetailSection({
             {/* Left Sidebar — Vertical Tabs */}
             <div className="w-full lg:w-[326px] shrink-0 bg-[#f7f7f8] rounded-[8px] p-[8px]">
                 <div className="relative flex flex-col">
-                    {programs.map((program, idx) => {
-                        const isActive = idx === activeIndex;
-                        const sidebarLabel =
-                            corporateSidebarLabels[program.id] || program.title;
+                    {groups.map((group, gIdx) => {
+                        const isGroupActive =
+                            gIdx === active.groupIndex &&
+                            active.subTabIndex === null;
+
                         return (
-                            <button
-                                key={program.id}
-                                onClick={() => setActiveIndex(idx)}
-                                className={cn(
-                                    "relative z-10 flex items-center justify-between w-full px-[12px] py-[16px] rounded-[8px] text-left text-[18px] font-source-sans leading-[26px] transition-colors duration-200",
-                                    isActive
-                                        ? "bg-[#00008f] text-white"
-                                        : "text-[#00008f] hover:bg-[#eeeef5]"
-                                )}
-                            >
-                                <span>{sidebarLabel}</span>
-                                {program.count !== undefined && (
-                                    <span className="shrink-0">
-                                        ({program.count})
-                                    </span>
-                                )}
-                            </button>
+                            <div key={group.id}>
+                                {/* Parent tab */}
+                                <button
+                                    onClick={() =>
+                                        setActive({
+                                            groupIndex: gIdx,
+                                            subTabIndex: null,
+                                        })
+                                    }
+                                    className={cn(
+                                        "relative z-10 flex items-center w-full px-[12px] py-[16px] rounded-[8px] text-left text-[18px] font-source-sans font-bold leading-[26px] transition-colors duration-200",
+                                        isGroupActive
+                                            ? "bg-[#00008f] text-white"
+                                            : "text-[#00008f] hover:bg-[#eeeef5]"
+                                    )}
+                                >
+                                    {group.title}
+                                </button>
+
+                                {/* Sub-tabs */}
+                                {group.subTabs.map((subTab, sIdx) => {
+                                    const isSubActive =
+                                        gIdx === active.groupIndex &&
+                                        sIdx === active.subTabIndex;
+
+                                    return (
+                                        <button
+                                            key={subTab.id}
+                                            onClick={() =>
+                                                setActive({
+                                                    groupIndex: gIdx,
+                                                    subTabIndex: sIdx,
+                                                })
+                                            }
+                                            className={cn(
+                                                "relative z-10 flex items-center gap-[12px] w-full pl-[12px] pr-[16px] py-[16px] text-left text-[18px] font-source-sans leading-[26px] transition-colors duration-200 border-b border-[#dddfe4]",
+                                                isSubActive
+                                                    ? "bg-[#00008f] text-white rounded-[8px] border-transparent"
+                                                    : "text-[rgba(43,48,59,0.4)] hover:bg-[#eeeef5]"
+                                            )}
+                                        >
+                                            {/* Dash indicator */}
+                                            <span
+                                                className={cn(
+                                                    "shrink-0 w-[13px] h-[2px]",
+                                                    isSubActive
+                                                        ? "bg-white"
+                                                        : "bg-[rgba(43,48,59,0.4)]"
+                                                )}
+                                            />
+                                            <span>{subTab.title}</span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
                         );
                     })}
                 </div>
@@ -118,7 +179,6 @@ export function ProgramsDetailSection({
                     </div>
                 )}
             </div>
-
         </section>
     );
 }

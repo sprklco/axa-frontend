@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useId } from "react";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/cn";
 
@@ -19,12 +19,23 @@ export interface PlanInfo {
 export interface FeatureTabsSectionProps {
     heading?: string;
     plans: PlanInfo[];
+    /** Enable smooth infinite auto-scrolling marquee */
+    autoScroll?: boolean;
+    /** Duration in seconds for one full scroll cycle (default 20) */
+    speed?: number;
 }
 
-export function FeatureTabsSection({ heading, plans }: FeatureTabsSectionProps) {
-    // Default to the first plan if any exist
+export function FeatureTabsSection({
+    heading,
+    plans,
+    autoScroll = false,
+    speed = 20,
+}: FeatureTabsSectionProps) {
     const [activeTab, setActiveTab] = useState<string>(plans?.[0]?.id || "");
     const scrollRef = useRef<HTMLDivElement>(null);
+    const uniqueId = useId();
+    // CSS-safe id: replace colons with dashes
+    const safeId = uniqueId.replace(/:/g, "-");
 
     if (!plans || plans.length === 0) {
         return null;
@@ -32,8 +43,40 @@ export function FeatureTabsSection({ heading, plans }: FeatureTabsSectionProps) 
 
     const activePlan = plans.find((p) => p.id === activeTab) || plans[0];
 
+    const featureCard = (feature: PlanFeature, idx: number, keySuffix = "") => (
+        <div
+            key={`${idx}${keySuffix}`}
+            className="flex h-auto md:h-[312px] w-[280px] md:w-[312px] shrink-0 flex-col items-start justify-end rounded-lg bg-[#f7f7f8] p-6 transition-transform hover:-translate-y-1"
+        >
+            <div className="flex w-full flex-col gap-2">
+                <h3 className="font-headline text-[24px] font-bold leading-[32px] text-[#1a1d21]">
+                    {feature.title}
+                </h3>
+                <p className="font-source-sans text-[16px] leading-[24px] text-[#434956]">
+                    {feature.description}
+                </p>
+            </div>
+        </div>
+    );
+
     return (
         <section className="w-full bg-white py-12 md:py-20">
+            {/* Scoped keyframes for this instance */}
+            {autoScroll && (
+                <style>{`
+                    @keyframes marquee-${safeId} {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(-50%); }
+                    }
+                    .marquee-track-${safeId} {
+                        animation: marquee-${safeId} ${speed}s linear infinite;
+                    }
+                    .marquee-track-${safeId}:hover {
+                        animation-play-state: paused;
+                    }
+                `}</style>
+            )}
+
             <Container className="flex flex-col items-center gap-8 md:gap-12">
                 {/* Heading */}
                 {heading && (
@@ -72,29 +115,28 @@ export function FeatureTabsSection({ heading, plans }: FeatureTabsSectionProps) 
                     </p>
                 )}
 
-                {/* Carousel Container */}
+                {/* Feature Cards */}
                 {activePlan.features && activePlan.features.length > 0 && (
-                    <div className="w-full">
-                        <div
-                            ref={scrollRef}
-                            className="flex w-full items-stretch gap-4 overflow-x-auto pb-6 scrollbar-hide md:gap-6 px-4 md:px-0"
-                        >
-                            {activePlan.features.map((feature, idx) => (
-                                <div
-                                    key={idx}
-                                    className="flex h-auto md:h-[312px] w-[280px] md:w-[312px] shrink-0 flex-col items-start justify-end rounded-lg bg-[#f7f7f8] p-6 transition-transform hover:-translate-y-1"
-                                >
-                                    <div className="flex w-full flex-col gap-2">
-                                        <h3 className="font-headline text-[24px] font-bold leading-[32px] text-[#1a1d21]">
-                                            {feature.title}
-                                        </h3>
-                                        <p className="font-source-sans text-[16px] leading-[24px] text-[#434956]">
-                                            {feature.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="w-full overflow-hidden">
+                        {autoScroll ? (
+                            /* ── Infinite marquee ── */
+                            <div
+                                className={`flex items-stretch gap-4 md:gap-6 w-max marquee-track-${safeId}`}
+                            >
+                                {/* Original set */}
+                                {activePlan.features.map((f, i) => featureCard(f, i, "-a"))}
+                                {/* Duplicate set for seamless loop */}
+                                {activePlan.features.map((f, i) => featureCard(f, i, "-b"))}
+                            </div>
+                        ) : (
+                            /* ── Static horizontal scroll ── */
+                            <div
+                                ref={scrollRef}
+                                className="flex w-full items-stretch gap-4 overflow-x-auto pb-6 scrollbar-hide md:gap-6 px-4 md:px-0"
+                            >
+                                {activePlan.features.map((f, i) => featureCard(f, i))}
+                            </div>
+                        )}
                     </div>
                 )}
             </Container>
