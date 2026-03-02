@@ -36,7 +36,7 @@ export function LegalIntroSection({
           </h1>
         </div>
 
-        <p className="font-source-sans text-base leading-6 text-[#434956] md:text-lg md:leading-8 lg:text-[24px] lg:leading-[32px] lg:max-w-[970px]">
+        <p className="font-source-sans text-base leading-6 text-[#434956] md:text-lg md:leading-8 lg:text-[24px] lg:leading-[32px] lg:max-w-[970px] whitespace-pre-line">
           {description}
         </p>
       </Container>
