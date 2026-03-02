@@ -65,7 +65,7 @@ export default function ForeignerInsurancePage() {
                 />
 
                 {/* Feature Tabs Section (Ministry-Compliant / Enhanced) */}
-                <FeatureTabsSection plans={foreignerInsuranceFeatures} />
+                <FeatureTabsSection plans={foreignerInsuranceFeatures} autoScroll />
 
                 {/* Contact Section */}
                 <ContactSection data={contactSectionData} />

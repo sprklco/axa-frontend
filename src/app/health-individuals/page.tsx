@@ -36,6 +36,7 @@ export default function MedicalIndividualsPage() {
                     <FeatureTabsSection
                         heading="Flexible Coverage for Evolving Needs"
                         plans={medicalPlans}
+                        autoScroll
                     />
                     {/* Medical Packages Comparison Table */}
                     <ComparisonTableSection data={medicalPackagesData} />

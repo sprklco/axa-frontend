@@ -38,6 +38,7 @@ export default function HealthCorporatePage() {
                     <FeatureTabsSection
                         heading="Comprehensive Corporate Health Coverage"
                         plans={corporateMedicalFeatures}
+                        autoScroll
                     />
 
                     {/* Medical Packages Comparison Table */}
