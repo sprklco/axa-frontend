@@ -5,9 +5,10 @@ import { Phone } from "lucide-react";
 
 export interface HelpSectionCta {
   label: string;
-  href: string;
+  href?: string;
   variant?: ButtonVariant;
   showPhoneIcon?: boolean;
+  onClick?: () => void;
 }
 
 export interface HelpSectionProps {
@@ -40,6 +41,7 @@ export function HelpSection({
             variant={primaryCta.variant ?? "primary"}
             size="md"
             href={primaryCta.href}
+            onClick={primaryCta.onClick}
             icon={
               primaryCta.showPhoneIcon ? (
                 <Phone className="h-4 w-4" aria-hidden="true" />
@@ -53,6 +55,7 @@ export function HelpSection({
               variant={secondaryCta.variant ?? "secondary"}
               size="md"
               href={secondaryCta.href}
+              onClick={secondaryCta.onClick}
             >
               {secondaryCta.label}
             </Button>

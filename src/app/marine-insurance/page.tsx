@@ -2,7 +2,7 @@ import { SubhomeHeroBanner } from "@/components/sections/SubhomeHeroBanner";
 import { ThreeColumnFeatureSection } from "@/components/sections/ThreeColumnFeatureSection";
 import { type HighlightBanner } from "@/components/sections/HighlightBannersSection";
 import { HighlightBannerListSection } from "@/components/sections/HighlightBannerListSection";
-import { HelpSection } from "@/components/sections/HelpSection";
+import { HelpSectionWithCallback as HelpSection } from "@/components/sections/HelpSectionWithCallback";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/layout/Container";
 

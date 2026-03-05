@@ -5,7 +5,7 @@ import {
     type HighlightBanner,
     type HighlightBannerTab,
 } from "@/components/sections/HighlightBannersSection";
-import { HelpSection } from "@/components/sections/HelpSection";
+import { HelpSectionWithCallback as HelpSection } from "@/components/sections/HelpSectionWithCallback";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/layout/Container";
 
