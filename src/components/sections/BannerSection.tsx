@@ -1,8 +1,8 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/CTAButton";
-import { Download } from "lucide-react";
 
 export interface BannerData {
     preHeading?: string;
@@ -14,9 +14,11 @@ export interface BannerData {
 
 export interface BannerSectionProps {
     data: BannerData;
+    /** Optional icon to display inside the CTA button */
+    icon?: ReactNode;
 }
 
-export function BannerSection({ data }: BannerSectionProps) {
+export function BannerSection({ data, icon }: BannerSectionProps) {
     return (
         <section className="w-full bg-[#0c0e45] py-20 px-6">
             <Container className="flex w-full items-center">
@@ -43,7 +45,7 @@ export function BannerSection({ data }: BannerSectionProps) {
                         variant="ghost"
                         size="md"
                         href={data.ctaHref}
-                        icon={<Download className="h-5 w-5 mr-2" />}
+                        icon={icon}
                     >
                         {data.ctaText}
                     </Button>

@@ -1,5 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { Button, type ButtonVariant } from "@/components/ui/CTAButton";
+import { QuoteModal } from "@/components/ui/QuoteModal";
+import { quoteModalContent } from "@/data/quoteModalData";
 import { cn } from "@/lib/cn";
 import { Phone } from "lucide-react";
 
@@ -25,6 +30,12 @@ export function HelpSection({
   secondaryCta,
   className,
 }: HelpSectionProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  /** Does the secondary CTA trigger the callback modal? */
+  const isCallbackCta =
+    secondaryCta?.label.toLowerCase().includes("callback") ?? false;
+
   return (
     <section className={cn("bg-white py-12 md:py-16 lg:py-20", className)}>
       <Container className="flex flex-col items-center text-center gap-3">
@@ -52,14 +63,22 @@ export function HelpSection({
             <Button
               variant={secondaryCta.variant ?? "secondary"}
               size="md"
-              href={secondaryCta.href}
+              {...(isCallbackCta
+                ? { onClick: () => setIsModalOpen(true) }
+                : { href: secondaryCta.href })}
             >
               {secondaryCta.label}
             </Button>
           )}
         </div>
       </Container>
+
+      {/* Quote Modal */}
+      <QuoteModal
+        content={quoteModalContent}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }
-
