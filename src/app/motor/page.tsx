@@ -7,6 +7,7 @@ import { ComparisonTableSection } from "@/components/sections/ComparisonTableSec
 import { motorPackagesData } from "@/data/motorPackages";
 import { BannerSection } from "@/components/sections/BannerSection";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
+import { Download } from "lucide-react";
 
 export default function MotorPage() {
     return (
@@ -49,6 +50,7 @@ export default function MotorPage() {
                         ctaText: "Download repair shop network list",
                         ctaHref: "#", // Placeholder
                     }}
+                    icon={<Download className="h-5 w-5 mr-2" />}
                 />
 
                 {/* Final Benefits Section */}
