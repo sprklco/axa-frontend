@@ -135,3 +135,32 @@ body {
   background: #00008f;
   border-radius: 40px;
 }
+
+/* Modal fade animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.modal-fade-in {
+  animation: modalFadeIn 0.25s ease-out forwards;
+}
+
+.modal-fade-out {
+  animation: modalFadeOut 0.2s ease-in forwards;
+}

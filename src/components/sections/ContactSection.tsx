@@ -1,8 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/CTAButton";
 import { Container } from "@/components/layout/Container";
+import { QuoteModal } from "@/components/ui/QuoteModal";
+import { quoteModalContent } from "@/data/quoteModalData";
 import type { ContactSectionData } from "@/types/contact";
 
 interface ContactSectionProps {
@@ -30,6 +33,7 @@ const PhoneIcon = () => (
 
 export function ContactSection({ data, className }: ContactSectionProps) {
     const { backgroundImage, cards } = data;
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <section className={`relative w-full overflow-hidden bg-white ${className ?? ""}`}>
@@ -74,7 +78,11 @@ export function ContactSection({ data, className }: ContactSectionProps) {
                                             {...(btn.phoneHref ? {
                                                 icon: <PhoneIcon />,
                                                 href: btn.phoneHref,
-                                            } : {})}
+                                            } : {
+                                                onClick: btn.label === "Request a callback"
+                                                    ? () => setIsModalOpen(true)
+                                                    : undefined,
+                                            })}
                                         >
                                             {btn.label}
                                         </Button>
@@ -85,6 +93,14 @@ export function ContactSection({ data, className }: ContactSectionProps) {
                     </div>
                 </Container>
             </div>
+
+            {/* Quote Modal */}
+            <QuoteModal
+                content={quoteModalContent}
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
         </section>
     );
 }
+
