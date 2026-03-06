@@ -65,14 +65,9 @@ export function HelpSection({
             <Button
               variant={secondaryCta.variant ?? "secondary"}
               size="md"
-<<<<<<< HEAD
-              href={secondaryCta.href}
-              onClick={secondaryCta.onClick}
-=======
               {...(isCallbackCta
                 ? { onClick: () => setIsModalOpen(true) }
                 : { href: secondaryCta.href })}
->>>>>>> 921b555 (about page)
             >
               {secondaryCta.label}
             </Button>
