@@ -34,7 +34,6 @@ export default function MotorPage() {
                         />
                     </Container>
                 </div>
-                {/*  Benefits Section */}
                 <BenefitsSection
                     heading="Peace of Mind Wherever You Go"
                     benefits={[
