@@ -1,13 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/layout/Container";
 import { ProgramsDetailSection } from "@/components/sections/ProgramsDetailSection";
 import { healthProgramsCategories } from "@/data/healthProgramsDetails";
+import { cn } from "@/lib/cn";
 
 export default function HealthProgramsPage() {
-    // Use the first (individual) category groups directly — no toggle
-    const groups = healthProgramsCategories[0].groups;
+    const [activeTab, setActiveTab] = useState<"individual" | "corporate">("individual");
+
+    // Select the appropriate groups based on the active tab
+    const activeCategory = healthProgramsCategories.find(c => c.id === activeTab) || healthProgramsCategories[0];
+    const groups = activeCategory.groups;
 
     return (
         <main className="flex flex-col flex-1">
@@ -23,11 +28,46 @@ export default function HealthProgramsPage() {
                                 { label: "Home", href: "/" },
                                 {
                                     label: "Health Insurance",
-                                    href: "/medical-individuals",
+                                    href: activeTab === "individual" ? "/health-individuals" : "/health-corporate",
                                 },
                                 { label: "Programs" },
                             ]}
                         />
+                    </Container>
+
+                    {/* Tab Toggles */}
+                    <Container className="flex justify-center mb-10">
+                        <div className="bg-[#fafafa] flex items-center p-[8px] rounded-full relative shadow-sm border border-gray-100">
+                            {/* Animated Background Indicator */}
+                            <div
+                                className={cn(
+                                    "absolute top-[8px] h-[52px] w-[115px] bg-[#00008f] rounded-full transition-all duration-300 ease-in-out",
+                                    activeTab === "individual" ? "left-[8px]" : "left-[calc(100%-115px-8px)]"
+                                )}
+                            />
+
+                            {/* Buttons */}
+                            <div className="flex gap-[37px] font-['Source_Sans_Pro',sans-serif] text-[18px] relative z-10">
+                                <button
+                                    onClick={() => setActiveTab("individual")}
+                                    className={cn(
+                                        "w-[115px] h-[52px] flex items-center justify-center rounded-full transition-colors text-center leading-[26px]",
+                                        activeTab === "individual" ? "text-white font-semibold" : "text-[#00008f] font-normal"
+                                    )}
+                                >
+                                    Individual
+                                </button>
+                                <button
+                                    onClick={() => setActiveTab("corporate")}
+                                    className={cn(
+                                        "w-[115px] h-[52px] flex items-center justify-center rounded-full transition-colors text-center leading-[26px]",
+                                        activeTab === "corporate" ? "text-white font-semibold" : "text-[#00008f] font-normal"
+                                    )}
+                                >
+                                    Corporate
+                                </button>
+                            </div>
+                        </div>
                     </Container>
 
                     {/* Programs Detail Section */}

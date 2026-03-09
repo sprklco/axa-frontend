@@ -129,10 +129,10 @@ export function ProgramsDetailSection({
                 </div>
             </div>
 
-            {/* Right Content — Scrollable */}
+            {/* Right Content — Scrollable on Desktop, expands on Mobile */}
             <div
                 ref={contentRef}
-                className="flex-1 min-w-0 max-h-[600px] overflow-y-auto pt-[32px] px-4 lg:pl-[64px] lg:pr-[16px] pb-[32px] programs-scrollbar"
+                className="flex-1 min-w-0 h-auto lg:h-full lg:max-h-[600px] overflow-y-visible lg:overflow-y-auto pt-[32px] px-4 lg:pl-[64px] lg:pr-[16px] pb-[32px] programs-scrollbar"
             >
                 {activeProgram && (
                     <div className="flex flex-col gap-[8px]">
@@ -153,14 +153,14 @@ export function ProgramsDetailSection({
 
                         {/* Optional intro paragraph */}
                         {activeProgram.intro && (
-                            <p className="font-source-sans text-[16px] leading-[20px] text-[#1a1d21] whitespace-pre-line mb-[8px]">
+                            <p className="font-source-sans text-[14px] lg:text-[16px] leading-[20px] text-[#1a1d21] whitespace-pre-line mb-[8px]">
                                 {activeProgram.intro}
                             </p>
                         )}
 
                         {/* Items — numbered or bullet points */}
                         {activeProgram.bulletPoints ? (
-                            <ul className="list-disc ml-[24px] font-source-sans text-[16px] leading-[30px] text-[#1a1d21]">
+                            <ul className="list-disc ml-[24px] font-source-sans text-[14px] lg:text-[16px] leading-[30px] text-[#1a1d21]">
                                 {activeProgram.items.map((item, idx) => (
                                     <li key={idx} className="mb-0">
                                         {item}
@@ -168,7 +168,7 @@ export function ProgramsDetailSection({
                                 ))}
                             </ul>
                         ) : (
-                            <div className="font-source-sans text-[16px] leading-[30px] text-[#1a1d21]">
+                            <div className="font-source-sans text-[14px] lg:text-[16px] leading-[30px] text-[#1a1d21]">
                                 {activeProgram.items.map((item, idx) => (
                                     <p key={idx} className="mb-0">
                                         {idx + 1}. {item}

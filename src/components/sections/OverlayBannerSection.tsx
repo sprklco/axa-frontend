@@ -25,39 +25,41 @@ export function OverlayBannerSection({
     className,
 }: OverlayBannerSectionProps) {
     return (
-        <section className={cn("py-16 md:py-[80px] bg-white", className)}>
-            <Container>
-                <div className="relative w-full overflow-hidden rounded-[12px] h-[500px] md:h-[600px] flex items-end">
-                    {/* Background Image & Overlay*/}
+        <section className={cn("py-0 md:py-[80px] bg-white", className)}>
+            <Container className="px-4 md:px-4">
+                {/* Outer rounded container with background image */}
+                <div className="relative w-full overflow-hidden rounded-[12px] h-[494px] md:h-[600px] flex items-end px-4 pb-6 md:p-0">
+                    {/* Background Image & Overlay */}
                     <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
                         <Image
                             src={imageSrc}
                             alt="Background Banner"
                             fill
-                            className="object-cover"
+                            className="object-cover object-center"
                             sizes="100vw"
                         />
-                        {/* Slight dark overlay from Figma */}
                         <div className="absolute inset-0 bg-black/10" />
                     </div>
 
-                    {/* Glassmorphism Card */}
-                    {/* On Desktop: left aligned with exact paddings. On mobile: fills width at bottom */}
+                    {/* Glassmorphism Card — pinned to bottom, with padding around it */}
                     <div className={cn(
-                        "relative z-10 w-full md:w-[600px] lg:w-[640px] m-0 md:m-[48px] p-6 sm:p-8 md:px-[40px] md:py-[40px] md:pl-[32px]",
-                        "backdrop-blur-[46px] bg-[#535353]/50 md:rounded-[8px] flex flex-col gap-[24px]",
+                        "relative z-10 w-full md:w-[600px] lg:w-[640px]",
+                        "m-0 md:m-[48px]",
+                        "px-6 py-8 md:px-[40px] md:py-[40px] md:pl-[32px]",
+                        "backdrop-blur-[46px] bg-[#535353]/50 rounded-[8px]",
+                        "flex flex-col gap-4 md:gap-[24px]",
                         "items-start shrink-0 text-white"
                     )}>
 
-                        <p className="font-semibold text-[14px] leading-[22px] tracking-wide text-white">
+                        <p className="font-source-sans font-semibold text-[14px] leading-[22px] tracking-wide text-white">
                             {subtitle}
                         </p>
 
-                        <h2 className="font-light text-[24px] md:text-[32px] leading-[1.2] md:leading-[40px] max-w-[384px] text-white -tracking-tight">
+                        <h2 className="font-headline font-light text-[32px] leading-[40px] text-white -tracking-tight">
                             {title}
                         </h2>
 
-                        <p className="text-[14px] md:text-[16px] leading-normal max-w-[384px] text-white opacity-90">
+                        <p className="font-source-sans text-[16px] leading-[24px] text-white opacity-90">
                             {description}
                         </p>
 
