@@ -34,28 +34,9 @@ export default function MotorPage() {
                         />
                     </Container>
                 </div>
-
-                {/* Motor Plans Section */}
-                <FeatureTabsSection plans={motorPlans} autoScroll />
-
-                {/* Motor Packages Comparison Table */}
-                <ComparisonTableSection data={motorPackagesData} />
-
-                {/* Repair Shop Banner Phase */}
-                <BannerSection
-                    data={{
-                        preHeading: "Need to send your vehicle for repairs?",
-                        heading: "Our trusted repair shop network, is just a click away",
-                        description: "Find 40+ workshops across Lebanon to help with your repairs",
-                        ctaText: "Download repair shop network list",
-                        ctaHref: "#", // Placeholder
-                    }}
-                    icon={<Download className="h-5 w-5 mr-2" />}
-                />
-
-                {/* Final Benefits Section */}
+                {/*  Benefits Section */}
                 <BenefitsSection
-                    heading="Benefit from AXA Motor Insurance"
+                    heading="Peace of Mind Wherever You Go"
                     benefits={[
                         {
                             id: "trusted",
@@ -79,6 +60,25 @@ export default function MotorPage() {
                         },
                     ]}
                 />
+                {/* Motor Plans Section */}
+                <FeatureTabsSection plans={motorPlans} autoScroll />
+
+                {/* Motor Packages Comparison Table */}
+                <ComparisonTableSection data={motorPackagesData} />
+
+                {/* Repair Shop Banner Phase */}
+                <BannerSection
+                    data={{
+                        preHeading: "Need to send your vehicle for repairs?",
+                        heading: "Our trusted repair shop network, is just a click away",
+                        description: "Find 40+ workshops across Lebanon to help with your repairs",
+                        ctaText: "Download repair shop network list",
+                        ctaHref: "#", // Placeholder
+                    }}
+                    icon={<Download className="h-5 w-5 mr-2" />}
+                />
+
+
             </div>
         </main>
     );

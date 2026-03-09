@@ -33,8 +33,17 @@ export function SubhomeHeroBanner({
                     className="object-cover object-right md:object-center"
                     priority
                 />
+                {/* Mobile: bottom-to-top gradient for readability */}
                 <div
-                    className="absolute inset-0"
+                    className="absolute inset-0 md:hidden"
+                    style={{
+                        backgroundImage:
+                            "linear-gradient(to top, rgba(0, 0, 0, 0.8) 10%, rgba(0, 0, 0, 0) 100%)",
+                    }}
+                />
+                {/* Desktop: left-to-right gradient */}
+                <div
+                    className="absolute inset-0 hidden md:block"
                     style={{
                         backgroundImage:
                             "linear-gradient(264.76deg, rgba(0, 0, 0, 0) 25.59%, rgba(0, 0, 0, 0.63) 97.76%)",
@@ -53,7 +62,7 @@ export function SubhomeHeroBanner({
                         </p>
                     )}
                     {heading && (
-                        <h1 className="font-headline text-[48px] font-light leading-[1.1] tracking-[-1.5px] text-white md:text-[64px] md:leading-[72px] lg:w-[730px]">
+                        <h1 className="font-headline text-[40px] font-light leading-[48px] tracking-[-1.5px] text-white md:text-[64px] md:leading-[72px] lg:w-[730px]">
                             {heading}
                         </h1>
                     )}
@@ -63,10 +72,8 @@ export function SubhomeHeroBanner({
                         </p>
                     )}
                     {ctaText && (
-                        <div className="mt-4">
-                            {/* The CTAButton is natively using "ghost" which maps precisely to the "Primary Button Inverse" in the design */}
-                            {/* We use Variant Ghost: bg-white text-axa-blue */}
-                            <Button variant="ghost" size="md" href={ctaHref}>
+                        <div className="mt-4 w-full md:w-auto">
+                            <Button variant="ghost" size="md" href={ctaHref} className="w-full md:w-auto">
                                 {ctaText}
                             </Button>
                         </div>
@@ -74,7 +81,7 @@ export function SubhomeHeroBanner({
                 </div>
 
                 {/* Fast Leads - Form positioned towards bottom right on desktop */}
-                <div className="flex w-full flex-col gap-2 md:items-end animate-fade-in-up-delay">
+                <div className="hidden md:flex w-full flex-col gap-2 md:items-end animate-fade-in-up-delay">
                     {/* The Input Row */}
                     <div className="flex flex-col md:flex-row items-center gap-4 md:gap-0 rounded-xl md:rounded-lg bg-[#535353]/50 p-4 md:h-[56px] md:p-2 backdrop-blur-lg">
 

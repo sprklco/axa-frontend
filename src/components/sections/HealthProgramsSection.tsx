@@ -30,15 +30,15 @@ export function HealthProgramsSection({ title, subtitle, programs }: HealthProgr
             <Container className="relative">
                 {/* Header */}
                 <div className="flex flex-col items-center gap-[8px] mb-[40px] md:mb-[60px]">
-                    <p className="text-[16px] md:text-[18px] font-semibold leading-[26px] text-[#606776] text-center">
+                    <p className="text-[16px] md:text-[18px] font-semibold leading-[24px] md:leading-[26px] text-[#606776] text-center">
                         {subtitle}
                     </p>
-                    <h2 className="text-[32px] md:text-[48px] font-light leading-[56px] text-[#1a1d21] text-center -tracking-tight">
+                    <h2 className="font-headline text-[34px] md:text-[48px] font-light leading-[42px] md:leading-[56px] text-[#1a1d21] text-center -tracking-tight">
                         {title}
                     </h2>
                 </div>
 
-                <div className="relative h-[480px] md:h-[696px]">
+                <div className="relative h-[556px] md:h-[696px]">
                     {/* Carousel Track */}
                     <div
                         className="flex items-start h-full gap-4 md:gap-[16px] transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
@@ -47,7 +47,7 @@ export function HealthProgramsSection({ title, subtitle, programs }: HealthProgr
                             // 320px width + 16px gap = 336px step on desktop.
                             // Mobile step is 280px + 16px = 296px. Handled dynamically via CSS variables or standard JS math.
                             // For simplicity, we use CSS clamp or standard values.
-                            transform: `translateX(calc(-${activeIndex} * min(336px, calc(280px + 1rem))))`
+                            transform: `translateX(calc(-${activeIndex} * min(392px, calc(376px + 1rem))))`
                         }}
                     >
                         {programs.map((program, idx) => {
@@ -60,8 +60,8 @@ export function HealthProgramsSection({ title, subtitle, programs }: HealthProgr
                                     className={cn(
                                         "relative shrink-0 cursor-pointer overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] transform origin-left",
                                         isActive
-                                            ? "w-[min(85vw,400px)] md:w-[608px] h-[480px] md:h-[696px] rounded-[12px] shadow-2xl"
-                                            : "w-[280px] md:w-[320px] h-[400px] md:h-[362px] rounded-[8px] opacity-90 hover:opacity-100",
+                                            ? "w-[min(92vw,376px)] md:w-[608px] h-[556px] md:h-[696px] rounded-[12px] shadow-2xl"
+                                            : "w-[256px] md:w-[320px] h-[294px] md:h-[362px] rounded-[8px] opacity-90 hover:opacity-100",
                                         !isActive && "mt-0" // In Figma height shrinks, top remains aligned.
                                     )}
                                 >
