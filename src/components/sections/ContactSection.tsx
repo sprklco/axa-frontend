@@ -74,7 +74,7 @@ export function ContactSection({ data, className }: ContactSectionProps) {
                                             key={btnIndex}
                                             variant={btn.variant}
                                             size="md"
-                                            className="w-fit"
+                                            className="w-full lg:w-fit"
                                             {...(btn.phoneHref ? {
                                                 icon: <PhoneIcon />,
                                                 href: btn.phoneHref,

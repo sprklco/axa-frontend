@@ -30,7 +30,7 @@ export function BannerSection({ data, icon }: BannerSectionProps) {
                                 {data.preHeading}
                             </p>
                         )}
-                        <h2 className="font-headline text-[32px] md:text-[48px] font-light leading-tight md:leading-[56px] text-white">
+                        <h2 className="font-headline text-[34px] leading-[38px] md:text-[48px] font-light md:leading-[56px] text-white">
                             {data.heading}
                         </h2>
                         {data.description && (
@@ -46,6 +46,7 @@ export function BannerSection({ data, icon }: BannerSectionProps) {
                         size="md"
                         href={data.ctaHref}
                         icon={icon}
+                        className="w-full md:w-fit"
                     >
                         {data.ctaText}
                     </Button>

@@ -10,10 +10,6 @@ export interface MilestoneCard {
     id: string;
     title: string;
     subtext: string;
-    /** Back-side card title (shown on flip) */
-    backTitle: string;
-    /** Optional back-side description */
-    backDescription?: string;
 }
 
 export interface ChairmanLetter {

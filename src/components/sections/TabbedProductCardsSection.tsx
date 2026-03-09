@@ -74,7 +74,7 @@ export function TabbedProductCardsSection({
                         >
                             {/* Card Title & Description */}
                             <div className="flex flex-col gap-4">
-                                <h3 className="font-brand-text text-[24px] font-bold leading-[32px] text-[#00008f] md:text-[32px] md:leading-[40px]">
+                                <h3 className="font-brand-text text-[32px] font-bold leading-[40px] text-[#00008f]">
                                     {card.title}
                                 </h3>
                                 <p className="font-source-sans text-base leading-6 text-[#1a1d21] max-w-[314px]">

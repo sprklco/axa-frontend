@@ -15,7 +15,7 @@ interface LeadershipSectionProps {
 
 function MemberCard({ member }: { member: TeamMember }) {
     return (
-        <div className="relative flex h-[265px] w-[265px] flex-col items-center justify-between overflow-hidden rounded-[8px]">
+        <div className="relative flex h-[240px] md:h-[265px] w-full md:w-[265px] flex-col items-center justify-between overflow-hidden rounded-[8px]">
             {/* Photo */}
             <Image
                 src={member.imageSrc}
@@ -74,8 +74,8 @@ export function LeadershipSection({
                             type="button"
                             onClick={() => setActiveTabId(tab.id)}
                             className={`rounded-full px-[18px] py-[13px] font-source-sans text-[18px] leading-[26px] transition-colors ${activeTabId === tab.id
-                                    ? "bg-[#00008f] text-white"
-                                    : "text-[#00008f]"
+                                ? "bg-[#00008f] text-white"
+                                : "text-[#00008f]"
                                 }`}
                         >
                             {tab.label}
@@ -84,7 +84,7 @@ export function LeadershipSection({
                 </div>
 
                 {/* Members grid */}
-                <div className="mt-[30px] grid w-fit grid-cols-4 gap-4">
+                <div className="mt-[30px] grid w-full md:w-fit grid-cols-2 md:grid-cols-4 gap-4">
                     {activeTab?.members.map((member, idx) => (
                         <MemberCard key={`${activeTabId}-${idx}`} member={member} />
                     ))}
