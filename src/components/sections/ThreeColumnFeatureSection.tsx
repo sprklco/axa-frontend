@@ -449,10 +449,10 @@ export function ThreeColumnFeatureSection({
             {eyebrow}
           </p>
         )}
-        <h2 className="font-brand-text text-[24px] leading-[32px] text-[#1a1d21] md:text-[32px] md:leading-[40px]">
+        <h2 className="font-brand-text text-[32px] leading-[40px] text-[#1a1d21]">
           {heading}
         </h2>
-        <p className="font-source-sans text-base leading-6 text-[#1a1d21] md:text-[16px] md:leading-[24px] max-w-[682px]">
+        <p className="font-source-sans text-[16px] leading-[24px] text-[#1a1d21] max-w-[682px]">
           {description}
         </p>
 
@@ -460,14 +460,14 @@ export function ThreeColumnFeatureSection({
           {items.map((item) => (
             <div
               key={item.id}
-              className="flex h-full flex-col items-center justify-start gap-2 rounded-[8px] px-4 pb-6"
+              className="flex h-full flex-col items-center justify-start gap-2 rounded-[8px] px-8 pb-6 md:px-4"
             >
               <FeatureIcon icon={item.icon} />
               <div className="flex flex-col items-center gap-2 text-center">
-                <h3 className="font-source-sans text-lg md:text-[20px] md:leading-[28px] text-[#1a1d21]">
+                <h3 className="font-source-sans text-[20px] leading-[28px] text-[#1a1d21]">
                   {item.title}
                 </h3>
-                <p className="font-source-sans text-sm md:text-base leading-[24px] text-[#434956] max-w-[280px]">
+                <p className="font-source-sans text-[16px] leading-[24px] text-[#434956] max-w-[280px]">
                   {item.description}
                 </p>
               </div>

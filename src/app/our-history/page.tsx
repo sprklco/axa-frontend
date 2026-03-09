@@ -39,7 +39,7 @@ export default function AboutHistoryPage() {
                 <section className="bg-white py-[48px] md:py-[72px]">
                     <Container>
                         <div className="flex flex-col items-center gap-[24px] max-w-[905px] mx-auto">
-                            <h2 className="font-headline text-[36px] md:text-[48px] font-light leading-[44px] md:leading-[56px] text-[#1a1d21] text-center">
+                            <h2 className="font-headline text-[34px] leading-[38px] md:text-[48px] font-light md:leading-[56px] text-[#1a1d21] text-center">
                                 {trustedPartner.heading}
                             </h2>
                             <div className="font-source-sans text-[18px] leading-[26px] text-[#1a1d21] text-center">
@@ -58,9 +58,9 @@ export default function AboutHistoryPage() {
                 {/* Chairman's Letter Section */}
                 <section className="bg-[#f7f7f8] py-[72px]">
                     <Container>
-                        <div className="bg-white rounded-[12px] flex flex-col md:flex-row items-center gap-8 md:gap-[80px] p-6 md:pl-[24px] md:pr-[72px] md:py-[24px]">
+                        <div className="bg-white rounded-[12px] flex flex-col md:flex-row items-center gap-8 md:gap-[80px] p-6 pb-[72px] md:p-6 md:pl-[24px] md:pr-[72px] md:py-[24px]">
                             {/* Chairman photo */}
-                            <div className="relative w-full md:w-[354px] h-[300px] md:h-[374px] shrink-0 rounded-[8px] overflow-hidden">
+                            <div className="relative w-full md:w-[354px] h-[374px] shrink-0 rounded-[8px] overflow-hidden">
                                 <Image
                                     src={chairman.imageSrc}
                                     alt={chairman.imageAlt}
@@ -76,7 +76,7 @@ export default function AboutHistoryPage() {
                                 <p className="font-source-sans text-[14px] leading-[22px] text-[#606776]">
                                     {chairman.eyebrow}
                                 </p>
-                                <h2 className="font-headline text-[32px] md:text-[40px] font-light leading-[40px] md:leading-[48px] text-[#1a1d21] whitespace-pre-line">
+                                <h2 className="font-headline text-[34px] leading-[38px] md:text-[40px] font-light md:leading-[48px] text-[#1a1d21] whitespace-pre-line">
                                     {chairman.heading}
                                 </h2>
                                 <div className="font-source-sans text-[18px] leading-[26px] text-[#1a1d21]">

@@ -91,31 +91,32 @@ export const aboutHistoryData: AboutHistoryPageData = {
     milestones: {
         heading: "Key Milestones",
         description:
-            "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+            "A journey shaped by heritage, leadership, and lasting partnerships.",
         cards: [
             {
                 id: "milestone-1",
-                title: "Milestone 1",
-                subtext: "Subtext 1",
-                backTitle: "Cardholder",
+                title: "Our Heritage",
+                subtext: "The First Receipt from 1904",
             },
             {
                 id: "milestone-2",
-                title: "Milestone 2",
-                subtext: "Subtext 2",
-                backTitle: "Cardholder",
+                title: "Transparent\nPartnership",
+                subtext: "A Legacy of Strong Partnerships\nand Support",
             },
             {
                 id: "milestone-3",
-                title: "Milestone 3",
-                subtext: "Subtext 3",
-                backTitle: "Cardholder",
+                title: "115 Years of Commitment",
+                subtext: "Thomas Buberl, CEO of AXA Group \nvisits Lebanon",
             },
             {
                 id: "milestone-4",
-                title: "Milestone 4",
-                subtext: "Subtext 4",
-                backTitle: "Cardholder",
+                title: "Leadership & Continuity",
+                subtext: "Hassan Shabrawishi, CEO of AXA Africa Holding visits Lebanon",
+            },
+            {
+                id: "milestone-5",
+                title: "Signing of the Strategic Protocol",
+                subtext: "Leadership aligned for the future.",
             },
         ],
     },

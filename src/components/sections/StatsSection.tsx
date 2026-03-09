@@ -16,7 +16,7 @@ export function StatsSection({
 }: StatsSectionProps) {
     return (
         <section
-            className={`flex flex-col items-center justify-center bg-white px-[72px] py-16 ${className ?? ""}`}
+            className={`flex flex-col items-center justify-center bg-white px-6 md:px-[72px] py-16 ${className ?? ""}`}
         >
             <Container className="flex flex-col items-center gap-16">
                 {/* Titles */}
@@ -30,7 +30,7 @@ export function StatsSection({
                 </div>
 
                 {/* Stats row */}
-                <div className="flex w-full items-start justify-center gap-[123px]">
+                <div className="flex w-full flex-col md:flex-row items-center md:items-start justify-center gap-[40px] md:gap-[123px]">
                     {stats.map((stat, index) => (
                         <div
                             key={index}

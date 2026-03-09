@@ -64,7 +64,7 @@ export function ValuesSection({
 }: ValuesSectionProps) {
     return (
         <section
-            className={`flex flex-col items-center justify-center bg-white px-[72px] py-16 ${className ?? ""}`}
+            className={`flex flex-col items-center justify-center bg-white px-4 md:px-[72px] py-16 ${className ?? ""}`}
         >
             <Container className="flex flex-col items-center gap-16">
                 {/* Titles */}
@@ -72,7 +72,7 @@ export function ValuesSection({
                     <p className="font-source-sans text-[18px] font-semibold leading-[26px] text-[#606776]">
                         {eyebrow}
                     </p>
-                    <h2 className="font-headline text-[48px] font-light leading-[56px] text-[#1a1d21]">
+                    <h2 className="font-headline text-[34px] leading-[42px] md:text-[48px] font-light md:leading-[56px] text-[#1a1d21]">
                         {heading}
                     </h2>
                     <p className="max-w-[822px] font-source-sans text-[16px] leading-[24px] text-[#1a1d21]">

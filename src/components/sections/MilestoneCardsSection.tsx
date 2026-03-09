@@ -18,7 +18,7 @@ export function MilestoneCardsSection({
     className,
 }: MilestoneCardsSectionProps) {
     return (
-        <section className={cn("py-[48px] md:py-[72px]", className)}>
+        <section className={cn("py-[48px] md:py-[72px] max-md:px-4", className)}>
             <Container>
                 {/* Header */}
                 <div className="flex flex-col items-center gap-[12px] mb-[48px]">
@@ -29,49 +29,51 @@ export function MilestoneCardsSection({
                         {description}
                     </p>
                 </div>
+            </Container>
 
-                {/* Cards grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[16px]">
+            {/* Cards grid - Outside standard Container for specific 32px mobile padding */}
+            <div className="px-[32px] md:px-[72px] max-w-[1440px] mx-auto w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[30px] md:gap-[16px]">
                     {cards.map((card) => (
                         <div
                             key={card.id}
-                            className="group h-[368px] [perspective:1000px]"
+                            className="group relative h-[368px] overflow-hidden rounded-[12px] bg-[#00008f] md:bg-[#f7f7f8]"
                         >
-                            <div className="relative w-full h-full transition-transform duration-600 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                                {/* Front */}
-                                <div className="absolute inset-0 bg-[#f7f7f8] rounded-[12px] flex flex-col items-center justify-end px-[20px] py-[24px] [backface-visibility:hidden]">
-                                    <div className="flex flex-col gap-[8px] w-full">
-                                        <p className="font-brand-text text-[32px] font-bold leading-[40px] text-[#1a1d21] text-center">
-                                            {card.title}
-                                        </p>
-                                        <p className="font-source-sans text-[16px] leading-[24px] text-[#434956] text-center">
-                                            {card.subtext}
-                                        </p>
-                                    </div>
-                                </div>
+                            {/* Blue Background Overlay — fades in on hover for desktop, persistent on mobile */}
+                            <div className="absolute inset-0 bg-[#00008f] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 ease-out" />
 
-                                {/* Back */}
-                                <div className="absolute inset-0 bg-[#747272] rounded-[12px] flex flex-col justify-end px-[24px] py-[24px] [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                                    {card.backDescription ? (
-                                        <div className="flex flex-col gap-[8px]">
-                                            <p className="font-brand-text text-[28px] font-bold leading-[34px] text-white">
-                                                {card.backTitle}
-                                            </p>
-                                            <p className="font-source-sans text-[16px] leading-[24px] text-white/80">
-                                                {card.backDescription}
-                                            </p>
+                            {/* Default Content (Grey State) — visible only on desktop, slides up and fades out on hover */}
+                            <div className="hidden md:flex absolute inset-0 flex-col items-center justify-end px-[20px] py-[24px] transition-all duration-500 ease-out opacity-100 group-hover:opacity-0 group-hover:-translate-y-4">
+                                <div className="flex flex-col gap-[8px] w-full">
+                                    <p className="font-brand-text text-[32px] font-bold leading-[40px] text-[#1a1d21] text-center whitespace-pre-line">
+                                        {card.title}
+                                    </p>
+                                    <p className="font-source-sans text-[16px] leading-[24px] text-[#434956] text-center whitespace-pre-line">
+                                        {card.subtext}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Active Content (Blue State) — slides up and fades in on hover for desktop, permanent on mobile */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-end px-[20px] py-[24px] transition-all duration-500 ease-out opacity-100 md:opacity-0 md:translate-y-6 md:group-hover:opacity-100 md:group-hover:translate-y-0">
+                                <div className="flex flex-col gap-[21px] w-full items-center">
+                                    <p className="font-brand-text text-[32px] font-bold leading-[40px] text-white text-center whitespace-pre-line">
+                                        {card.title}
+                                    </p>
+                                    <p className="font-source-sans text-[16px] leading-[24px] text-white/80 text-center whitespace-pre-line">
+                                        {card.subtext}
+                                    </p>
+                                    <div className="shrink-0 pt-1">
+                                        <div className="w-[30px] h-[30px] rounded-full border-2 border-white flex items-center justify-center">
+                                            <img src="/images/milestone-asterisk.svg" alt="" className="w-[14px] h-[14px]" />
                                         </div>
-                                    ) : (
-                                        <p className="font-brand-text text-[32px] font-bold leading-[40px] text-white">
-                                            {card.backTitle}
-                                        </p>
-                                    )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
-            </Container>
+            </div>
         </section>
     );
 }
