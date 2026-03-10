@@ -1,3 +1,6 @@
+ "use client";
+
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/cn";
 import type { BranchLocation } from "@/types/branches";
 
@@ -48,7 +51,21 @@ export function BranchLocationsPanel({
     onSelectBranch,
     className,
 }: BranchLocationsPanelProps) {
+    const [pageIndex, setPageIndex] = useState(0);
+
     if (!branches.length) return null;
+
+    const PAGE_SIZE = 3;
+    const pageCount = Math.ceil(branches.length / PAGE_SIZE);
+
+    useEffect(() => {
+        if (pageIndex > pageCount - 1) {
+            setPageIndex(Math.max(pageCount - 1, 0));
+        }
+    }, [pageIndex, pageCount]);
+
+    const start = pageIndex * PAGE_SIZE;
+    const pageBranches = branches.slice(start, start + PAGE_SIZE);
 
     const handleSelect = (id: string | null) => {
         if (onSelectBranch) {
@@ -59,11 +76,12 @@ export function BranchLocationsPanel({
     return (
         <div
             className={cn(
-                "pointer-events-none absolute left-7 top-16 flex w-full max-w-[444px] flex-col gap-3",
+                "pointer-events-none absolute left-7 top-16 bottom-6 flex w-full max-w-[444px] flex-col justify-between",
                 className
             )}
         >
-            {branches.map((branch) => {
+            <div className="flex flex-col gap-3">
+                {pageBranches.map((branch) => {
                 const isExpanded = selectedBranchId === branch.id;
 
                 if (!isExpanded) {
@@ -143,6 +161,65 @@ export function BranchLocationsPanel({
                     </article>
                 );
             })}
+            </div>
+
+            {pageCount > 1 && (
+                <div className="pointer-events-auto flex w-full items-center justify-center">
+                    <div className="inline-flex w-full max-w-[444px] items-center justify-center gap-8 rounded-[8px] bg-white px-4 py-2 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+                        <button
+                            type="button"
+                            onClick={() => pageIndex > 0 && setPageIndex(pageIndex - 1)}
+                            disabled={pageIndex === 0}
+                            className={cn(
+                                "flex h-6 w-6 items-center justify-center rounded-full text-[#00008f] transition-colors",
+                                pageIndex === 0 ? "opacity-40 cursor-default" : "hover:bg-[#f2f2f3]"
+                            )}
+                            aria-label="Previous branches page"
+                        >
+                            <span className="-rotate-180">
+                                <ChevronRightIcon />
+                            </span>
+                        </button>
+
+                        <div className="flex items-center gap-2">
+                            {Array.from({ length: pageCount }).map((_, index) => {
+                                const isActive = index === pageIndex;
+                                return (
+                                    <button
+                                        key={index}
+                                        type="button"
+                                        onClick={() => setPageIndex(index)}
+                                        className={cn(
+                                            "min-w-[32px] rounded-full px-3 py-1 text-center text-[18px] leading-[26px] font-source-sans transition-colors",
+                                            isActive
+                                                ? "bg-[#00008f] text-white"
+                                                : "bg-transparent text-[#8080c7] hover:bg-[#f7f7f8]"
+                                        )}
+                                        aria-current={isActive ? "page" : undefined}
+                                    >
+                                        {index + 1}
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        <button
+                            type="button"
+                            onClick={() => pageIndex < pageCount - 1 && setPageIndex(pageIndex + 1)}
+                            disabled={pageIndex === pageCount - 1}
+                            className={cn(
+                                "flex h-6 w-6 items-center justify-center rounded-full text-[#00008f] transition-colors",
+                                pageIndex === pageCount - 1
+                                    ? "opacity-40 cursor-default"
+                                    : "hover:bg-[#f2f2f3]"
+                            )}
+                            aria-label="Next branches page"
+                        >
+                            <ChevronRightIcon />
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

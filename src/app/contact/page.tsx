@@ -127,6 +127,16 @@ const branchLocations: readonly BranchLocation[] = [
         lat: 34.123,
         lng: 35.6519,
     },
+    {
+        id: "saida",
+        name: "AXA Saida Branch [Temporary]",
+        rating: 4.7,
+        phone: "+961 9 545777",
+        addressLines: ["AXA Middle East Building, Saida, Lebanon"],
+        city: "Beirut, Lebanon",
+        lat: 33.5582,
+        lng: 35.3681,
+    },
 ] as const;
 
 export default function ContactPage() {
