@@ -1,7 +1,9 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/cn";
+import { X } from "lucide-react";
 import type { MilestoneCard } from "@/types/aboutHistory";
 
 interface MilestoneCardsSectionProps {
@@ -17,6 +19,22 @@ export function MilestoneCardsSection({
     cards,
     className,
 }: MilestoneCardsSectionProps) {
+    const [activeModalId, setActiveModalId] = useState<string | null>(null);
+
+    // Lock body scroll when modal is open
+    useEffect(() => {
+        if (activeModalId) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [activeModalId]);
+
+    const activeCard = cards.find(c => c.id === activeModalId);
+
     return (
         <section className={cn("py-[48px] md:py-[72px] max-md:px-4", className)}>
             <Container>
@@ -37,7 +55,15 @@ export function MilestoneCardsSection({
                     {cards.map((card) => (
                         <div
                             key={card.id}
-                            className="group relative h-[368px] overflow-hidden rounded-[12px] bg-[#00008f] md:bg-[#f7f7f8]"
+                            onClick={() => {
+                                if (card.modalContent) {
+                                    setActiveModalId(card.id);
+                                }
+                            }}
+                            className={cn(
+                                "group relative h-[368px] overflow-hidden rounded-[12px] bg-[#00008f] md:bg-[#f7f7f8]",
+                                card.modalContent && "cursor-pointer"
+                            )}
                         >
                             {/* Blue Background Overlay — fades in on hover for desktop, persistent on mobile */}
                             <div className="absolute inset-0 bg-[#00008f] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 ease-out" />
@@ -74,6 +100,57 @@ export function MilestoneCardsSection({
                     ))}
                 </div>
             </div>
+
+            {/* Modal Overlay */}
+            {activeCard && activeCard.modalContent && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/60 backdrop-blur-sm animate-fade-in"
+                    onClick={() => setActiveModalId(null)}
+                >
+                    <div
+                        className="relative w-full max-w-[1250px] max-h-[90vh] bg-white rounded-[12px] flex flex-col md:flex-row p-6 md:p-[24px] gap-8 md:gap-[80px] overflow-y-auto hide-scrollbar animate-fade-in-up"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Image Frame */}
+                        {activeCard.modalContent.imageSrc && (
+                            <div className="relative w-full md:w-[504px] md:h-[575px] h-[250px] shrink-0 rounded-[8px] overflow-hidden">
+                                <img
+                                    src={activeCard.modalContent.imageSrc}
+                                    alt={activeCard.modalContent.title}
+                                    className="object-cover w-full h-full"
+                                />
+                            </div>
+                        )}
+
+                        {/* Content Frame */}
+                        <div className="flex-1 flex flex-col pt-0 md:pt-0 relative">
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setActiveModalId(null)}
+                                className="absolute right-0 top-0 text-[#1a1d21] hover:text-[#00008f] transition-colors p-2 -m-2"
+                                aria-label="Close modal"
+                            >
+                                <X className="w-6 h-6 md:w-[24px] md:h-[24px]" />
+                            </button>
+
+                            {/* Text Container */}
+                            <div className="flex flex-col mt-[40px] md:mt-[56px] gap-[16px]">
+                                <h3 className="font-headline text-[24px] md:text-[32px] font-light leading-[32px] md:leading-[40px] text-[#1a1d21] md:pr-[40px]">
+                                    {activeCard.modalContent.title}
+                                </h3>
+
+                                <div className="flex flex-col gap-[16px]">
+                                    {activeCard.modalContent.paragraphs.map((paragraph, idx) => (
+                                        <p key={idx} className="font-source-sans text-[16px] leading-[24px] text-[#434956] whitespace-pre-wrap">
+                                            {paragraph}
+                                        </p>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 }

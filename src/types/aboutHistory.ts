@@ -10,6 +10,11 @@ export interface MilestoneCard {
     id: string;
     title: string;
     subtext: string;
+    modalContent?: {
+        title: string;
+        paragraphs: string[];
+        imageSrc?: string;
+    };
 }
 
 export interface ChairmanLetter {
