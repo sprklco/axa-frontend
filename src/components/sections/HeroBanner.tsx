@@ -132,10 +132,15 @@ export function HeroBanner({ slides }: HeroBannerProps) {
                 </div>
 
                 {/* Progress Controls */}
-                <div className="mt-6 flex flex-col gap-6 md:mt-8">
-                    {/* Progress Bars */}
+                <div className="mt-16 flex flex-col gap-6 md:mt-20">
+                    {/* Pause control above progress bars, left-aligned */}
+                    <div className="flex h-12 items-center">
+                        <PauseButton isPaused={isPaused} onToggle={togglePause} />
+                    </div>
+
+                    {/* Progress Bars - left aligned */}
                     <div
-                        className="flex w-full items-center justify-between gap-2"
+                        className="flex items-center gap-2"
                         role="tablist"
                         aria-label="Carousel navigation"
                     >
@@ -150,11 +155,6 @@ export function HeroBanner({ slides }: HeroBannerProps) {
                                 />
                             </div>
                         ))}
-                    </div>
-
-                    {/* Action Buttons Row */}
-                    <div className="flex h-12 w-full items-center justify-end">
-                        <PauseButton isPaused={isPaused} onToggle={togglePause} />
                     </div>
                 </div>
             </Container>

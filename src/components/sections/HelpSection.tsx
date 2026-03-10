@@ -65,6 +65,7 @@ export function HelpSection({
             <Button
               variant={secondaryCta.variant ?? "secondary"}
               size="md"
+              className="cursor-pointer"
               {...(isCallbackCta
                 ? { onClick: () => setIsModalOpen(true) }
                 : { href: secondaryCta.href })}
