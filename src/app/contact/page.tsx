@@ -3,6 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { LegalIntroSection } from "@/components/sections/LegalIntroSection";
 import { ContactInfoSplitSection } from "@/components/sections/ContactInfoSplitSection";
 import { InfoCardsSection } from "@/components/sections/InfoCardsSection";
+import { LocationsMapSection } from "@/components/sections/LocationsMapSection";
 
 const phoneIcon = (
     <svg
@@ -118,6 +119,11 @@ export default function ContactPage() {
                 <InfoCardsSection
                     heading={contactMethodsCardsSection.heading}
                     cards={contactMethodsCardsSection.cards}
+                />
+
+                <LocationsMapSection
+                    center={{ lat: 33.9277, lng: 35.6123 }}
+                    zoom={13}
                 />
             </div>
         </main>
