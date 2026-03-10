@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 
 export interface LegalIntroSectionProps {
   title: string;
-  description: string;
+  description?: string;
   className?: string;
 }
 
@@ -36,9 +36,11 @@ export function LegalIntroSection({
           </h1>
         </div>
 
-        <p className="font-source-sans text-base leading-6 text-[#434956] md:text-lg md:leading-8 lg:text-[24px] lg:leading-[32px] lg:max-w-[970px] whitespace-pre-line">
-          {description}
-        </p>
+        {description ? (
+          <p className="font-source-sans text-base leading-6 text-[#434956] md:text-lg md:leading-8 lg:text-[24px] lg:leading-[32px] lg:max-w-[970px] whitespace-pre-line">
+            {description}
+          </p>
+        ) : null}
       </Container>
     </section>
   );
