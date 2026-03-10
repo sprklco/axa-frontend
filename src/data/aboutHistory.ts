@@ -97,26 +97,65 @@ export const aboutHistoryData: AboutHistoryPageData = {
                 id: "milestone-1",
                 title: "Our Heritage",
                 subtext: "The First Receipt from 1904",
+                modalContent: {
+                    title: "Our Heritage: The First Receipt from 1904",
+                    paragraphs: [
+                        "This is a historical document that marks the very first financial record of our company, dating back to May 10, 1904. The receipt serves as a foundational piece, symbolizing the origins of our longstanding journey and commitment to excellence. It provides a glimpse into our early operations, financial transactions, and the trust placed in us by our initial clients or partners. Preserving this receipt highlights our deep-rooted history and the evolution of our organization over more than a century."
+                    ],
+                    imageSrc: "/images/about-milestone-heritage.png"
+                }
             },
             {
                 id: "milestone-2",
                 title: "Transparent\nPartnership",
                 subtext: "A Legacy of Strong Partnerships\nand Support",
+                modalContent: {
+                    title: "A Legacy of Strong Partnerships and Support",
+                    paragraphs: [
+                        "We, along with the AXA Group worldwide, committed to a strong and transparent partnership. This was exemplified when the CEO of AXA Group, and its founder, Claude Bebear, supported as the Chairman of the Paris Olympic City Bid Committee during his visit to Lebanon on May 4, 2001. I recall that we visited President Emile Lahoud and the Minister of Youth and Sports together. We also met at AXA Middle East with managers and employees, during which he reaffirmed his confidence and belief in Lebanon’s future in the region, as well as his support for our company."
+                    ],
+                    imageSrc: "/images/about-milestone-partnership.png"
+                }
+
             },
             {
                 id: "milestone-3",
                 title: "115 Years of Commitment",
                 subtext: "Thomas Buberl, CEO of AXA Group \nvisits Lebanon",
+                modalContent: {
+                    title: "Thomas BUBERL, CEO of AXA Group visits Lebanon",
+                    paragraphs: [
+                        "THOMAS BUBERL, CEO OF AXA GROUP VISITS LEBANON: WE ARE PROUD OF THE AXA MIDDLE EAST’S PRESENCE IN LEBANON FOR 115 YEARS, AND WE BELIEVE IN THE FUTURE OF LEBANON’S ECONOMY AND THE CONTRIBUTION TO THE INSURANCE MARKET.",
+                        "On the occasion of his visit to Lebanon, April 2019, Thomas Buberl, CEO of the AXA Group, one of the largest global insurers, has welcomed the Group’s presence in Lebanon for 115 years in partnership with the NASNAS-HANEMOGLOU group, and its positioning as a main player in the insurance market.",
+                        "During his visit to Lebanon, Thomas Buberl was hosted by the President of the Lebanese Republic General Michel Aoun, in the presence of his counselor Mrs. Mireille Aoun Hachem, and the Acting Head of the Insurance Control Commission Mrs. Nadine Habbal, accompanied by Wilm Langenbach, Chief Financial Officer of AXA International & New Markets, Roger Nasnas, Chairman and CEO of AXA Middle East, Elie Nasnas, General Manager of AXA Middle East. The delegation also visited Prime Minister M. Saad Hariri at the Serail. A visit to the Insurance Control Commission, Berytech (one of the major tech startup incubators in Lebanon) and Oasis De Vie the continuum of healthcare center.He also met the AXA Middle East team in a townhall meeting where many topics of interest were raised. During his stay, Thomas Buberl went on to confirm his trust in Lebanon’s economic future and its role in the region, reaffirming AXA Middle East’s commitment to maintain proximity with its customers whom he thanked for their trust and loyalty."
+                    ],
+                    imageSrc: "/images/about-milestone-commitment.png"
+                }
             },
             {
                 id: "milestone-4",
                 title: "Leadership & Continuity",
                 subtext: "Hassan Shabrawishi, CEO of AXA Africa Holding visits Lebanon",
+                modalContent: {
+                    title: "Hassan Shabrawishi, CEO of AXA Africa Holding visits AXA Middle East, Lebanon",
+                    paragraphs: [
+                        "AXA Middle East had the pleasure by the visit of Hassan El-Shabrawishi, CEO of AXA Africa holding on March 17th and 18th 2022. During his visit to Lebanon, Hassan visited AXA Middle East’s medical TPA, Globemed where he explored the service accompanied by Roger Nasnas, Chairman-CEO of AXA Middle East, GM Elie Nasnas and Joe Nasnas, Deputy GM. An Excom meeting was held where Hassan shared his insight, where he states “We highly praise our long-lasting partnership in Lebanon and the excellent performance of AXA Middle East. We believe in its promising future and support its expansion to serve its customers in Lebanon and in the region”. A townhall was held after in presence of all employees to discuss our vision, its current positioning in Lebanon and its future growth. Hassan expressed his appreciation towards the team resilience and effort that showed all the readiness to handle multiple crises that Lebanon overcome over the past 2 years. Good business was achieved despite the challenges of Covid-19, economic situation and Beirut explosion. It was nice to reconnect and embark on a new milestone for the future."
+                    ],
+                    imageSrc: "/images/about-milestone-leadership.png"
+                }
+
             },
             {
                 id: "milestone-5",
                 title: "Signing of the Strategic Protocol",
                 subtext: "Leadership aligned for the future.",
+                modalContent: {
+                    title: "Signing of the Protocol",
+                    paragraphs: [
+                        "On January 28, 2025, the Board of Directors of AXA Middle East convened in Beirut under the leadership of Roger Nass, Chairman of the Board. The meeting was attended by Vice President Nicolas De Naziel, Chief Financial Officer of AXA International Markets, along with board members and key stakeholders. The gathering began with a moment of silence, followed by a heartfelt message from Eli Nass, Group CEO and Managing Director, who paid tribute to the resilience and dedication of the AXA team amid recent challenges across the region, particularly in Lebanon. The Chairman and leadership team expressed deep appreciation for the unwavering commitment of AXA partners and employees in the Middle East and extended gratitude to the AXA Group for its steadfast support. Vice President Nicolas De Naziel commended the team’s professionalism and agility, reaffirming AXA’s strong belief in Lebanon’s future and the pivotal role of AXA Middle East in supporting clients through innovative insurance solutions. During the meeting, the Board announced the appointment of Joseph Nassan as the new General Manager of AXA Middle East. With over 20 years at AXA and extensive leadership experience, Joseph has significantly contributed to the company’s growth and evolution. In his new role, he will continue to safeguard clients’ interests and lead AXA Middle East toward a sustainable and promising future. The Board expressed full confidence in Joseph’s expertise and wished him continued success in driving the company forward."
+                    ],
+                    imageSrc: "/images/about-milestone-signing.png"
+                }
             },
         ],
     },

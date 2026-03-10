@@ -164,3 +164,15 @@ body {
 .modal-fade-out {
   animation: modalFadeOut 0.2s ease-in forwards;
 }
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}

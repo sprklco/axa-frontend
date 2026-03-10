@@ -52,12 +52,12 @@ export function SubhomeHeroBanner({
             </div>
 
             {/* Content Container - stacked flex-col to match the design's bottom alignment */}
-            <Container className="relative flex w-full flex-1 flex-col justify-end gap-12 pb-12 pt-[180px] lg:pb-12">
+            <Container className="relative flex w-full flex-1 flex-col justify-end gap-12 pb-8 pt-[170px] md:pb-12 md:pt-[180px] lg:pb-12">
 
                 {/* Text Content (Left aligned visually but inside the flex-col) */}
                 <div className="flex w-full flex-col gap-4 animate-fade-in-up">
                     {title && (
-                        <p className="font-source-sans text-xl md:text-2xl text-white">
+                        <p className="font-source-sans text-base font-semibold md:font-normal md:text-2xl text-white">
                             {title}
                         </p>
                     )}
