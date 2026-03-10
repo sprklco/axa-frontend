@@ -4,6 +4,7 @@ import { LegalIntroSection } from "@/components/sections/LegalIntroSection";
 import { ContactInfoSplitSection } from "@/components/sections/ContactInfoSplitSection";
 import { InfoCardsSection } from "@/components/sections/InfoCardsSection";
 import { LocationsMapSection } from "@/components/sections/LocationsMapSection";
+import type { BranchLocation } from "@/types/branches";
 
 const phoneIcon = (
     <svg
@@ -93,6 +94,41 @@ const contactMethodsCardsSection = {
     ],
 } as const;
 
+const branchLocations: readonly BranchLocation[] = [
+    {
+        id: "jal-el-dib",
+        name: "AXA Jal el Dib Branch",
+        rating: 4.9,
+        phone: "+961 4 730 000",
+        addressLines: [
+            "AXA MIDDLE EAST SAL, Jal El Dib Highway North, B.P. 11-550",
+        ],
+        city: "Beirut, Lebanon",
+        lat: 33.9304,
+        lng: 35.5986,
+    },
+    {
+        id: "beirut",
+        name: "AXA Beirut Branch",
+        rating: 4.9,
+        phone: "+961 1 373630/1/2",
+        addressLines: ["AXA Middle East Building, Beirut, Lebanon"],
+        city: "Beirut, Lebanon",
+        lat: 33.8898,
+        lng: 35.4955,
+    },
+    {
+        id: "jbeil",
+        name: "AXA Jbeil Branch",
+        rating: 4.7,
+        phone: "+961 9 545777",
+        addressLines: ["AXA Middle East Building, Jbeil, Lebanon"],
+        city: "Beirut, Lebanon",
+        lat: 34.123,
+        lng: 35.6519,
+    },
+] as const;
+
 export default function ContactPage() {
     return (
         <main className="flex flex-col flex-1">
@@ -124,6 +160,7 @@ export default function ContactPage() {
                 <LocationsMapSection
                     center={{ lat: 33.9277, lng: 35.6123 }}
                     zoom={13}
+                    branches={branchLocations}
                 />
             </div>
         </main>

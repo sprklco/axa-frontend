@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/cn";
+import type { BranchLocation } from "@/types/branches";
+import { BranchLocationsPanel } from "@/components/sections/BranchLocationsPanel";
 
 type MapCenter = {
     lat: number;
@@ -14,6 +16,7 @@ export interface LocationsMapSectionProps {
     zoom?: number;
     /** Optional Google Maps style override; defaults to AXA contact map theme. */
     mapStyles?: google.maps.MapTypeStyle[];
+    branches?: ReadonlyArray<BranchLocation>;
     className?: string;
 }
 
@@ -28,11 +31,15 @@ export function LocationsMapSection({
     center,
     zoom = 13,
     mapStyles,
+    branches,
     className,
 }: LocationsMapSectionProps) {
     const mapRef = useRef<HTMLDivElement | null>(null);
     const mapInstanceRef = useRef<google.maps.Map | null>(null);
     const [currentZoom, setCurrentZoom] = useState(zoom);
+    const [selectedBranchId, setSelectedBranchId] = useState<string | null>(
+        branches && branches.length > 0 ? branches[0].id : null
+    );
 
     const defaultStyles: google.maps.MapTypeStyle[] = [
         {
@@ -110,6 +117,17 @@ export function LocationsMapSection({
                     setCurrentZoom(z);
                 }
             });
+
+            if (branches && branches.length > 0) {
+                branches.forEach((branch) => {
+                    // eslint-disable-next-line no-new
+                    new window.google.maps.Marker({
+                        position: { lat: branch.lat, lng: branch.lng },
+                        map: styledMap,
+                        title: branch.name,
+                    });
+                });
+            }
         };
 
         const existingMaps = window.google && window.google.maps;
@@ -146,7 +164,7 @@ export function LocationsMapSection({
         return () => {
             script.removeEventListener("load", initMap);
         };
-    }, [center.lat, center.lng, zoom, mapStyles]);
+    }, [center.lat, center.lng, zoom, mapStyles, branches]);
 
     const handleZoomChange = (direction: "in" | "out") => {
         const map = mapInstanceRef.current;
@@ -157,13 +175,22 @@ export function LocationsMapSection({
         setCurrentZoom(nextZoom);
     };
 
+    useEffect(() => {
+        if (!selectedBranchId || !branches || !branches.length) return;
+        const map = mapInstanceRef.current;
+        if (!map) return;
+        const selected = branches.find((b) => b.id === selectedBranchId);
+        if (!selected) return;
+        map.panTo({ lat: selected.lat, lng: selected.lng });
+    }, [selectedBranchId, branches]);
+
     return (
         <section className={cn("bg-[#f7f7f8] py-12 md:py-16 lg:py-20", className)}>
             <Container noHorizontalPadding>
                 <div className="relative w-full">
                     <div
                         ref={mapRef}
-                        className="h-[360px] md:h-[480px] lg:h-[760px] w-full overflow-hidden rounded-[12px] bg-[#d6e4ff]"
+                        className="h-[360px] md:h-[480px] lg:h-[700px] w-full overflow-hidden rounded-[12px] bg-[#d6e4ff]"
                         aria-label="AXA branch locations map"
                     />
 
@@ -189,6 +216,15 @@ export function LocationsMapSection({
                             </button>
                         </div>
                     </div>
+
+                    {/* Branch cards overlay (left side) */}
+                    {branches && branches.length > 0 ? (
+                        <BranchLocationsPanel
+                            branches={branches}
+                            selectedBranchId={selectedBranchId}
+                            onSelectBranch={setSelectedBranchId}
+                        />
+                    ) : null}
                 </div>
             </Container>
         </section>
