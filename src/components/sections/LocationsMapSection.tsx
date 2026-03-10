@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/cn";
 
@@ -12,6 +12,8 @@ type MapCenter = {
 export interface LocationsMapSectionProps {
     center: MapCenter;
     zoom?: number;
+    /** Optional Google Maps style override; defaults to AXA contact map theme. */
+    mapStyles?: google.maps.MapTypeStyle[];
     className?: string;
 }
 
@@ -25,9 +27,60 @@ declare global {
 export function LocationsMapSection({
     center,
     zoom = 13,
+    mapStyles,
     className,
 }: LocationsMapSectionProps) {
     const mapRef = useRef<HTMLDivElement | null>(null);
+    const mapInstanceRef = useRef<google.maps.Map | null>(null);
+    const [currentZoom, setCurrentZoom] = useState(zoom);
+
+    const defaultStyles: google.maps.MapTypeStyle[] = [
+        {
+            featureType: "all",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#434956" }],
+        },
+        {
+            featureType: "all",
+            elementType: "labels.icon",
+            stylers: [{ visibility: "off" }],
+        },
+        {
+            featureType: "water",
+            elementType: "geometry",
+            stylers: [{ color: "#c5d9ff" }],
+        },
+        {
+            featureType: "landscape",
+            elementType: "geometry",
+            stylers: [{ color: "#f7f7f8" }],
+        },
+        {
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [{ color: "#e0e4f0" }],
+        },
+        {
+            featureType: "road",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#8080c7" }],
+        },
+        {
+            featureType: "poi",
+            elementType: "geometry",
+            stylers: [{ color: "#ebeaf5" }],
+        },
+        {
+            featureType: "administrative.country",
+            elementType: "geometry.stroke",
+            stylers: [{ color: "#d3d7e5" }],
+        },
+        {
+            featureType: "administrative.locality",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#434956" }],
+        },
+    ];
 
     useEffect(() => {
         if (typeof window === "undefined") return;
@@ -42,11 +95,20 @@ export function LocationsMapSection({
         const initMap = () => {
             if (!mapRef.current || !window.google || !window.google.maps) return;
 
-            // eslint-disable-next-line no-new
-            new window.google.maps.Map(mapRef.current, {
+            const styledMap = new window.google.maps.Map(mapRef.current, {
                 center,
                 zoom,
                 disableDefaultUI: true,
+                styles: mapStyles ?? defaultStyles,
+            });
+
+            mapInstanceRef.current = styledMap;
+
+            window.google.maps.event.addListener(styledMap, "zoom_changed", () => {
+                const z = styledMap.getZoom();
+                if (typeof z === "number") {
+                    setCurrentZoom(z);
+                }
             });
         };
 
@@ -84,16 +146,50 @@ export function LocationsMapSection({
         return () => {
             script.removeEventListener("load", initMap);
         };
-    }, [center.lat, center.lng, zoom]);
+    }, [center.lat, center.lng, zoom, mapStyles]);
+
+    const handleZoomChange = (direction: "in" | "out") => {
+        const map = mapInstanceRef.current;
+        if (!map) return;
+        const delta = direction === "in" ? 1 : -1;
+        const nextZoom = (map.getZoom() ?? currentZoom) + delta;
+        map.setZoom(nextZoom);
+        setCurrentZoom(nextZoom);
+    };
 
     return (
         <section className={cn("bg-[#f7f7f8] py-12 md:py-16 lg:py-20", className)}>
             <Container noHorizontalPadding>
-                <div
-                    ref={mapRef}
-                    className="h-[360px] md:h-[480px] lg:h-[760px] w-full overflow-hidden rounded-[12px] bg-[#d6e4ff]"
-                    aria-label="AXA branch locations map"
-                />
+                <div className="relative w-full">
+                    <div
+                        ref={mapRef}
+                        className="h-[360px] md:h-[480px] lg:h-[760px] w-full overflow-hidden rounded-[12px] bg-[#d6e4ff]"
+                        aria-label="AXA branch locations map"
+                    />
+
+                    {/* Custom zoom controls top-right, styled to match Figma node 18805:31373 */}
+                    <div className="pointer-events-none absolute right-10 top-6 flex flex-col">
+                        <div className="pointer-events-auto flex items-center gap-1 rounded-[10px] border border-[#00008f] bg-[rgba(255,255,255,0.3)] px-1 py-1 backdrop-blur-[32px]">
+                            <button
+                                type="button"
+                                onClick={() => handleZoomChange("in")}
+                                className="flex h-8 w-8 items-center justify-center rounded-[8px] bg-transparent text-[#00008f] text-[20px] leading-none"
+                                aria-label="Zoom in"
+                            >
+                                +
+                            </button>
+                            <div className="h-6 w-px bg-[#00008f]" />
+                            <button
+                                type="button"
+                                onClick={() => handleZoomChange("out")}
+                                className="flex h-8 w-8 items-center justify-center rounded-[8px] bg-transparent text-[#00008f] text-[20px] leading-none"
+                                aria-label="Zoom out"
+                            >
+                                −
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </Container>
         </section>
     );
