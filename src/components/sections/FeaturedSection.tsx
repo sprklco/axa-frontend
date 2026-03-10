@@ -92,12 +92,12 @@ export function FeaturedSection({ data, className }: FeaturedSectionProps) {
             {/* Desktop gray background wrapper — visible lg+ only */}
             <Container className="lg:max-w-none lg:bg-[#f7f7f8] lg:py-[72px]">
                 {/* Card */}
-                <div
-                    className={cn(
-                        "rounded-2xl bg-white p-6 shadow-lg",
-                        "lg:mx-auto lg:flex lg:max-w-[1296px] lg:items-center lg:gap-20 lg:rounded-xl lg:p-6 lg:shadow-none"
-                    )}
-                >
+                    <div
+                        className={cn(
+                            "rounded-2xl bg-white p-6 shadow-lg",
+                            "lg:mx-auto lg:flex lg:max-w-[1296px] lg:items-start lg:gap-20 lg:rounded-xl lg:p-6 lg:shadow-none"
+                        )}
+                    >
                     {/* Left — Image (desktop only) */}
                     <div className="hidden lg:block lg:relative lg:h-[664px] lg:w-[512px] lg:shrink-0 lg:overflow-hidden lg:rounded-lg">
                         <Image

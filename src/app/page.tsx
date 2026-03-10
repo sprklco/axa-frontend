@@ -2,12 +2,11 @@ import { HeroBanner } from "@/components/sections/HeroBanner";
 import { FeaturedSection } from "@/components/sections/FeaturedSection";
 import { QuickActionsSection } from "@/components/sections/QuickActionsSection";
 import { ProductsSection } from "@/components/sections/ProductsSection";
-import { ContactSection } from "@/components/sections/ContactSection";
+import { HelpSectionWithCallback as HelpSection } from "@/components/sections/HelpSectionWithCallback";
 import { heroSlides } from "@/data/heroSlides";
 import { featuredSectionData } from "@/data/featuredSection";
 import { quickActionsData } from "@/data/quickActions";
 import { productsSectionData } from "@/data/products";
-import { contactSectionData } from "@/data/contactSection";
 
 export default function Home() {
   return (
@@ -31,8 +30,22 @@ export default function Home() {
         {/* Products (Carousel) */}
         <ProductsSection data={productsSectionData} />
 
-        {/* Contact Section */}
-        <ContactSection data={contactSectionData} />
+        {/* Need Help Section (same pattern as subhome pages) */}
+        <HelpSection
+          heading="Need help?"
+          body="If you have any emergency or need more help in the  the quotation process"
+          primaryCta={{
+            label: "04 - 727 000",
+            href: "tel:04727000",
+            variant: "primary",
+            showPhoneIcon: true,
+          }}
+          secondaryCta={{
+            label: "Request a callback",
+            href: "#",
+            variant: "secondary",
+          }}
+        />
       </div>
     </main>
   );
