@@ -19,10 +19,26 @@ export const quickActionsData: QuickActionsSectionData = {
         { id: "claim", title: "Claim registration", subtitle: "Request help", iconKey: "claim", href: "#" },
     ],
     desktopCards: [
-        { id: "declare-claim", title: "Declare a claim", subtitle: "Generate report", iconKey: "claim", href: "#" },
-    
-        { id: "get-support", title: "Get Support", subtitle: "Call center support", iconKey: "mechanical", href: "#" },
-     
-        { id: "submit-complaint", title: "Submit a complaint", subtitle: "What to do?", iconKey: "assistance", href: "#" },
+        {
+            id: "declare-claim",
+            title: "Declare a claim",
+            subtitle: "Generate report",
+            iconKey: "claim",
+            href: "/coming-soon",
+        },
+        {
+            id: "get-support",
+            title: "Get Support",
+            subtitle: "Call center support",
+            iconKey: "mechanical",
+            href: "/contact",
+        },
+        {
+            id: "submit-complaint",
+            title: "Submit a complaint",
+            subtitle: "What to do?",
+            iconKey: "assistance",
+            href: "/complaint",
+        },
     ],
 };
