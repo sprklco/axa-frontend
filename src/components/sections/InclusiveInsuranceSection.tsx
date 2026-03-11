@@ -13,16 +13,16 @@ export function InclusiveInsuranceSection({
     className,
 }: InclusiveInsuranceSectionProps) {
     return (
-        <section className={cn("bg-[#f7f7f8] py-12 lg:py-[72px]", className)}>
+        <section className={cn("bg-[#f7f7f8] py-8 md:py-12 lg:py-[72px]", className)}>
             <Container>
-                <article className="flex flex-col gap-8 rounded-[12px] bg-white p-6 lg:flex-row lg:items-center lg:gap-0 lg:pl-6 lg:pr-[72px] lg:py-6">
+                <article className="flex flex-col gap-6 rounded-[12px] bg-white p-4 md:p-6 lg:flex-row lg:items-center lg:gap-0 lg:pl-6 lg:pr-[72px] lg:py-6">
                     {/* Left: text content */}
                     <div className="flex flex-1 flex-col gap-5">
-                        <h2 className="font-headline text-[48px] font-light leading-[56px] text-[#1a1d21]">
+                        <h2 className="font-headline text-[32px] leading-[40px] md:text-[48px] font-light md:leading-[56px] text-[#1a1d21]">
                             {data.title}
                         </h2>
 
-                        <p className="font-source-sans text-[16px] leading-[24px] text-[#1a1d21] max-w-[464px]">
+                        <p className="font-source-sans text-[18px] leading-[26px] md:text-[16px] md:leading-[24px] text-[#1a1d21] max-w-[464px]">
                             {data.intro}
                         </p>
 
@@ -46,7 +46,7 @@ export function InclusiveInsuranceSection({
                             {data.highlightLines.map((line, i) => (
                                 <p
                                     key={i}
-                                    className="font-source-sans text-[28px] font-bold leading-[41px] text-[#00008f]"
+                                    className="font-source-sans text-[21px] md:text-[28px] font-bold leading-[26px] md:leading-[41px] text-[#00008f]"
                                 >
                                     {line}
                                 </p>
@@ -55,7 +55,7 @@ export function InclusiveInsuranceSection({
                     </div>
 
                     {/* Right: image card */}
-                    <div className="relative h-[320px] w-full overflow-hidden rounded-[12px] lg:h-[520px] lg:w-[521px] lg:shrink-0">
+                    <div className="relative h-[182px] md:h-[320px] w-full overflow-hidden rounded-[12px] lg:h-[520px] lg:w-[521px] lg:shrink-0">
                         <Image
                             src={data.imageSrc}
                             alt={data.imageAlt}

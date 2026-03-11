@@ -19,14 +19,14 @@ export function ClimateTransitionSection({
     className,
 }: ClimateTransitionSectionProps) {
     return (
-        <section className={cn("bg-white py-16 lg:py-[64px]", className)}>
+        <section className={cn("bg-white py-10 md:py-16 lg:py-[64px]", className)}>
             <Container className="flex flex-col items-center gap-12">
                 {/* Section header */}
                 <div className="flex flex-col items-center gap-3 text-center max-w-[760px]">
-                    <p className="font-source-sans text-[18px] font-semibold leading-[26px] text-[#606776]">
+                    <p className="font-source-sans text-[16px] leading-[24px] md:text-[18px] font-semibold md:leading-[26px] text-[#606776]">
                         {eyebrow}
                     </p>
-                    <h2 className="font-headline text-[48px] font-light leading-[56px] text-[#1a1d21]">
+                    <h2 className="font-headline text-[34px] leading-[42px] md:text-[48px] font-light md:leading-[56px] text-[#1a1d21]">
                         {heading}
                     </h2>
                     <p className="font-source-sans text-[16px] leading-[24px] text-[#1a1d21]">

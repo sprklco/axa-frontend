@@ -19,7 +19,7 @@ function CardContent({ card }: { card: StrategyCard }) {
 
             {/* Multi-line title (e.g. "What is unsustainable / will become uninsurable.") */}
             {card.titleLines && (
-                <div className="font-headline text-[48px] font-light leading-[56px] text-[#1a1d21]">
+                <div className="font-headline text-[40px] leading-[48px] tracking-[-1.5px] md:tracking-normal md:text-[48px] font-light md:leading-[56px] text-[#1a1d21]">
                     {card.titleLines.map((line, i) => (
                         <p key={i}>{line}</p>
                     ))}
@@ -29,7 +29,7 @@ function CardContent({ card }: { card: StrategyCard }) {
             {/* Stat value + suffix on one line */}
             {card.statValue && (
                 <div className="flex items-end gap-4">
-                    <span className="font-headline text-[64px] font-light leading-[72px] tracking-[-1.5px] text-[#1a1d21]">
+                    <span className="font-headline text-[40px] leading-[48px] md:text-[64px] font-light md:leading-[72px] tracking-[-1.5px] text-[#1a1d21]">
                         {card.statValue}
                     </span>
                     {card.statSuffix && (
@@ -42,7 +42,7 @@ function CardContent({ card }: { card: StrategyCard }) {
 
             {/* Single-line title */}
             {card.title && (
-                <p className="font-headline text-[48px] font-light leading-[56px] text-[#1a1d21]">
+                <p className="font-headline text-[40px] leading-[48px] tracking-[-1.5px] md:tracking-normal md:text-[48px] font-light md:leading-[56px] text-[#1a1d21]">
                     {card.title}
                 </p>
             )}
@@ -68,17 +68,17 @@ export function StrategyCardsSection({
     return (
         <section
             className={cn(
-                "bg-white px-6 py-16 lg:px-[72px] lg:py-[64px]",
+                "bg-white px-4 py-10 md:px-6 md:py-16 lg:px-[72px] lg:py-[64px]",
                 className
             )}
         >
             <Container className="flex flex-col items-center gap-16">
                 {/* Section header */}
                 <div className="flex flex-col items-center gap-3 text-center max-w-[760px]">
-                    <p className="font-source-sans text-[18px] font-semibold leading-[26px] text-[#606776]">
+                    <p className="font-source-sans text-[16px] leading-[24px] md:text-[18px] font-semibold md:leading-[26px] text-[#606776]">
                         {eyebrow}
                     </p>
-                    <h2 className="font-headline text-[48px] font-light leading-[56px] text-[#1a1d21]">
+                    <h2 className="font-headline text-[34px] leading-[42px] md:text-[48px] font-light md:leading-[56px] text-[#1a1d21]">
                         {heading}
                     </h2>
                     <p className="font-source-sans text-[16px] leading-[24px] text-[#1a1d21]">
@@ -94,7 +94,7 @@ export function StrategyCardsSection({
                             <div
                                 key={card.id}
                                 className={cn(
-                                    "flex flex-col items-start justify-end rounded-lg px-8 py-8 lg:px-12 lg:py-10",
+                                    "flex flex-col items-start justify-end rounded-lg p-4 md:px-8 md:py-8 lg:px-12 lg:py-10",
                                     "min-h-[280px] lg:min-h-[308px]",
                                     card.variant === "grey"
                                         ? "bg-[#f7f7f8]"
@@ -115,7 +115,7 @@ export function StrategyCardsSection({
                             <div
                                 key={card.id}
                                 className={cn(
-                                    "flex flex-col items-start justify-end rounded-lg p-8",
+                                    "flex flex-col items-start justify-end rounded-lg p-4 md:p-8",
                                     "min-h-[280px] lg:min-h-[308px] lg:flex-1",
                                     card.variant === "grey"
                                         ? "bg-[#f7f7f8]"
