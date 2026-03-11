@@ -1,0 +1,45 @@
+import React from "react";
+import { cn } from "@/lib/cn";
+
+export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    label: string;
+    icon?: React.ReactNode;
+    containerClassName?: string;
+    required?: boolean;
+    error?: boolean;
+    errorMessage?: string;
+}
+
+export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
+    ({ label, icon, className, containerClassName, required, error, errorMessage, ...props }, ref) => {
+        return (
+            <div className={cn("flex flex-col gap-[8px] items-start w-full relative", containerClassName)}>
+                <label className="font-['Source_Sans_Pro:Regular',sans-serif] text-[18px] leading-[26px] text-[#1a1d21] whitespace-nowrap">
+                    {label}{required && "* "}
+                </label>
+                <div className={cn(
+                    "flex items-center gap-2 w-full bg-[rgba(255,255,255,0.4)] border-[0.986px] rounded-[8px] px-[16px] py-[12px] transition-colors",
+                    error ? "border-[#d00000]" : "border-[#434956]",
+                    className
+                )}>
+                    <input
+                        ref={ref}
+                        className="flex-1 bg-transparent border-none outline-none font-['Source_Sans_Pro:Regular',sans-serif] text-[16px] leading-[24px] text-[#1a1d21] placeholder-[#434956]/60 w-full"
+                        {...props}
+                    />
+                    {icon && (
+                        <div className="shrink-0 flex items-center justify-center text-[#1a1d21]">
+                            {icon}
+                        </div>
+                    )}
+                </div>
+                {error && errorMessage && (
+                    <span className="text-[#d00000] text-[12px] font-['Source_Sans_Pro:Regular',sans-serif]">
+                        {errorMessage}
+                    </span>
+                )}
+            </div>
+        );
+    }
+);
+TextField.displayName = "TextField";
