@@ -26,16 +26,16 @@ export default function FaqPage() {
                 {/* Title with AXA switch icon */}
                 <section className="bg-white pb-[64px]">
                     <Container>
-                        <div className="flex items-end justify-center gap-0">
+                        <div className="flex items-end justify-center gap-2 md:gap-0 flex-wrap md:flex-nowrap">
                             <Image
                                 src="/images/axa-switch.svg"
                                 alt=""
                                 width={88}
                                 height={75}
-                                className="shrink-0"
+                                className="w-[48px] h-[40px] md:w-[88px] md:h-[75px] shrink-0"
                                 aria-hidden="true"
                             />
-                            <h1 className="font-headline text-[48px] md:text-[64px] font-light leading-[72px] tracking-[-1.5px] text-[#1a1d21] text-center whitespace-nowrap">
+                            <h1 className="font-headline text-[32px] md:text-[64px] font-light leading-[40px] md:leading-[72px] tracking-[-1px] md:tracking-[-1.5px] text-[#1a1d21] text-center whitespace-normal md:whitespace-nowrap">
                                 {title}
                             </h1>
                         </div>

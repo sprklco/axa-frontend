@@ -43,7 +43,7 @@ const NAV_CHIPS: NavChipConfig[] = [
     },
     {
         label: "Health",
-        href: "#",
+        href: "/health-programs",
         dropdown: {
             image: "/images/health-insurance.png",
             subtitle: "Health Quotation",
@@ -57,9 +57,9 @@ const NAV_CHIPS: NavChipConfig[] = [
         },
     },
     { label: "Home", href: "/home-insurance" },
-    { label: "Life", href: "#" },
+    { label: "Life", href: "/life-insurance" },
     { label: "SME", href: "/sme-insurance" },
-    { label: "Foreigner", href: "#" },
+    { label: "Foreigner", href: "/foreigner-insurance" },
     { label: "Travel", href: "/travel-insurance" },
     { label: "Marine", href: "/marine-insurance" },
 ];
@@ -171,7 +171,7 @@ export function MainNavbar() {
         },
         {
             label: "Health",
-            href: "#",
+            href: "/health-programs",
             children: [
                 { label: "Health Insurance", href: "#" },
                 { label: "Dental Insurance", href: "#" },
@@ -187,7 +187,7 @@ export function MainNavbar() {
         },
         {
             label: "Life",
-            href: "#",
+            href: "/life-insurance",
             children: [
                 { label: "Life Insurance", href: "#" },
                 {
