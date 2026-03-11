@@ -151,64 +151,54 @@ export function MainNavbar() {
     const activeDropdown = NAV_CHIPS.find((c) => c.label === activeChip)?.dropdown ?? null;
     const isDropdownOpen = activeDropdown !== null;
 
-    // Mobile menu nav items
+    // Mobile menu nav items — matching Figma design
     const navItems = [
-        {
-            label: "Use your insurance",
-            href: "#",
-            children: [
-                { label: "Report a claim", href: "#" },
-                { label: "Track a claim", href: "#" },
-            ]
-        },
         {
             label: "Motor",
             href: "/motor",
             children: [
-                { label: "Car Insurance", href: "#" },
-                { label: "Motorcycle Insurance", href: "#" },
+                { label: "Compulsory", href: "#" },
+                { label: "Third Party Liability", href: "#" },
+                { label: "All Risk", href: "#" },
             ]
         },
         {
             label: "Health",
             href: "/health-programs",
             children: [
-                { label: "Health Insurance", href: "#" },
-                { label: "Dental Insurance", href: "#" },
+                { label: "Individual medical insurance", href: "/health-individuals" },
+                { label: "Corporate medical insurance", href: "/health-corporate" },
             ]
         },
         {
-            label: "Damages",
-            href: "#",
-            children: [
-                { label: "Home Insurance", href: "/home-insurance" },
-                { label: "SME Insurance", href: "/sme-insurance" },
-            ]
+            label: "Home",
+            href: "/home-insurance",
+            children: []
         },
         {
             label: "Life",
             href: "/life-insurance",
-            children: [
-                { label: "Life Insurance", href: "#" },
-                {
-                    label: "Savings", href: "#", children: [
-                        { label: "Insurance", href: "#" },
-                        { label: "Savings", href: "#" },
-                    ]
-                },
-            ]
+            children: []
         },
         {
-            label: "General Terms and Conditions",
-            href: "#",
-            variant: "secondary" as const
+            label: "SME",
+            href: "/sme-insurance",
+            children: []
         },
         {
-            label: "Regulation",
-            href: "#",
-            children: [
-                { label: "Regulations", href: "#" },
-            ]
+            label: "Foreigner",
+            href: "/foreigner-insurance",
+            children: []
+        },
+        {
+            label: "Travel",
+            href: "/travel-insurance",
+            children: []
+        },
+        {
+            label: "Marine",
+            href: "/marine-insurance",
+            children: []
         },
     ];
 
