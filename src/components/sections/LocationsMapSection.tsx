@@ -27,7 +27,7 @@ export interface LocationsMapSectionProps {
     center: MapCenter;
     zoom?: number;
     /** Optional Google Maps style override; defaults to AXA contact map theme. */
-    mapStyles?: google.maps.MapTypeStyle[];
+    mapStyles?: Record<string, unknown>[];
     branches?: ReadonlyArray<BranchLocation>;
     className?: string;
 }
@@ -35,7 +35,8 @@ export interface LocationsMapSectionProps {
 declare global {
     interface Window {
         initAxaLocationsMap?: () => void;
-        google?: typeof google;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        google?: any;
     }
 }
 
@@ -47,14 +48,15 @@ export function LocationsMapSection({
     className,
 }: LocationsMapSectionProps) {
     const mapRef = useRef<HTMLDivElement | null>(null);
-    const mapInstanceRef = useRef<google.maps.Map | null>(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const mapInstanceRef = useRef<any>(null);
     const branchesRef = useRef<ReadonlyArray<BranchLocation> | undefined>(branches);
     const [currentZoom, setCurrentZoom] = useState(zoom);
     const [selectedBranchId, setSelectedBranchId] = useState<string | null>(
         branches && branches.length > 0 ? branches[0].id : null
     );
 
-    const defaultStyles: google.maps.MapTypeStyle[] = [
+    const defaultStyles: Record<string, unknown>[] = [
         {
             featureType: "all",
             elementType: "labels.text.fill",
@@ -138,7 +140,7 @@ export function LocationsMapSection({
             const currentBranches = branchesRef.current;
             if (currentBranches && currentBranches.length > 0) {
                 const encodedSvg = encodeURIComponent(AXA_PIN_SVG.trim());
-                const pinIcon: google.maps.Icon = {
+                const pinIcon = {
                     url: `data:image/svg+xml;charset=UTF-8,${encodedSvg}`,
                     scaledSize: new window.google.maps.Size(37, 47),
                     anchor: new window.google.maps.Point(18.5, 47),
