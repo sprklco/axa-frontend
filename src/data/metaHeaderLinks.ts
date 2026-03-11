@@ -16,7 +16,7 @@ export const META_HEADER_LINKS: MetaHeaderLink[] = [
             { label: "Careers", href: "/careers" },
         ],
     },
-    { label: "FAQ", href: "/faq" },
+    { label: "FAQ", href: "#" },
     { label: "Contact", href: "/contact" },
     { label: "Login", href: "#" },
 ];

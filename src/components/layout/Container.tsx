@@ -4,6 +4,8 @@ interface ContainerProps {
     children: React.ReactNode;
     className?: string;
     as?: React.ElementType;
+    /** When true, removes default horizontal padding for full-bleed layouts (e.g. maps). */
+    noHorizontalPadding?: boolean;
 }
 
 /**
@@ -20,12 +22,14 @@ export function Container({
     children,
     className,
     as: Component = "div",
+    noHorizontalPadding = false,
 }: ContainerProps) {
     return (
         <Component
             className={cn(
-                "mx-auto max-w-lg px-4",
-                "lg:max-w-[1440px] lg:px-[72px]",
+                "mx-auto max-w-lg",
+                "lg:max-w-[1440px]",
+                noHorizontalPadding ? "px-0 lg:px-0" : "px-4 lg:px-[72px]",
                 className
             )}
         >
