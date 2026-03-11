@@ -64,6 +64,16 @@ export function BranchLocationsPanel({
         }
     }, [pageIndex, pageCount]);
 
+    useEffect(() => {
+        if (!selectedBranchId) return;
+        const index = branches.findIndex((b) => b.id === selectedBranchId);
+        if (index === -1) return;
+        const desiredPage = Math.floor(index / PAGE_SIZE);
+        if (desiredPage !== pageIndex) {
+            setPageIndex(desiredPage);
+        }
+    }, [selectedBranchId, branches, pageIndex]);
+
     const start = pageIndex * PAGE_SIZE;
     const pageBranches = branches.slice(start, start + PAGE_SIZE);
 
@@ -168,7 +178,12 @@ export function BranchLocationsPanel({
                     <div className="inline-flex w-full max-w-[444px] items-center justify-center gap-8 rounded-[8px] bg-white px-4 py-2 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
                         <button
                             type="button"
-                            onClick={() => pageIndex > 0 && setPageIndex(pageIndex - 1)}
+                            onClick={() => {
+                                if (pageIndex > 0) {
+                                    handleSelect(null);
+                                    setPageIndex(pageIndex - 1);
+                                }
+                            }}
                             disabled={pageIndex === 0}
                             className={cn(
                                 "flex h-6 w-6 items-center justify-center rounded-full text-[#00008f] transition-colors",
@@ -188,7 +203,12 @@ export function BranchLocationsPanel({
                                     <button
                                         key={index}
                                         type="button"
-                                        onClick={() => setPageIndex(index)}
+                                        onClick={() => {
+                                            if (index !== pageIndex) {
+                                                handleSelect(null);
+                                                setPageIndex(index);
+                                            }
+                                        }}
                                         className={cn(
                                             "min-w-[32px] rounded-full px-3 py-1 text-center text-[18px] leading-[26px] font-source-sans transition-colors",
                                             isActive
@@ -205,7 +225,12 @@ export function BranchLocationsPanel({
 
                         <button
                             type="button"
-                            onClick={() => pageIndex < pageCount - 1 && setPageIndex(pageIndex + 1)}
+                            onClick={() => {
+                                if (pageIndex < pageCount - 1) {
+                                    handleSelect(null);
+                                    setPageIndex(pageIndex + 1);
+                                }
+                            }}
                             disabled={pageIndex === pageCount - 1}
                             className={cn(
                                 "flex h-6 w-6 items-center justify-center rounded-full text-[#00008f] transition-colors",

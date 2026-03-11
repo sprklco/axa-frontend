@@ -11,6 +11,18 @@ type MapCenter = {
     lng: number;
 };
 
+const AXA_PIN_SVG = `
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+  <mask id="mask0_axa_pin" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="56" height="56">
+    <rect width="56" height="56" fill="#D9D9D9"/>
+  </mask>
+  <g mask="url(#mask0_axa_pin)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M28 50.6902C33.562 45.8487 37.9593 40.9249 41.1919 35.9188C44.4244 30.9126 46.0407 26.5829 46.0407 22.9296C46.0407 17.5156 44.3268 13.047 40.8989 9.52396C37.471 6.0014 33.1714 4.24011 28 4.24011C22.8286 4.24011 18.529 6.0014 15.1011 9.52396C11.6732 13.047 9.95931 17.5156 9.95931 22.9296C9.95931 26.5829 11.5756 30.9126 14.8081 35.9188C18.0407 40.9249 22.438 45.8487 28 50.6902Z" fill="#00008F"/>
+  </g>
+  <path d="M30.6316 16.6116H35.5L24.3684 30.3259H19.5L30.6316 16.6116Z" fill="#FF1721"/>
+</svg>
+`;
+
 export interface LocationsMapSectionProps {
     center: MapCenter;
     zoom?: number;
@@ -36,6 +48,7 @@ export function LocationsMapSection({
 }: LocationsMapSectionProps) {
     const mapRef = useRef<HTMLDivElement | null>(null);
     const mapInstanceRef = useRef<google.maps.Map | null>(null);
+    const branchesRef = useRef<ReadonlyArray<BranchLocation> | undefined>(branches);
     const [currentZoom, setCurrentZoom] = useState(zoom);
     const [selectedBranchId, setSelectedBranchId] = useState<string | null>(
         branches && branches.length > 0 ? branches[0].id : null
@@ -90,6 +103,10 @@ export function LocationsMapSection({
     ];
 
     useEffect(() => {
+        branchesRef.current = branches;
+    }, [branches]);
+
+    useEffect(() => {
         if (typeof window === "undefined") return;
         if (!mapRef.current) return;
 
@@ -118,13 +135,25 @@ export function LocationsMapSection({
                 }
             });
 
-            if (branches && branches.length > 0) {
-                branches.forEach((branch) => {
-                    // eslint-disable-next-line no-new
-                    new window.google.maps.Marker({
+            const currentBranches = branchesRef.current;
+            if (currentBranches && currentBranches.length > 0) {
+                const encodedSvg = encodeURIComponent(AXA_PIN_SVG.trim());
+                const pinIcon: google.maps.Icon = {
+                    url: `data:image/svg+xml;charset=UTF-8,${encodedSvg}`,
+                    scaledSize: new window.google.maps.Size(37, 47),
+                    anchor: new window.google.maps.Point(18.5, 47),
+                };
+
+                currentBranches.forEach((branch) => {
+                    const marker = new window.google.maps.Marker({
                         position: { lat: branch.lat, lng: branch.lng },
                         map: styledMap,
                         title: branch.name,
+                        icon: pinIcon,
+                    });
+
+                    marker.addListener("click", () => {
+                        setSelectedBranchId(branch.id);
                     });
                 });
             }
@@ -164,7 +193,7 @@ export function LocationsMapSection({
         return () => {
             script.removeEventListener("load", initMap);
         };
-    }, [center.lat, center.lng, zoom, mapStyles, branches]);
+    }, [center.lat, center.lng, zoom, mapStyles]);
 
     const handleZoomChange = (direction: "in" | "out") => {
         const map = mapInstanceRef.current;
