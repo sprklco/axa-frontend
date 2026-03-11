@@ -33,7 +33,7 @@ const NAV_CHIPS: NavChipConfig[] = [
             subtitle: "Motor Quotation",
             heading: "Calculate your motor insurance and drive towards your best choice",
             ctaLabel: "Quote now",
-            ctaHref: "#",
+            ctaHref: "/coming-soon",
             links: [
                 { label: "Compulsory", href: "#" },
                 { label: "Third Party Liability", href: "#" },

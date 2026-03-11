@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/layout/Container";
 import type { ProductsSectionData } from "@/types/products";
@@ -20,6 +21,16 @@ const DRAG_THRESHOLD = 60;
 export function ProductsSection({ data, className }: ProductsSectionProps) {
     const { eyebrow, title, products } = data;
     const n = products.length;
+
+    const router = useRouter();
+
+    const productRoutes: Record<string, string> = {
+        motor: "/motor",
+        health: "/health-individuals",
+        travel: "/travel-insurance",
+        life: "/life-insurance",
+        home: "/home-insurance",
+    };
 
     /* ── Mobile: update active index on scroll ── */
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -277,8 +288,10 @@ export function ProductsSection({ data, className }: ProductsSectionProps) {
                                             type="button"
                                             onClick={() => {
                                                 if (isLarge) {
-                                                    // Large card = navigate to product
-                                                    window.location.href = `#${product.id}`;
+                                                    const route = productRoutes[product.id];
+                                                    if (route) {
+                                                        router.push(route);
+                                                    }
                                                 } else {
                                                     // Small card = make it the selected card
                                                     advanceBy(slotIndex);
