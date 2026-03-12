@@ -3,6 +3,11 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/layout/Container";
 import { KeyBenefitsSection } from "@/components/sections/KeyBenefitsSection";
 import { FeatureTabsSection } from "@/components/sections/FeatureTabsSection";
+import {
+    HighlightBannersSection,
+    type HighlightBanner,
+    type HighlightBannerTab,
+} from "@/components/sections/HighlightBannersSection";
 import { HelpSectionWithCallback as HelpSection } from "@/components/sections/HelpSectionWithCallback";
 import { foreignerInsuranceFeatures } from "@/data/foreignerInsuranceFeatures";
 
@@ -27,6 +32,51 @@ const introItems = [
         title: "Business Protection",
         description:
             "Coverage for accidents, disability, death, and repatriation, helping safeguard both employees and business stability.",
+    },
+];
+
+const foreignerHighlightBanner: HighlightBanner = {
+    id: "foreigner-main",
+    imageSrc: "/images/foreigner-insurance-coverage.jpg",
+    imageAlt: "Healthcare professional supporting a foreign worker in a hospital setting",
+    title: "Insurance for foreign workers",
+    lead: "What does foreign worker insurance include?",
+    bullets: [
+        "Upper financial limitation",
+        "Variation in network",
+        "Three transactions ambulatory",
+        "One built in laboratory test",
+    ],
+    optionalHeading: "We offer the following mandatory coverage options:",
+    options: [
+        {
+            id: "option-1",
+            title: "Option 1 (as per Ministry of Lebanon Rules)",
+            bullets: [
+                "We offer annual hospitalization limit up to USD 23,000 in addition to the cost of one laboratory test inclusive in IN hospital rates.",
+                "We cover death and repatriation limit up to USD 8,000.",
+                "We cover personal accident in case of partial or total disablement up to USD 10,000.",
+            ],
+        },
+        {
+            id: "option-2",
+            title: "Option 2",
+            bullets: [
+                "We offer annual hospitalization limit up to USD 75,000 in addition to the cost of one laboratory test inclusive in IN Hospital rates.",
+                "We cover death and repatriation limit up to USD 8,000.",
+                "We cover personal accident in case of partial or total disablement up to USD 10,000.",
+            ],
+        },
+    ],
+    ctaLabel: "Download full coverage details",
+    ctaHref: "#",
+} as const;
+
+const foreignerHighlightBannerTabs: HighlightBannerTab[] = [
+    {
+        id: "foreigner",
+        label: "Foreigner Insurance",
+        banner: foreignerHighlightBanner,
     },
 ];
 
@@ -80,7 +130,12 @@ export default function ForeignerInsurancePage() {
                 />
 
                 {/* Feature Tabs Section (Ministry-Compliant / Enhanced) */}
-                <FeatureTabsSection plans={foreignerInsuranceFeatures} autoScroll />
+                <FeatureTabsSection
+                    plans={foreignerInsuranceFeatures}
+                    autoScroll
+                />
+
+                <HighlightBannersSection tabs={foreignerHighlightBannerTabs} />
 
                 {/* Need Help Section */}
                 <HelpSection
