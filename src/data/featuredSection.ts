@@ -15,7 +15,7 @@ export const featuredSectionData: FeaturedSectionData = {
     phoneLabel: "Call us anytime 24/7 at",
     phoneNumber: "04 - 727 000",
     phoneLabelMobile: "You can also call us at",
-    phoneNumberMobile: "800 944 8471",
+    phoneNumberMobile: "04 - 727 000",
     quoteLabel: "Quote online",
     callbackLabel: "Get a callback",
     callbackFormSendLabel: "Send to",

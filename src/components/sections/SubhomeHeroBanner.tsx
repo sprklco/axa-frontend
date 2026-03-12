@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/CTAButton";
+import { CallbackModal } from "@/components/ui/CallbackModal";
 import { User, Phone, Mail } from "lucide-react";
 
 export interface SubhomeHeroBannerProps {
@@ -22,6 +24,8 @@ export function SubhomeHeroBanner({
     ctaText,
     ctaHref = "#",
 }: SubhomeHeroBannerProps) {
+    const [isCallbackOpen, setIsCallbackOpen] = useState(false);
+
     return (
         <section className="relative flex min-h-[500px] w-full flex-col items-center overflow-hidden md:min-h-[742px] lg:items-start">
             {/* Background Image & Gradient Overlay */}
@@ -51,10 +55,10 @@ export function SubhomeHeroBanner({
                 />
             </div>
 
-            {/* Content Container - stacked flex-col to match the design's bottom alignment */}
-            <Container className="relative flex w-full flex-1 flex-col justify-end gap-12 pb-8 pt-[170px] md:pb-12 md:pt-[180px] lg:pb-12">
+            {/* Content Container */}
+            <Container className="relative flex w-full flex-1 flex-col justify-end gap-8 pb-8 pt-[170px] md:gap-12 md:pb-12 md:pt-[180px] lg:pb-12">
 
-                {/* Text Content (Left aligned visually but inside the flex-col) */}
+                {/* Text Content */}
                 <div className="flex w-full flex-col gap-4 animate-fade-in-up">
                     {title && (
                         <p className="font-source-sans text-base font-semibold md:font-normal md:text-2xl text-white">
@@ -80,7 +84,35 @@ export function SubhomeHeroBanner({
                     )}
                 </div>
 
-                {/* Fast Leads - Form positioned towards bottom right on desktop */}
+                {/* ─── Mobile: "Get a callback" button + "Or call us" ─── */}
+                <div className="flex flex-col items-center gap-8 md:hidden animate-fade-in-up-delay">
+                    <div className="flex w-full flex-col items-center gap-4">
+                        <Button
+                            variant="ghost"
+                            size="lg"
+                            fullWidth
+                            onClick={() => setIsCallbackOpen(true)}
+                            className="h-[56px]"
+                        >
+                            Get a callback
+                        </Button>
+                    </div>
+
+                    {/* Or Call Us */}
+                    <div className="flex items-center gap-1">
+                        <span className="font-source-sans text-base text-white">
+                            Or call us at
+                        </span>
+                        <div className="flex items-center gap-1">
+                            <Phone className="h-[18px] w-[18px] text-white/80" />
+                            <span className="font-source-sans text-base font-semibold text-white/80">
+                                04 - 727 000
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* ─── Desktop: Inline Fast Leads form ─── */}
                 <div className="hidden md:flex w-full flex-col gap-2 md:items-end animate-fade-in-up-delay">
                     {/* The Input Row */}
                     <div className="flex flex-col md:flex-row items-center gap-4 md:gap-0 rounded-xl md:rounded-lg bg-[#535353]/50 p-4 md:h-[56px] md:p-2 backdrop-blur-lg">
@@ -146,6 +178,12 @@ export function SubhomeHeroBanner({
                     </div>
                 </div>
             </Container>
+
+            {/* Callback Modal (mobile) */}
+            <CallbackModal
+                isOpen={isCallbackOpen}
+                onClose={() => setIsCallbackOpen(false)}
+            />
         </section>
     );
 }
