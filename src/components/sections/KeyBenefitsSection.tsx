@@ -602,7 +602,7 @@ export function KeyBenefitsSection({
             {eyebrow}
           </p>
         )}
-        <h2 className="font-brand-text text-[32px] leading-[40px] text-[#1a1d21]">
+        <h2 className="font-brand-text text-[32px] leading-[40px] font-bold text-[#1a1d21]">
           {heading}
         </h2>
         <p className="font-source-sans text-[16px] leading-[24px] text-[#1a1d21] max-w-[682px]">
