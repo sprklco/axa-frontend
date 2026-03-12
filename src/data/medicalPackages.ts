@@ -7,6 +7,7 @@ export const medicalPackagesData: ComparisonData = {
     packageWidthClassName: "w-[160px] md:w-[375px]",
     headerWidthClassName: "w-[140px] md:w-[365px]",
     minWidthClassName: "min-w-[600px] md:min-w-[1096px]",
+    ctaHref: "/health-programs",
     ctaText: "See complete list of coverage",
     features: [
         { id: "geographic", label: "Geographic coverage" },

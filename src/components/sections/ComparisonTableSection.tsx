@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/CTAButton";
+import Link from "next/link";
 
 export interface FeatureRow {
     id: string;
@@ -23,6 +24,7 @@ export interface ComparisonData {
     features: FeatureRow[];
     packages: PackageColumn[];
     ctaText?: string;
+    ctaHref?: string;
     labelWidthClassName?: string;
     packageWidthClassName?: string;
     headerWidthClassName?: string;
@@ -146,8 +148,8 @@ export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
                                 <button
                                     onClick={() => toggleAccordion(pkg.id)}
                                     className={`flex h-[68px] w-full items-center justify-between px-5 transition-colors duration-200 ${isOpen
-                                            ? "bg-[#0c0e45]"
-                                            : "bg-white"
+                                        ? "bg-[#0c0e45]"
+                                        : "bg-white"
                                         }`}
                                     aria-expanded={isOpen}
                                 >
@@ -159,8 +161,8 @@ export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
                                     </span>
                                     <ChevronDown
                                         className={`h-5 w-5 transition-transform duration-200 ${isOpen
-                                                ? "rotate-180 text-white"
-                                                : "text-[#0c0e45]"
+                                            ? "rotate-180 text-white"
+                                            : "text-[#0c0e45]"
                                             }`}
                                     />
                                 </button>
@@ -176,8 +178,8 @@ export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
                                                 <div
                                                     key={feature.id}
                                                     className={`flex flex-col gap-[6px] border-t border-[#f3f4f6] pb-4 pl-4 pt-[17px] ${isAlternateRow
-                                                            ? "bg-[#f8faff]"
-                                                            : "bg-white"
+                                                        ? "bg-[#f8faff]"
+                                                        : "bg-white"
                                                         }`}
                                                 >
                                                     {/* Feature Label */}
@@ -219,7 +221,9 @@ export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
                 {data.ctaText && (
                     <div className="mt-8 flex w-full justify-center px-4 md:px-0">
                         <Button variant="secondary" size="md" className="w-full md:w-auto">
-                            {data.ctaText}
+                            <Link href={data.ctaHref || "#"}>
+                                {data.ctaText}
+                            </Link>
                         </Button>
                     </div>
                 )}

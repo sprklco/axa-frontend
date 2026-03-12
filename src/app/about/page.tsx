@@ -38,6 +38,7 @@ export default function AboutPage() {
                         heading={hero.heading}
                         description={hero.description}
                         imageSrc={hero.imageSrc}
+                        showCallback={false}
                     />
                 </div>
 

@@ -20,6 +20,7 @@ export default function AboutHistoryPage() {
                         heading={hero.heading}
                         description={hero.description}
                         imageSrc={hero.imageSrc}
+                        showCallback={false}
                     />
                 </div>
 
