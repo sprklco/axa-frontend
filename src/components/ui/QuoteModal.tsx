@@ -96,7 +96,7 @@ export function QuoteModal({
             {/* Panel */}
             <div
                 ref={panelRef}
-                className="relative mx-auto flex w-full max-w-[1038px] flex-col items-center gap-2 rounded-xl bg-white px-6 pb-6 pt-5"
+                className="relative mx-auto flex w-full max-w-[1038px] flex-col items-center gap-6 rounded-xl bg-white px-6 pb-8 pt-5 md:gap-8 md:pb-6"
             >
                 {/* Close button */}
                 <div className="flex w-full items-center justify-end">
@@ -127,8 +127,8 @@ export function QuoteModal({
                     <div className="flex w-full flex-col items-center gap-8">
                         {/* Titles */}
                         <div className="flex w-full flex-col items-center gap-10">
-                            <div className="flex w-full flex-col items-start gap-4 text-center">
-                                <h2 className="w-full font-headline text-[32px] font-light leading-[40px] text-[#1a1d21]">
+                            <div className="flex w-full flex-col items-start gap-2 text-center md:gap-4">
+                                <h2 className="w-full font-headline text-[24px] font-light leading-[32px] text-[#1a1d21] md:text-[32px] md:leading-[40px]">
                                     {title}
                                 </h2>
                                 <p className="w-full font-source-sans text-[16px] leading-[24px] text-[#434956]">
@@ -136,11 +136,11 @@ export function QuoteModal({
                                 </p>
                             </div>
 
-                            {/* Unified Text Field */}
-                            <div className="flex h-[56px] w-fit items-center justify-center rounded-lg bg-[#f7f7f8] px-4 py-2">
-                                <div className="flex items-center justify-center gap-8">
+                            {/* Unified Text Field Row/Stack */}
+                            <div className="flex w-full items-center justify-center rounded-lg bg-[#f7f7f8] p-4 md:h-[56px] md:w-fit md:px-4 md:py-2">
+                                <div className="flex w-full flex-col gap-4 md:flex-row md:items-center md:justify-center md:gap-8">
                                     {/* Name */}
-                                    <div className="flex w-[117px] items-center gap-2 pr-4">
+                                    <div className="flex w-full items-center gap-2 md:w-[117px] md:pr-4">
                                         <svg
                                             width="18"
                                             height="18"
@@ -162,11 +162,12 @@ export function QuoteModal({
                                         />
                                     </div>
 
-                                    {/* Divider */}
-                                    <div className="h-4 w-px rotate-0 bg-[rgba(43,48,59,0.15)]" />
+                                    {/* Divider (Desktop) / Line (Mobile) */}
+                                    <div className="hidden h-4 w-px bg-[rgba(43,48,59,0.15)] md:block" />
+                                    <div className="h-px w-full bg-[#e0e0e0] md:hidden" />
 
                                     {/* Phone */}
-                                    <div className="flex w-[140px] items-center gap-2 pr-4">
+                                    <div className="flex w-full items-center gap-2 md:w-[140px] md:pr-4">
                                         <svg
                                             width="18"
                                             height="18"
@@ -188,11 +189,12 @@ export function QuoteModal({
                                         />
                                     </div>
 
-                                    {/* Divider */}
-                                    <div className="h-4 w-px rotate-0 bg-[rgba(43,48,59,0.15)]" />
+                                    {/* Divider (Desktop) / Line (Mobile) */}
+                                    <div className="hidden h-4 w-px bg-[rgba(43,48,59,0.15)] md:block" />
+                                    <div className="h-px w-full bg-[#e0e0e0] md:hidden" />
 
                                     {/* Email */}
-                                    <div className="flex w-[206px] items-center gap-2">
+                                    <div className="flex w-full items-center gap-2 md:w-[206px]">
                                         <svg
                                             width="18"
                                             height="18"
@@ -220,7 +222,7 @@ export function QuoteModal({
                         {/* Submit Button */}
                         <button
                             type="button"
-                            className="flex h-[56px] items-center justify-center gap-2 rounded-full border border-[rgba(0,0,0,0.3)] px-8 py-4 font-source-sans text-[16px] font-semibold leading-[24px] text-[rgba(0,0,0,0.3)] transition-colors hover:border-[#00008f] hover:text-[#00008f]"
+                            className="flex h-[56px] w-full items-center justify-center gap-2 rounded-full border border-[rgba(0,0,0,0.3)] px-8 py-4 font-source-sans text-[16px] font-semibold leading-[24px] text-[rgba(0,0,0,0.3)] transition-colors hover:border-[#00008f] hover:text-[#00008f] md:w-auto"
                         >
                             {submitLabel}
                         </button>
