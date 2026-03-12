@@ -44,11 +44,11 @@ export function MobileMenu({ items, isOpen, onClose }: MobileMenuProps) {
         <div
             className={cn(
                 "absolute top-full left-0 w-full z-40 bg-white shadow-xl overflow-hidden transition-all duration-300 ease-in-out origin-top",
-                isOpen ? "max-h-[85vh] opacity-100 rounded-b-xl" : "max-h-0 opacity-0 rounded-none pointer-events-none"
+                isOpen ? "max-h-[calc(100dvh-130px)] opacity-100 rounded-b-xl" : "max-h-0 opacity-0 rounded-none pointer-events-none"
             )}
             style={{ marginTop: '4px' }}
         >
-            <div className="flex flex-col h-full max-h-[85vh] overflow-y-auto">
+            <div className="flex flex-col h-full max-h-[calc(100dvh-130px)] overflow-y-auto">
 
                 {/* ── Header: Logo + Search + Close ── */}
                 <div className="flex items-center justify-between px-4 py-3 sticky top-0 bg-white z-10">
