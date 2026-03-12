@@ -1,7 +1,7 @@
 import { SubhomeHeroBanner } from "@/components/sections/SubhomeHeroBanner";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/layout/Container";
-import { ProductIntroSection } from "@/components/sections/ProductIntroSection";
+import { KeyBenefitsSection } from "@/components/sections/KeyBenefitsSection";
 import { FeatureTabsSection } from "@/components/sections/FeatureTabsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { contactSectionData } from "@/data/contactSection";
@@ -10,23 +10,23 @@ import { foreignerInsuranceFeatures } from "@/data/foreignerInsuranceFeatures";
 const introItems = [
     {
         id: "hospital-coverage",
-        iconSrc: "/images/benefits/hospital-coverage.svg",
+        icon: "hospitalCoverage" as const,
         title: "Hospital Coverage",
-        subtitle:
+        description:
             "Comprehensive in-hospital medical and surgical treatment for foreign workers.",
     },
     {
         id: "regulatory-compliance",
-        iconSrc: "/images/benefits/regulatory-compliance.svg",
+        icon: "regulatoryCompliance" as const,
         title: "Regulatory Compliance",
-        subtitle:
+        description:
             "Structured in line with Lebanese Ministry requirements to ensure full compliance.",
     },
     {
         id: "business-protection",
-        iconSrc: "/images/benefits/business-protection.svg",
+        icon: "businessProtection" as const,
         title: "Business Protection",
-        subtitle:
+        description:
             "Coverage for accidents, disability, death, and repatriation, helping safeguard both employees and business stability.",
     },
 ];
@@ -58,7 +58,7 @@ export default function ForeignerInsurancePage() {
                 </div>
 
                 {/* Product Intro Section */}
-                <ProductIntroSection
+                <KeyBenefitsSection
                     heading="Protection for Foreign Workers"
                     description="Providing appropriate coverage is a regulatory requirement. It also supports operational continuity by protecting foreign employees in the event of illness or accident."
                     items={introItems}

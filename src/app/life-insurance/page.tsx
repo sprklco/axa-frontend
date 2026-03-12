@@ -1,7 +1,7 @@
 import { SubhomeHeroBanner } from "@/components/sections/SubhomeHeroBanner";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/layout/Container";
-import { ProductIntroSection } from "@/components/sections/ProductIntroSection";
+import { KeyBenefitsSection } from "@/components/sections/KeyBenefitsSection";
 import { TabbedProductCardsSection } from "@/components/sections/TabbedProductCardsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { contactSectionData } from "@/data/contactSection";
@@ -13,21 +13,21 @@ import {
 const introItems = [
     {
         id: "financial-protection",
-        iconSrc: "/images/benefits/money-bill.svg",
+        icon: "financialProtection" as const,
         title: "Financial protection",
-        subtitle: "when it matters most",
+        description: "when it matters most",
     },
     {
         id: "savings-investment",
-        iconSrc: "/images/benefits/chart-growth.svg",
+        icon: "savingsInvestment" as const,
         title: "Savings and investment",
-        subtitle: "opportunities over time",
+        description: "opportunities over time",
     },
     {
         id: "long-term-security",
-        iconSrc: "/images/benefits/secure.svg",
+        icon: "longTermSecurity" as const,
         title: "Long-term security",
-        subtitle: "for your loved ones",
+        description: "for your loved ones",
     },
 ];
 
@@ -58,7 +58,7 @@ export default function LifeInsurancePage() {
                 </div>
 
                 {/* Product Intro Section */}
-                <ProductIntroSection
+                <KeyBenefitsSection
                     heading="Life Insurance for Today and Tomorrow"
                     description="Life insurance provides financial protection for the people who depend on you, while helping you build savings and plan for the future. Designed to adapt as your needs evolve, it supports long-term security with clarity and confidence."
                     items={introItems}

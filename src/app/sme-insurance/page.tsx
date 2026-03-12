@@ -1,5 +1,5 @@
 import { SubhomeHeroBanner } from "@/components/sections/SubhomeHeroBanner";
-import { ThreeColumnFeatureSection } from "@/components/sections/ThreeColumnFeatureSection";
+import { KeyBenefitsSection } from "@/components/sections/KeyBenefitsSection";
 import {
     HighlightBannersSection,
     type HighlightBanner,
@@ -114,7 +114,7 @@ export default function SmeInsurancePage() {
                     </Container>
                 </div>
 
-                <ThreeColumnFeatureSection
+                <KeyBenefitsSection
                     heading={buildingBusinessResilienceSection.heading}
                     description={buildingBusinessResilienceSection.description}
                     items={buildingBusinessResilienceSection.items}

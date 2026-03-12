@@ -6,8 +6,34 @@ import { motorPlans } from "@/data/motorPlans";
 import { ComparisonTableSection } from "@/components/sections/ComparisonTableSection";
 import { motorPackagesData } from "@/data/motorPackages";
 import { BannerSection } from "@/components/sections/BannerSection";
-import { BenefitsSection } from "@/components/sections/BenefitsSection";
+import { KeyBenefitsSection } from "@/components/sections/KeyBenefitsSection";
 import { Download } from "lucide-react";
+
+const motorBenefitsSection = {
+    heading: "Peace of Mind Wherever You Go",
+    description:
+        "Drive with confidence knowing you have access to trusted repair shops, fast claim recovery, and high-quality bodywork and painting.",
+    items: [
+        {
+            id: "trusted",
+            icon: "propertyAssets" as const,
+            title: "Trusted",
+            description: "repair shops",
+        },
+        {
+            id: "fast",
+            icon: "businessContinuity" as const,
+            title: "Fast",
+            description: "motor claim recovery",
+        },
+        {
+            id: "quality",
+            icon: "shield" as const,
+            title: "Quality",
+            description: "in bodywork and painting",
+        },
+    ] as const,
+} as const;
 
 export default function MotorPage() {
     return (
@@ -34,30 +60,10 @@ export default function MotorPage() {
                         />
                     </Container>
                 </div>
-                <BenefitsSection
-                    heading="Peace of Mind Wherever You Go"
-                    benefits={[
-                        {
-                            id: "trusted",
-                            iconUrl: "/images/benefits/trusted.svg",
-                            title: "Trusted",
-                            description: "repair shops",
-                            IconStyle: { aspectRatio: 1 }
-                        },
-                        {
-                            id: "fast",
-                            iconUrl: "/images/benefits/fast.svg",
-                            title: "Fast",
-                            description: "motor claim recovery",
-                            IconStyle: { aspectRatio: 1 }
-                        },
-                        {
-                            id: "quality",
-                            iconUrl: "/images/benefits/quality.svg",
-                            title: "Quality",
-                            description: "in bodywork and painting",
-                        },
-                    ]}
+                <KeyBenefitsSection
+                    heading={motorBenefitsSection.heading}
+                    description={motorBenefitsSection.description}
+                    items={motorBenefitsSection.items}
                 />
                 {/* Motor Plans Section */}
                 <FeatureTabsSection plans={motorPlans} autoScroll />
