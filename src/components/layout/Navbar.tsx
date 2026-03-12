@@ -43,7 +43,7 @@ const NAV_CHIPS: NavChipConfig[] = [
     },
     {
         label: "Health",
-        href: "/health-programs",
+        href: "/health-individuals",
         dropdown: {
             image: "/images/health-insurance.png",
             subtitle: "Health Quotation",
@@ -164,7 +164,7 @@ export function MainNavbar() {
         },
         {
             label: "Health",
-            href: "/health-programs",
+            href: "/health-individuals",
             children: [
                 { label: "Individual medical insurance", href: "/health-individuals" },
                 { label: "Corporate medical insurance", href: "/health-corporate" },
@@ -183,6 +183,7 @@ export function MainNavbar() {
         {
             label: "SME",
             href: "/sme-insurance",
+
             children: []
         },
         {

@@ -29,6 +29,7 @@ export default function SustainabilityPage() {
                         heading={hero.heading}
                         description={hero.description}
                         imageSrc={hero.imageSrc}
+                        showCallback={false}
                     />
                 </div>
 

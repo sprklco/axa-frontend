@@ -38,7 +38,7 @@ export const motorPackagesData: ComparisonData = {
             label: "Platinum",
             features: {
                 age: "3 years / 5 years / 7 years",
-                value: "(1) 0-19,995: 3Y\n(2) 20,005-49,995: 5Y (3) 50,005-99,995: 7Y (4) 100,005 & above: 7Y",
+                value: "0-19,995: 3Y\n20,005-49,995: 5Y \n50,005-99,995: 7Y \n100,005 & above: 7Y",
                 excess: "-",
                 dealer: true,
                 depreciation: "-",
