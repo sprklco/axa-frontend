@@ -1,35 +1,100 @@
 import { SubhomeHeroBanner } from "@/components/sections/SubhomeHeroBanner";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/layout/Container";
-import { ProductIntroSection } from "@/components/sections/ProductIntroSection";
+import { KeyBenefitsSection } from "@/components/sections/KeyBenefitsSection";
 import { FeatureTabsSection } from "@/components/sections/FeatureTabsSection";
-import { ContactSection } from "@/components/sections/ContactSection";
-import { contactSectionData } from "@/data/contactSection";
+import {
+    HighlightBannersSection,
+    type HighlightBanner,
+    type HighlightBannerTab,
+} from "@/components/sections/HighlightBannersSection";
+import { HelpSectionWithCallback as HelpSection } from "@/components/sections/HelpSectionWithCallback";
 import { foreignerInsuranceFeatures } from "@/data/foreignerInsuranceFeatures";
 
 const introItems = [
     {
         id: "hospital-coverage",
-        iconSrc: "/images/benefits/hospital-coverage.svg",
+        icon: "hospitalCoverage" as const,
         title: "Hospital Coverage",
-        subtitle:
+        description:
             "Comprehensive in-hospital medical and surgical treatment for foreign workers.",
     },
     {
         id: "regulatory-compliance",
-        iconSrc: "/images/benefits/regulatory-compliance.svg",
+        icon: "regulatoryCompliance" as const,
         title: "Regulatory Compliance",
-        subtitle:
+        description:
             "Structured in line with Lebanese Ministry requirements to ensure full compliance.",
     },
     {
         id: "business-protection",
-        iconSrc: "/images/benefits/business-protection.svg",
+        icon: "businessProtection" as const,
         title: "Business Protection",
-        subtitle:
+        description:
             "Coverage for accidents, disability, death, and repatriation, helping safeguard both employees and business stability.",
     },
 ];
+
+const foreignerHighlightBanner: HighlightBanner = {
+    id: "foreigner-main",
+    imageSrc: "/images/foreigner-insurance-coverage.jpg",
+    imageAlt: "Healthcare professional supporting a foreign worker in a hospital setting",
+    title: "Insurance for foreign workers",
+    lead: "What does foreign worker insurance include?",
+    bullets: [
+        "Upper financial limitation",
+        "Variation in network",
+        "Three transactions ambulatory",
+        "One built in laboratory test",
+    ],
+    optionalHeading: "We offer the following mandatory coverage options:",
+    options: [
+        {
+            id: "option-1",
+            title: "Option 1 (as per Ministry of Lebanon Rules)",
+            bullets: [
+                "We offer annual hospitalization limit up to USD 23,000 in addition to the cost of one laboratory test inclusive in IN hospital rates.",
+                "We cover death and repatriation limit up to USD 8,000.",
+                "We cover personal accident in case of partial or total disablement up to USD 10,000.",
+            ],
+        },
+        {
+            id: "option-2",
+            title: "Option 2",
+            bullets: [
+                "We offer annual hospitalization limit up to USD 75,000 in addition to the cost of one laboratory test inclusive in IN Hospital rates.",
+                "We cover death and repatriation limit up to USD 8,000.",
+                "We cover personal accident in case of partial or total disablement up to USD 10,000.",
+            ],
+        },
+    ],
+    ctaLabel: "Download full coverage details",
+    ctaHref: "#",
+} as const;
+
+const foreignerHighlightBannerTabs: HighlightBannerTab[] = [
+    {
+        id: "foreigner",
+        label: "Foreigner Insurance",
+        banner: foreignerHighlightBanner,
+    },
+];
+
+const needHelpSection = {
+    heading: "Need help?",
+    body: "If you have any emergency or need more help in the quotation process",
+    primaryCta: {
+        label: "04 - 727 000",
+        href: "tel:04727000",
+        variant: "primary" as const,
+        showPhoneIcon: true,
+    },
+    secondaryCta: {
+        label: "Request a callback",
+        href: "#",
+        variant: "secondary" as const,
+    },
+} as const;
 
 export default function ForeignerInsurancePage() {
     return (
@@ -58,17 +123,27 @@ export default function ForeignerInsurancePage() {
                 </div>
 
                 {/* Product Intro Section */}
-                <ProductIntroSection
+                <KeyBenefitsSection
                     heading="Protection for Foreign Workers"
                     description="Providing appropriate coverage is a regulatory requirement. It also supports operational continuity by protecting foreign employees in the event of illness or accident."
                     items={introItems}
                 />
 
                 {/* Feature Tabs Section (Ministry-Compliant / Enhanced) */}
-                <FeatureTabsSection plans={foreignerInsuranceFeatures} autoScroll />
+                <FeatureTabsSection
+                    plans={foreignerInsuranceFeatures}
+                    autoScroll
+                />
 
-                {/* Contact Section */}
-                <ContactSection data={contactSectionData} />
+                <HighlightBannersSection tabs={foreignerHighlightBannerTabs} />
+
+                {/* Need Help Section */}
+                <HelpSection
+                    heading={needHelpSection.heading}
+                    body={needHelpSection.body}
+                    primaryCta={needHelpSection.primaryCta}
+                    secondaryCta={needHelpSection.secondaryCta}
+                />
             </div>
         </main>
     );

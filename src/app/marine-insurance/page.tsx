@@ -1,5 +1,5 @@
 import { SubhomeHeroBanner } from "@/components/sections/SubhomeHeroBanner";
-import { ThreeColumnFeatureSection } from "@/components/sections/ThreeColumnFeatureSection";
+import { KeyBenefitsSection } from "@/components/sections/KeyBenefitsSection";
 import { type HighlightBanner } from "@/components/sections/HighlightBannersSection";
 import { HighlightBannerListSection } from "@/components/sections/HighlightBannerListSection";
 import { HelpSectionWithCallback as HelpSection } from "@/components/sections/HelpSectionWithCallback";
@@ -119,7 +119,7 @@ export default function MarineInsurancePage() {
                     </Container>
                 </div>
 
-                <ThreeColumnFeatureSection
+                <KeyBenefitsSection
                     heading={marineCoverageSection.heading}
                     description={marineCoverageSection.description}
                     items={marineCoverageSection.items}

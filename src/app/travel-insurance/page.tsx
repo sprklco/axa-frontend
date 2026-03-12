@@ -1,5 +1,5 @@
 import { SubhomeHeroBanner } from "@/components/sections/SubhomeHeroBanner";
-import { ThreeColumnFeatureSection } from "@/components/sections/ThreeColumnFeatureSection";
+import { KeyBenefitsSection } from "@/components/sections/KeyBenefitsSection";
 import {
     HighlightBannersSection,
     type HighlightBanner,
@@ -48,7 +48,7 @@ const travelBenefitsSection = {
 
 const travelHighlightBanner: HighlightBanner = {
     id: "travel-main",
-    imageSrc: "https://www.figma.com/api/mcp/asset/82125ff5-b2c4-4cbf-b789-0b0b4d45f803",
+    imageSrc: "/images/travel-content-banner.jpg",
     imageAlt: "Traveler walking through an airport terminal with luggage",
     title: "Travel Insurance",
     lead: "In the event of an emergency, contact AXA Assistance for immediate guidance. Hospitalisation arrangements and direct coordination can be provided worldwide.",
@@ -119,7 +119,7 @@ export default function TravelInsurancePage() {
                     </Container>
                 </div>
 
-                <ThreeColumnFeatureSection
+                <KeyBenefitsSection
                     heading={travelBenefitsSection.heading}
                     description={travelBenefitsSection.description}
                     items={travelBenefitsSection.items}

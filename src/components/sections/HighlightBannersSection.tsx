@@ -15,6 +15,11 @@ export interface HighlightBanner {
   bullets: string[];
   optionalHeading?: string;
   optionalBullets?: string[];
+  options?: {
+    id: string;
+    title: string;
+    bullets: string[];
+  }[];
   footnote?: string;
   ctaLabel: string;
   ctaHref: string;
@@ -130,17 +135,41 @@ export function HighlightBannersSection({
                 </p>
               )}
 
-              {banner.optionalHeading && (
+              {banner.options && banner.options.length > 0 ? (
                 <div className="font-source-sans text-[18px] leading-[26px] text-[#1a1d21]">
-                  <p className="mb-1">{banner.optionalHeading}</p>
-                  {banner.optionalBullets && (
-                    <ul className="list-disc space-y-1 pl-7">
-                      {banner.optionalBullets.map((bullet, index) => (
-                        <li key={index}>{bullet}</li>
-                      ))}
-                    </ul>
+                  {banner.optionalHeading && (
+                    <p className="mb-2">{banner.optionalHeading}</p>
                   )}
+                  <div className="space-y-3">
+                    {banner.options.map((option) => (
+                      <div key={option.id}>
+                        <p className="font-bold text-[18px] leading-[26px]">
+                          {option.title}
+                        </p>
+                        {option.bullets && option.bullets.length > 0 && (
+                          <ul className="list-disc space-y-1 pl-7">
+                            {option.bullets.map((bullet, index) => (
+                              <li key={index}>{bullet}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
+              ) : (
+                banner.optionalHeading && (
+                  <div className="font-source-sans text-[18px] leading-[26px] text-[#1a1d21]">
+                    <p className="mb-1">{banner.optionalHeading}</p>
+                    {banner.optionalBullets && (
+                      <ul className="list-disc space-y-1 pl-7">
+                        {banner.optionalBullets.map((bullet, index) => (
+                          <li key={index}>{bullet}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )
               )}
             </div>
 

@@ -3,7 +3,10 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/layout/Container";
 import { StrategyCardsSection } from "@/components/sections/StrategyCardsSection";
 import { InclusiveInsuranceSection } from "@/components/sections/InclusiveInsuranceSection";
-import { ClimateTransitionSection } from "@/components/sections/ClimateTransitionSection";
+import {
+    KeyBenefitsSection,
+    type FeatureItem,
+} from "@/components/sections/KeyBenefitsSection";
 import { sustainabilityPageData } from "@/data/sustainability";
 
 export default function SustainabilityPage() {
@@ -19,6 +22,26 @@ export default function SustainabilityPage() {
         climateSubtitle,
         climatePillars,
     } = sustainabilityPageData;
+
+    const climateItems: FeatureItem[] = climatePillars.map((pillar) => {
+        let icon: FeatureItem["icon"];
+
+        if (pillar.id === "education") {
+            icon = "climatePillar1";
+        } else if (pillar.id === "transition") {
+            icon = "climatePillar2";
+        } else if (pillar.id === "impact") {
+            icon = "climatePillar3";
+        }
+
+        return {
+            id: pillar.id,
+            icon,
+            title: pillar.title,
+            description: pillar.description,
+            footerItems: pillar.footerBullets,
+        };
+    });
 
     return (
         <main className="flex flex-1 flex-col">
@@ -56,11 +79,11 @@ export default function SustainabilityPage() {
                 <InclusiveInsuranceSection data={inclusiveInsurance} />
 
                 {/* Climate Transition */}
-                <ClimateTransitionSection
+                <KeyBenefitsSection
                     eyebrow={climateEyebrow}
                     heading={climateHeading}
-                    subtitle={climateSubtitle}
-                    pillars={climatePillars}
+                    description={climateSubtitle}
+                    items={climateItems}
                 />
             </div>
         </main>

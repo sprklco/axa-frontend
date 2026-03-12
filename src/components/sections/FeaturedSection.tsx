@@ -150,9 +150,6 @@ export function FeaturedSection({ data, className }: FeaturedSectionProps) {
 
                             {/* Action Buttons */}
                             <div className="grid grid-cols-2 gap-4">
-                                <Button variant="secondary" size="md" fullWidth className="font-bold">
-                                    {quoteLabel}
-                                </Button>
                                 <Button
                                     variant="danger"
                                     size="md"
@@ -168,6 +165,9 @@ export function FeaturedSection({ data, className }: FeaturedSectionProps) {
                                         </svg>
                                     )}
                                 </Button>
+                                {/* <Button variant="secondary" size="md" fullWidth className="font-bold">
+                                    {quoteLabel}
+                                </Button> */}
                             </div>
 
                             {/* Callback Form */}
@@ -279,14 +279,6 @@ export function FeaturedSection({ data, className }: FeaturedSectionProps) {
 
                             {/* Action Buttons */}
                             <div className="flex items-center gap-6">
-                                <Button
-                                    variant="secondary"
-                                    size="md"
-                                    href="#"
-                                    className={showCallbackForm ? "opacity-30 pointer-events-none border-[rgba(0,0,0,0.3)] text-[rgba(0,0,0,0.3)]" : ""}
-                                >
-                                    {quoteLabel}
-                                </Button>
                                 <button
                                     onClick={() => setShowCallbackForm(!showCallbackForm)}
                                     className={cn(
@@ -304,6 +296,14 @@ export function FeaturedSection({ data, className }: FeaturedSectionProps) {
                                         </svg>
                                     )}
                                 </button>
+                                {/* <Button
+                                    variant="secondary"
+                                    size="md"
+                                    href="#"
+                                    className={showCallbackForm ? "opacity-30 pointer-events-none border-[rgba(0,0,0,0.3)] text-[rgba(0,0,0,0.3)]" : ""}
+                                >
+                                    {quoteLabel}
+                                </Button> */}
                             </div>
 
                             {/* Callback Form */}
