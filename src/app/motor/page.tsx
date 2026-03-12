@@ -16,19 +16,19 @@ const motorBenefitsSection = {
     items: [
         {
             id: "trusted",
-            icon: "propertyAssets" as const,
+            icon: "motorTrusted" as const,
             title: "Trusted",
             description: "repair shops",
         },
         {
             id: "fast",
-            icon: "businessContinuity" as const,
+            icon: "motorFast" as const,
             title: "Fast",
             description: "motor claim recovery",
         },
         {
             id: "quality",
-            icon: "shield" as const,
+            icon: "motorQuality" as const,
             title: "Quality",
             description: "in bodywork and painting",
         },
