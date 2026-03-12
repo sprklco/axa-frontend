@@ -3,8 +3,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/layout/Container";
 import { KeyBenefitsSection } from "@/components/sections/KeyBenefitsSection";
 import { FeatureTabsSection } from "@/components/sections/FeatureTabsSection";
-import { ContactSection } from "@/components/sections/ContactSection";
-import { contactSectionData } from "@/data/contactSection";
+import { HelpSectionWithCallback as HelpSection } from "@/components/sections/HelpSectionWithCallback";
 import { foreignerInsuranceFeatures } from "@/data/foreignerInsuranceFeatures";
 
 const introItems = [
@@ -30,6 +29,22 @@ const introItems = [
             "Coverage for accidents, disability, death, and repatriation, helping safeguard both employees and business stability.",
     },
 ];
+
+const needHelpSection = {
+    heading: "Need help?",
+    body: "If you have any emergency or need more help in the quotation process",
+    primaryCta: {
+        label: "04 - 727 000",
+        href: "tel:04727000",
+        variant: "primary" as const,
+        showPhoneIcon: true,
+    },
+    secondaryCta: {
+        label: "Request a callback",
+        href: "#",
+        variant: "secondary" as const,
+    },
+} as const;
 
 export default function ForeignerInsurancePage() {
     return (
@@ -67,8 +82,13 @@ export default function ForeignerInsurancePage() {
                 {/* Feature Tabs Section (Ministry-Compliant / Enhanced) */}
                 <FeatureTabsSection plans={foreignerInsuranceFeatures} autoScroll />
 
-                {/* Contact Section */}
-                <ContactSection data={contactSectionData} />
+                {/* Need Help Section */}
+                <HelpSection
+                    heading={needHelpSection.heading}
+                    body={needHelpSection.body}
+                    primaryCta={needHelpSection.primaryCta}
+                    secondaryCta={needHelpSection.secondaryCta}
+                />
             </div>
         </main>
     );
