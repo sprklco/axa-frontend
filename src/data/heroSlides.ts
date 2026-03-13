@@ -13,7 +13,7 @@ export const heroSlides: HeroSlide[] = [
             "As a leading insurance company in Lebanon we strive to provide you integral protection solutions in Motor, Property, Health and Life.",
         ctaText: "We are AXA",
         ctaHref: "/about",
-        backgroundImage: "/images/family-1.png",
+        backgroundImage: "/images/family-home-banner.png",
     },
     {
         id: "slide-2",
@@ -22,7 +22,7 @@ export const heroSlides: HeroSlide[] = [
         description:
             "Comprehensive travel insurance covering medical emergencies, cancellations, and unexpected travel disruptions.",
         ctaText: "Learn More",
-        ctaHref: "/travel",
+        ctaHref: "/travel-insurance",
         backgroundImage: "/images/hero-travel-1.png",
     },
     {
@@ -32,7 +32,7 @@ export const heroSlides: HeroSlide[] = [
         description:
             "Comprehensive life insurance designed to provide financial protection and lasting peace of mind for your family.",
         ctaText: "Learn More",
-        ctaHref: "/life",
+        ctaHref: "/life-insurance",
         backgroundImage: "/images/hero-life-1.png",
     }
 ];
