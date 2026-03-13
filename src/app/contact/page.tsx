@@ -49,6 +49,7 @@ const contactMethodsCardsSection = {
             id: "by-phone",
             title: "By phone",
             icon: phoneIcon,
+            className: "self-center",
             lines: [
                 {
                     id: "phone-line",

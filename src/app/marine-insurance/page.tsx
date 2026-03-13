@@ -46,7 +46,7 @@ const marineCoverageSection = {
 const marineHighlightBanners: HighlightBanner[] = [
     {
         id: "pleasure-boat",
-        imageSrc: "/images/marine-pleasure-boat.png",
+        imageSrc: "/images/marine-pleasure-boat.jpg",
         imageAlt: "Person relaxing on a pleasure boat at sea",
         title: "Pleasure Boat Insurance",
         lead: "Enjoy the freedom of the sea knowing your vessel is protected against unexpected damage, liability and severe weather risks.",
