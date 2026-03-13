@@ -159,66 +159,68 @@ export function SubhomeHeroBanner({
                 {/* ─── Desktop: Inline Fast Leads form ─── */}
                 {showCallback && (
                     <div className="hidden md:flex w-full flex-col gap-2 md:items-end animate-fade-in-up-delay">
-                        {/* The Input Row */}
-                        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-0 rounded-xl md:rounded-lg bg-[#535353]/50 p-4 md:h-[56px] md:p-2 backdrop-blur-lg">
+                        <div className="flex flex-col w-fit ml-auto items-center gap-2">
+                            {/* The Input Row */}
+                            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-0 rounded-xl md:rounded-lg bg-[#535353]/50 p-4 md:h-[56px] md:p-2 backdrop-blur-lg">
 
-                            {/* Name Input */}
-                            <div className="flex w-full md:w-auto items-center gap-2 px-4">
-                                <User className="h-[18px] w-[18px] shrink-0 text-white/60" />
-                                <input
-                                    type="text"
-                                    placeholder="Name"
-                                    className="w-full bg-transparent p-0 text-base font-source-sans text-white/60 placeholder:text-white/60 focus:outline-none md:w-[80px]"
-                                />
+                                {/* Name Input */}
+                                <div className="flex w-full md:w-auto items-center gap-2 px-4">
+                                    <User className="h-[18px] w-[18px] shrink-0 text-white/60" />
+                                    <input
+                                        type="text"
+                                        placeholder="Name"
+                                        className="w-full bg-transparent p-0 text-base font-source-sans text-white/60 placeholder:text-white/60 focus:outline-none md:w-[80px]"
+                                    />
+                                </div>
+
+                                {/* Divider */}
+                                <div className="hidden h-4 w-px bg-white/20 md:block" />
+
+                                {/* Phone Input */}
+                                <div className="flex w-full md:w-auto items-center gap-2 px-4">
+                                    <Phone className="h-[18px] w-[18px] shrink-0 text-white/60" />
+                                    <input
+                                        type="tel"
+                                        placeholder="Phone"
+                                        className="w-full bg-transparent p-0 text-base font-source-sans text-white/60 placeholder:text-white/60 focus:outline-none md:w-[100px]"
+                                    />
+                                </div>
+
+                                {/* Divider */}
+                                <div className="hidden h-4 w-px bg-white/20 md:block" />
+
+                                {/* Email Input */}
+                                <div className="flex w-full md:w-auto items-center gap-2 px-4">
+                                    <Mail className="h-[18px] w-[18px] shrink-0 text-white/60" />
+                                    <input
+                                        type="email"
+                                        placeholder="E-mail address"
+                                        className="w-full bg-transparent p-0 text-base font-source-sans text-white/60 placeholder:text-white/60 focus:outline-none md:w-[150px]"
+                                    />
+                                </div>
+
+                                {/* Submit Button */}
+                                <button
+                                    type="button"
+                                    className="ml-2 whitespace-nowrap px-4 font-source-sans text-base font-semibold text-white transition-opacity hover:opacity-80"
+                                >
+                                    <span className="border-b-2 border-white pb-0.5">
+                                        Get a callback
+                                    </span>
+                                </button>
                             </div>
 
-                            {/* Divider */}
-                            <div className="hidden h-4 w-px bg-white/20 md:block" />
-
-                            {/* Phone Input */}
-                            <div className="flex w-full md:w-auto items-center gap-2 px-4">
-                                <Phone className="h-[18px] w-[18px] shrink-0 text-white/60" />
-                                <input
-                                    type="tel"
-                                    placeholder="Phone"
-                                    className="w-full bg-transparent p-0 text-base font-source-sans text-white/60 placeholder:text-white/60 focus:outline-none md:w-[100px]"
-                                />
-                            </div>
-
-                            {/* Divider */}
-                            <div className="hidden h-4 w-px bg-white/20 md:block" />
-
-                            {/* Email Input */}
-                            <div className="flex w-full md:w-auto items-center gap-2 px-4">
-                                <Mail className="h-[18px] w-[18px] shrink-0 text-white/60" />
-                                <input
-                                    type="email"
-                                    placeholder="E-mail address"
-                                    className="w-full bg-transparent p-0 text-base font-source-sans text-white/60 placeholder:text-white/60 focus:outline-none md:w-[150px]"
-                                />
-                            </div>
-
-                            {/* Submit Button */}
-                            <button
-                                type="button"
-                                className="ml-2 whitespace-nowrap px-4 font-source-sans text-base font-semibold text-white transition-opacity hover:opacity-80"
-                            >
-                                <span className="border-b-2 border-white pb-0.5">
-                                    Get a callback
+                            {/* Or Call Us */}
+                            <div className="mt-2 flex items-center gap-2">
+                                <span className="font-source-sans text-base text-white">
+                                    Or call us at
                                 </span>
-                            </button>
-                        </div>
-
-                        {/* Or Call Us */}
-                        <div className="mt-2 flex items-center gap-2 pr-2">
-                            <span className="font-source-sans text-base text-white">
-                                Or call us at
-                            </span>
-                            <div className="flex items-center gap-1 rounded bg-white/10 px-2 py-1">
-                                <Phone className="h-[14px] w-[14px] text-white/80" />
-                                <span className="font-source-sans text-base font-semibold text-white/80">
-                                    04 - 727 000
-                                </span>
+                                <div className="flex items-center gap-1 rounded bg-white/10 px-2 py-1">
+                                    <Phone className="h-[14px] w-[14px] text-white/80" />
+                                    <span className="font-source-sans text-base font-semibold text-white/80">
+                                        04 - 727 000
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
