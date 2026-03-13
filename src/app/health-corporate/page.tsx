@@ -49,6 +49,7 @@ export default function HealthCorporatePage() {
                         title="Get the care you need instantly"
                         subtitle="Health Insurance Progams"
                         programs={healthProgramsData}
+                        category="corporate"
                     />
 
                     {/* Final Corporate CTA Banner */}

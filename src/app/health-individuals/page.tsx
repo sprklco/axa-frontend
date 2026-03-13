@@ -46,6 +46,7 @@ export default function MedicalIndividualsPage() {
                         title="Get the care you need instantly"
                         subtitle="Health Insurance Programs"
                         programs={healthProgramsData}
+                        category="individual"
                     />
 
                     {/* Final Corporate CTA Banner */}
