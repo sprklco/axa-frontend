@@ -57,7 +57,7 @@ export function MetaHeader() {
                                         aria-expanded={isDropdownOpen}
                                         aria-haspopup="true"
                                     >
-                                        <span className="font-['Source_Sans_Pro',sans-serif] font-semibold text-[14px] leading-[22px] text-[#00008f]">
+                                        <span className="font-source-sans font-semibold text-[14px] leading-[22px] text-[#00008f]">
                                             {link.label}
                                         </span>
                                         <svg
@@ -92,7 +92,7 @@ export function MetaHeader() {
                                                         )}
                                                         onClick={() => setIsDropdownOpen(false)}
                                                     >
-                                                        <span className="font-['Source_Sans_3',sans-serif] font-normal text-[16px] leading-[22px] tracking-[-0.43px] text-[#00008f] text-center whitespace-nowrap">
+                                                        <span className="font-source-sans font-normal text-[16px] leading-[22px] text-[#00008f] text-center whitespace-nowrap">
                                                             {child.label}
                                                         </span>
                                                     </Link>
@@ -114,7 +114,7 @@ export function MetaHeader() {
                                     href={link.href}
                                     className="flex gap-[8px] items-center justify-center px-[8px] py-[2px] rounded-[4px] shrink-0 transition-colors hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00008f]/50"
                                 >
-                                    <span className="font-['Source_Sans_Pro',sans-serif] font-semibold text-[14px] leading-[22px] text-[#00008f]">
+                                    <span className="font-source-sans font-semibold text-[14px] leading-[22px] text-[#00008f]">
                                         {link.label}
                                     </span>
                                 </Link>

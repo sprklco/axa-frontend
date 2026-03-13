@@ -28,6 +28,7 @@ export function Container({
         <Component
             className={cn(
                 "mx-auto max-w-lg",
+                "md:max-w-none",
                 "lg:max-w-[1440px]",
                 noHorizontalPadding ? "px-0 lg:px-0" : "px-4 lg:px-[72px]",
                 className

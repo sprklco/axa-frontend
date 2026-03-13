@@ -6,7 +6,7 @@ export interface MetaHeaderLink {
 
 export const META_HEADER_LINKS: MetaHeaderLink[] = [
     {
-        label: "We are AXA",
+        label: "About us",
         href: "#",
         children: [
             { label: "Who we are", href: "/about" },
