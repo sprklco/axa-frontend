@@ -10,6 +10,7 @@ export interface FeatureRow {
     id: string;
     label: string;
     subLabel?: string;
+    isHeader?: boolean;
 }
 
 export interface PackageColumn {
@@ -89,6 +90,18 @@ export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
                             {data.features.map((feature, featureIndex) => {
                                 const isAlternateRow = featureIndex % 2 === 0;
 
+                                if (feature.isHeader) {
+                                    return (
+                                        <div key={feature.id} className="flex min-h-[50px]">
+                                            <div className="flex w-full items-center bg-[#152E54] px-2 py-[10px]">
+                                                <span className="font-source-sans text-[12px] leading-[20px] tracking-[-0.15px] text-white">
+                                                    {feature.label}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    );
+                                }
+
                                 return (
                                     <div key={feature.id} className="flex min-h-[50px]">
                                         {/* Feature Name Cell */}
@@ -96,7 +109,7 @@ export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
                                             className={`flex shrink-0 flex-col items-start justify-center px-2 py-3 ${labelWidthClass} ${isAlternateRow ? "bg-[#f8faff]" : "bg-white"
                                                 }`}
                                         >
-                                            <span className="font-source-sans text-[14px] leading-snug text-[#1d2433]">
+                                            <span className="font-source-sans text-[14px] leading-snug text-[#1d2433] whitespace-pre-wrap">
                                                 {feature.label}
                                             </span>
                                             {feature.subLabel && (
@@ -174,6 +187,19 @@ export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
                                             const value = pkg.features[feature.id];
                                             const isAlternateRow = featureIndex % 2 === 0;
 
+                                            if (feature.isHeader) {
+                                                return (
+                                                    <div
+                                                        key={feature.id}
+                                                        className="flex items-center bg-[#152E54] px-4 py-[10px]"
+                                                    >
+                                                        <span className="font-source-sans text-[12px] leading-[20px] tracking-[-0.15px] text-white">
+                                                            {feature.label}
+                                                        </span>
+                                                    </div>
+                                                );
+                                            }
+
                                             return (
                                                 <div
                                                     key={feature.id}
@@ -183,7 +209,7 @@ export function ComparisonTableSection({ data }: ComparisonTableSectionProps) {
                                                         }`}
                                                 >
                                                     {/* Feature Label */}
-                                                    <span className="font-source-sans text-[12px] font-semibold uppercase leading-4 tracking-[0.6px] text-[#6a7282]">
+                                                    <span className="font-source-sans text-[12px] font-semibold uppercase leading-4 tracking-[0.6px] text-[#6a7282] whitespace-pre-wrap">
                                                         {feature.label}
                                                         {feature.subLabel
                                                             ? ` ${feature.subLabel}`
