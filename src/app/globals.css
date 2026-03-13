@@ -1,17 +1,39 @@
 /* Google Fonts - must be first */
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap');
 
 /* Tailwind CSS - after url imports */
 @import "tailwindcss";
 
-/* Publico Headline Web is a commercial font, using fallback */
+
+/* ─── Publico Headline Web – self-hosted OTF ─── */
+
+/* 300 — Light */
 @font-face {
   font-family: 'Publico Headline Web';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('Publico Headline Web Light'), local('Georgia');
+  src: url('/fonts/PublicoHeadline-Light.otf') format('opentype');
 }
+
+/* 400 — Regular (use Light file; no separate Regular supplied) */
+@font-face {
+  font-family: 'Publico Headline Web';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/PublicoHeadline-Light.otf') format('opentype');
+}
+
+/* 700 — Bold */
+@font-face {
+  font-family: 'Publico Headline Web';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/PublicoHeadline-Bold.otf') format('opentype');
+}
+
 
 :root {
   /* AXA Brand Colors */
@@ -171,6 +193,7 @@ body {
     opacity: 0;
     transform: translateX(48px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -182,6 +205,7 @@ body {
     opacity: 0;
     transform: translateX(-48px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -201,6 +225,7 @@ body {
     opacity: 0;
     transform: translateY(6px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

@@ -32,7 +32,7 @@ export function SubhomeHeroBanner({
     return (
         <section
             className={cn(
-                "relative flex w-full flex-col overflow-hidden lg:items-start",
+                "relative flex w-full flex-col overflow-hidden md:items-start",
                 showCallback
                     ? "min-h-[500px] items-center md:min-h-[742px]"
                     : "min-h-[500px] items-start md:min-h-[742px]"
@@ -72,8 +72,8 @@ export function SubhomeHeroBanner({
                 className={cn(
                     "relative flex w-full flex-1 flex-col justify-end",
                     showCallback
-                        ? "gap-8 pb-8 pt-[170px] md:gap-12 md:pb-12 md:pt-[180px] lg:pb-12"
-                        : "gap-0 pb-8 pt-[170px] md:gap-8 md:pb-12 md:pt-[180px] lg:pb-12"
+                        ? "gap-8 pb-8 pt-[170px] md:gap-12 md:pb-12 md:pt-[180px]"
+                        : "gap-0 pb-8 pt-[170px] md:gap-8 md:pb-12 md:pt-[180px]"
                 )}
             >
                 {/* Text Content */}
@@ -98,8 +98,8 @@ export function SubhomeHeroBanner({
                             className={cn(
                                 "font-headline font-light tracking-[-1.5px] text-white md:leading-[72px]",
                                 showCallback
-                                    ? "text-[40px] leading-[48px] md:text-[64px] lg:w-[730px]"
-                                    : "text-[40px] leading-[44px] md:text-[64px] lg:w-[876px]"
+                                    ? "text-[40px] max-md:leading-[48px] leading-[72px] md:text-[64px] md:w-[730px]"
+                                    : "text-[40px] max-md:leading-[44px] leading-[66px] md:text-[64px] md:w-[876px]"
                             )}
                         >
                             {heading}

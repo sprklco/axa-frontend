@@ -112,7 +112,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         const classes = cn(
             // Base
             "inline-flex items-center justify-center gap-2 rounded-full whitespace-nowrap",
-            "font-['Source_Sans_Pro',sans-serif] font-semibold leading-6",
+            "font-source-sans font-semibold leading-6",
             "focus:outline-none focus-visible:ring-2",
             // Positioning context for the ::before fill layer
             "relative overflow-hidden",

@@ -12,9 +12,9 @@ export function VisionPurposeSection({
 }: VisionPurposeSectionProps) {
     return (
         <section className={`bg-white py-16 ${className ?? ""}`}>
-            <Container className="flex flex-col items-start gap-[54px]">
+            <Container className="flex flex-col items-center gap-[54px]">
                 {blocks.map((block, idx) => (
-                    <div key={idx} className="flex flex-col gap-0">
+                    <div key={idx} className="flex flex-col items-start gap-0 w-full max-w-[800px]">
                         <h2 className="font-brand-text text-[38px] font-bold leading-[32px] text-[#1a1d21] mb-[36px]">
                             {block.heading}
                         </h2>

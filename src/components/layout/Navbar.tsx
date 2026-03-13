@@ -222,9 +222,9 @@ export function MainNavbar() {
                 </Link>
 
                 {/* ===== Desktop Nav (lg+) ===== */}
-                <div className="hidden lg:flex flex-1 items-center justify-end ">
+                <div className="hidden lg:flex flex-1 items-center justify-end">
                     {/* Nav Chips */}
-                    <nav className="flex items-center gap-5 mr-6" aria-label="Main navigation">
+                    <nav className="flex items-center gap-1 xl:gap-5 lg:mr-1 xl:mr-6" aria-label="Main navigation">
                         {NAV_CHIPS.map((chip) => (
                             <Link
                                 href={chip.href}
@@ -233,7 +233,7 @@ export function MainNavbar() {
                                 onMouseLeave={scheduleClose}
                                 className={cn(
                                     "rounded-[4px] px-2 py-0.5 text-[16px] font-semibold leading-6 text-[#00008f]",
-                                    "font-['Source_Sans_Pro',sans-serif]",
+                                    "font-source-sans",
                                     "transition-colors hover:bg-[#00008f]/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00008f]/50",
                                     activeChip === chip.label && "bg-[#00008f]/10"
                                 )}
@@ -246,7 +246,7 @@ export function MainNavbar() {
                     </nav>
 
                     {/* Right Actions */}
-                    <div className="flex items-center gap-4 py-1">
+                    <div className="flex items-center gap-2 xl:gap-4 py-1">
                         {/* Search Button */}
                         <button
                             className="flex h-10 w-10 items-center justify-center rounded-full bg-white transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00008f]/50"
@@ -329,7 +329,7 @@ export function MainNavbar() {
                                         <Link
                                             key={item.label}
                                             href={item.href}
-                                            className="flex items-center gap-2 border-b border-black/5 px-3 py-4 text-[16px] font-normal leading-[22px] tracking-[-0.43px] text-[#00008f] font-['Source_Sans_3',sans-serif] transition-colors hover:bg-[#00008f]/5"
+                                            className="flex items-center gap-2 border-b border-black/5 px-3 py-4 text-[16px] font-normal leading-[22px] text-[#00008f] font-source-sans transition-colors hover:bg-[#00008f]/5"
                                             role="menuitem"
                                             onClick={() => setIsQuoteOpen(false)}
                                         >
@@ -411,7 +411,7 @@ export function MainNavbar() {
                 onMouseEnter={cancelClose}
                 onMouseLeave={scheduleClose}
                 className={cn(
-                    "absolute left-0 right-0 top-full z-50 hidden lg:block overflow-hidden transition-all duration-300 ease-in-out px-4 lg:px-[72px]",
+                    "absolute left-0 right-0 top-full z-50 hidden lg:block overflow-hidden transition-all duration-300 ease-in-out px-4 lg:mx-[72px]",
                     isDropdownOpen
                         ? "max-h-[500px] opacity-100"
                         : "max-h-0 opacity-0 pointer-events-none"
@@ -433,16 +433,16 @@ export function MainNavbar() {
                                     />
                                 </div>
                                 <div className="flex flex-col gap-1">
-                                    <p className="text-[16px] font-semibold leading-6 text-[#606776] font-['Source_Sans_Pro',sans-serif]">
+                                    <p className="text-[16px] font-semibold leading-6 text-[#606776] font-source-sans">
                                         {activeDropdown.subtitle}
                                     </p>
-                                    <div className="max-w-[305px] max-h-[96px] overflow-hidden text-[24px] font-light leading-8 text-[#1a1d21] font-['Publico_Headline_Web',serif]">
+                                    <div className="max-w-[305px] max-h-[96px] overflow-hidden text-[24px] font-light leading-8 text-[#1a1d21] font-headline">
                                         {activeDropdown.heading}
                                     </div>
                                 </div>
                                 <Link
                                     href={activeDropdown.ctaHref}
-                                    className="flex items-center gap-1 text-[16px] font-semibold leading-6 text-[#00008f] font-['Source_Sans_Pro',sans-serif] transition-colors hover:text-[#00007a]"
+                                    className="flex items-center gap-1 text-[16px] font-semibold leading-6 text-[#00008f] font-source-sans transition-colors hover:text-[#00007a]"
                                 >
                                     {activeDropdown.ctaLabel}
                                     <svg
@@ -470,7 +470,7 @@ export function MainNavbar() {
                                     <Link
                                         key={link.label}
                                         href={link.href}
-                                        className="text-[18px] font-normal leading-[26px] text-[#00008f] font-['Source_Sans_Pro',sans-serif] transition-colors hover:text-[#00007a] hover:underline"
+                                        className="text-[18px] font-normal leading-[26px] text-[#00008f] font-source-sans transition-colors hover:text-[#00007a] hover:underline"
                                     >
                                         {link.label}
                                     </Link>
