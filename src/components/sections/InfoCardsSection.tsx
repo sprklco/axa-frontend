@@ -62,7 +62,7 @@ export function InfoCardsSection({ heading, cards, className }: InfoCardsSection
                     {heading}
                 </h2>
 
-                <div className="grid w-full gap-8 md:grid-cols-2 lg:grid-cols-3 place-items-center">
+                <div className="grid w-full gap-8 md:grid-cols-2 lg:grid-cols-3 justify-items-center items-stretch">
                     {shownCards.map((card) => (
                         <div
                             key={card.id}

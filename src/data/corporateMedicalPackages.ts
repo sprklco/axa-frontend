@@ -9,8 +9,8 @@ export const corporateMedicalPackagesData: ComparisonData = {
     minWidthClassName: "min-w-[600px] md:min-w-[723px]",
     ctaText: "See complete list of coverage",
     features: [
-        { id: "geographic", label: "Geographic coverage" },
-        { id: "inHospital", label: "In-Hospital: General Conditions" },
+        { id: "geographic", label: "Geographic Coverage" },
+        { id: "inHospital", label: "In-Hospital: General Conditions", isHeader: true },
         { id: "financialLimit", label: "Financial Limitation" },
         { id: "otherLimit", label: "Other Limitation (for GR adherents)" },
         { id: "ageLimit", label: "Age Limitation at Enrollment" },
@@ -18,7 +18,7 @@ export const corporateMedicalPackagesData: ComparisonData = {
         { id: "network", label: "Network" },
         { id: "gr", label: "Guaranteed Renewability (GR)" },
         { id: "continuity", label: "Continuity" },
-        { id: "internationalAssistance", label: "International Coverage & Assistance" },
+        { id: "internationalAssistance", label: "International Coverage & Assistance", isHeader: true },
         { id: "financialLimitOutside", label: "Financial Limitation (ER outside territory of coverage)" },
         { id: "accessWorldwide", label: "Access to Worldwide Network" },
         { id: "financialLimitMedical", label: "Financial Limitation (Medical Assistance Services) (6)" },
@@ -27,18 +27,18 @@ export const corporateMedicalPackagesData: ComparisonData = {
     packages: [
         {
             id: "corporate-tailor-made",
-            label: "Corporate business-Tailor made coverage",
+            label: "Corporate business coverage",
             features: {
                 geographic: "Lebanon, France",
-                inHospital: "", // In Figma this row is just a section header, data cell is empty
+                inHospital: "",
                 financialLimit: "Unlimited",
                 otherLimit: "720 days per lifetime",
                 ageLimit: "From 0 to 75",
-                excess: false, // In figma it's "-" which translates to false in ComparisonTableSection
+                excess: "-",
                 network: "Full",
                 gr: "Granted from Day 0 with immediate Effective Date,\nin addition to 180 Days Observation Period to take the appropriate Underwriting decision (Exclusions/Limitations)",
                 continuity: "Yes",
-                internationalAssistance: "", // Empty data cell in Figma
+                internationalAssistance: "",
                 financialLimitOutside: "Up to 65,000$ (overseas tariffs)",
                 accessWorldwide: "All Classes",
                 financialLimitMedical: "Up to 100,000$",

@@ -12,17 +12,24 @@ interface HealthProgramsSectionProps {
     title: string;
     subtitle: string;
     programs: HealthProgramInfo[];
+    category: "individual" | "corporate";
 }
 
-export function HealthProgramsSection({ title, subtitle, programs }: HealthProgramsSectionProps) {
+export function HealthProgramsSection({ title, subtitle, programs, category }: HealthProgramsSectionProps) {
     const [activeIndex, setActiveIndex] = useState(0);
 
+    const visiblePrograms = programs.filter(p => {
+        if (category === "individual") return p.showInIndividual !== false;
+        if (category === "corporate") return p.showInCorporate !== false;
+        return true;
+    });
+
     const handleNext = () => {
-        setActiveIndex((current) => (current + 1) % programs.length);
+        setActiveIndex((current) => (current + 1) % visiblePrograms.length);
     };
 
     const handlePrev = () => {
-        setActiveIndex((current) => (current - 1 + programs.length) % programs.length);
+        setActiveIndex((current) => (current - 1 + visiblePrograms.length) % visiblePrograms.length);
     };
 
     return (
@@ -50,8 +57,12 @@ export function HealthProgramsSection({ title, subtitle, programs }: HealthProgr
                             transform: `translateX(calc(-${activeIndex} * min(392px, calc(376px + 1rem))))`
                         }}
                     >
-                        {programs.map((program, idx) => {
+                        {visiblePrograms.map((program, idx) => {
                             const isActive = activeIndex === idx;
+                            const description = category === "individual" 
+                                ? program.individualDescription || program.description
+                                : program.corporateDescription || program.description;
+
                             return (
                                 <div
                                     key={program.id}
@@ -98,9 +109,14 @@ export function HealthProgramsSection({ title, subtitle, programs }: HealthProgr
                                             isActive ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
                                         )}>
                                             <p className="text-white text-[16px] md:text-[18px] mb-8 leading-normal whitespace-pre-line text-ellipsis overflow-hidden">
-                                                {program.description}
+                                                {description}
                                             </p>
-                                            <Button variant="inverse" size="md" className="self-start relative z-10 w-fit">
+                                            <Button 
+                                                variant="inverse" 
+                                                size="md" 
+                                                href={`/health-programs?category=${category}&program=${category === 'individual' ? program.individualId : program.corporateId}`} 
+                                                className="self-start relative z-10 w-fit"
+                                            >
                                                 Read More
                                             </Button>
                                         </div>

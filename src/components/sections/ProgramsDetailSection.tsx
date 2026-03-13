@@ -10,6 +10,7 @@ import type {
 
 interface ProgramsDetailSectionProps {
     groups: ProgramGroup[];
+    initialProgramId?: string;
     className?: string;
 }
 
@@ -32,19 +33,54 @@ function getActiveProgram(
 
 export function ProgramsDetailSection({
     groups,
+    initialProgramId,
     className,
 }: ProgramsDetailSectionProps) {
     const [active, setActive] = useState<ActiveSelection>({
         groupIndex: 0,
         subTabIndex: null,
     });
+    const [isInitialized, setIsInitialized] = useState(false);
+
+    // Initialize selection when groups or initialProgramId change
+    useEffect(() => {
+        if (!isInitialized && initialProgramId) {
+            let found = false;
+            for (let gIdx = 0; gIdx < groups.length; gIdx++) {
+                const group = groups[gIdx];
+                if (group.detail && group.detail.id === initialProgramId) {
+                    setActive({ groupIndex: gIdx, subTabIndex: null });
+                    found = true;
+                    break;
+                }
+                for (let sIdx = 0; sIdx < group.subTabs.length; sIdx++) {
+                    if (group.subTabs[sIdx].id === initialProgramId) {
+                        setActive({ groupIndex: gIdx, subTabIndex: sIdx });
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) break;
+            }
+            if (!found) {
+                setActive({ groupIndex: 0, subTabIndex: null });
+            }
+            setIsInitialized(true);
+        } else if (!isInitialized) {
+            // Default initialization without program ID
+            setActive({ groupIndex: 0, subTabIndex: null });
+            setIsInitialized(true);
+        }
+    }, [groups, initialProgramId, isInitialized]);
+
+    // Reset initialization when groups change completely (tab switch)
+    useEffect(() => {
+        setIsInitialized(false);
+    }, [groups]);
     const contentRef = useRef<HTMLDivElement>(null);
     const activeProgram = getActiveProgram(groups, active);
 
-    // Reset selection when groups change (tab switch between Individual/Corporate)
-    useEffect(() => {
-        setActive({ groupIndex: 0, subTabIndex: null });
-    }, [groups]);
+
 
     // Reset scroll when switching programs
     useEffect(() => {
