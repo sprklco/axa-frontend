@@ -2,6 +2,7 @@
 
 import { useState, useRef, useId } from "react";
 import { Container } from "@/components/layout/Container";
+import { PillTabs } from "@/components/ui/PillTabs";
 import { cn } from "@/lib/cn";
 
 export interface PlanFeature {
@@ -87,25 +88,13 @@ export function FeatureTabsSection({
 
                 {/* Tabs */}
                 {plans.length > 1 && (
-                    <div className="flex items-center gap-2 rounded-full bg-[#fafafa] p-2 overflow-x-auto max-w-full scrollbar-hide">
-                        {plans.map((plan) => {
-                            const isActive = activeTab === plan.id;
-                            return (
-                                <button
-                                    key={plan.id}
-                                    onClick={() => setActiveTab(plan.id)}
-                                    className={cn(
-                                        "flex items-center justify-center whitespace-nowrap rounded-full px-6 py-3 font-source-sans text-[18px] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00008f]",
-                                        isActive
-                                            ? "bg-[#00008f] text-white"
-                                            : "text-[#00008f] hover:bg-gray-100"
-                                    )}
-                                >
-                                    {plan.label}
-                                </button>
-                            );
-                        })}
-                    </div>
+                    <PillTabs
+                        tabs={plans}
+                        activeTabId={activeTab}
+                        onTabChange={setActiveTab}
+                        className="gap-2 overflow-x-auto max-w-full scrollbar-hide"
+                        tabClassName="px-6 py-3 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00008f] hover:bg-gray-100"
+                    />
                 )}
 
                 {/* Description */}

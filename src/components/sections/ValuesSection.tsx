@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import type { ValueCard } from "@/types/about";
 
@@ -34,23 +35,21 @@ function PlusIcon() {
 
 function ValueCardItem({ value }: { value: ValueCard }) {
     return (
-        <div className="group h-[368px] w-[312px] shrink-0 cursor-pointer overflow-hidden rounded-[12px] bg-[#f7f7f8] transition-colors duration-500 hover:bg-[#00008f]">
-            <div className="flex h-full flex-col items-center justify-end px-5 py-6">
-                {/* Text container — slides up on hover to make room for + icon */}
-                <div className="flex w-full translate-y-[25px] flex-col items-center gap-2 transition-transform duration-500 group-hover:translate-y-0">
-                    <h3 className="font-brand-text text-center text-[32px] font-bold leading-[40px] text-[#1a1d21] whitespace-pre-line transition-colors duration-500 group-hover:text-white">
-                        {value.title}
-                    </h3>
-                    <p className="font-source-sans text-center text-[16px] leading-[24px] text-[#434956] transition-colors duration-500 group-hover:text-white">
-                        {value.subtitle}
-                    </p>
-                </div>
-
-                {/* Plus icon — fades in on hover */}
-                <div className="mt-[21px] translate-y-[25px] opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                    <PlusIcon />
-                </div>
+        <div className="group flex h-[368px] w-full max-w-[312px] shrink-0 flex-col items-center justify-center gap-2 overflow-hidden rounded-[12px] bg-[#f7f7f8] p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
+            <div className="relative mb-2 h-[150px] w-[150px]">
+                <Image
+                    src={value.imageSrc}
+                    alt={value.title}
+                    fill
+                    className="object-contain"
+                />
             </div>
+            <h3 className="font-brand-text text-center text-[32px] font-bold leading-[40px] text-[#1a1d21] whitespace-pre-line">
+                {value.title}
+            </h3>
+            <p className="font-source-sans text-center text-[16px] leading-[24px] text-[#434956]">
+                {value.subtitle}
+            </p>
         </div>
     );
 }
@@ -80,8 +79,8 @@ export function ValuesSection({
                     </p>
                 </div>
 
-                {/* Cards — 3+2 grid layout */}
-                <div className="flex flex-wrap items-start justify-center gap-[30px]">
+                {/* Cards — 4 column grid layout */}
+                <div className="grid w-full max-w-[1296px] grid-cols-1 place-items-center gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     {values.map((value) => (
                         <ValueCardItem key={value.id} value={value} />
                     ))}

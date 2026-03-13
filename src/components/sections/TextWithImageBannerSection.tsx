@@ -18,19 +18,19 @@ export function TextWithImageBannerSection({
         <section className={cn("bg-[#f7f7f8] py-[32px] px-4 md:py-[72px] md:px-[72px]", className)}>
             <Container className="px-0 md:px-0 max-w-[1440px]">
                 {/* Outer container mimicking the design */}
-                <div className="bg-white flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0 rounded-[12px] p-6 lg:py-[24px] lg:pl-[24px] lg:pr-[72px] w-full">
+                <div className="bg-white flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 rounded-[12px] p-6 lg:py-[24px] lg:pl-[24px] lg:pr-[24px] w-full">
 
                     {/* Text Content */}
                     <div className="flex flex-col gap-5 items-start justify-end flex-1 max-w-[690px] text-[#1a1d21] order-2 md:order-1">
-                        <h2 className="font-headline font-light text-[32px] md:text-[48px] leading-[40px] md:leading-[56px]">
+                        <h2 style={{ fontWeight: 300 }} className="font-headline font-light text-[32px] md:text-[42px] leading-[40px] md:leading-[56px]">
                             {data.title}
                         </h2>
 
                         <div className="font-source-sans text-[16px] md:text-[18px] leading-[24px] md:leading-[26px]">
                             {/* Handling the hardcoded spans explicitly as per the design requirements */}
                             {/* Note: since the Figma specifically bolds "'Care' and 'Dare'", "'Care'", and "'Dare'" 
-                  we will handle this gracefully. For a fully CMS driven approach, use a markdown renderer 
-                  or rich text approach here. */}
+                                we will handle this gracefully. For a fully CMS driven approach, use a markdown renderer 
+                                or rich text approach here. */}
                             <p className="mb-6 whitespace-pre-wrap">
                                 <span className="font-semibold">{`‘Care’ and ‘Dare’`}</span>
                                 {` are two words that drive everything we do - for the progress of our people and society at large.`}

@@ -26,16 +26,28 @@ export const careersData: CareersPageData = {
                 id: "interactive-2",
                 imageSrc: "/images/careers/interactive-2.png",
                 imageAlt: "Career Growth",
+                title: "Career Growth",
+                subtitle: "Opportunities for advancement",
+                description: "We believe in nurturing talent and providing the resources needed for your professional advancement.",
+                footerText: "Mentorship Programs, Internal Promotions, Skill Development",
             },
             {
                 id: "interactive-3",
                 imageSrc: "/images/careers/interactive-3.png",
                 imageAlt: "Diversity and Inclusion",
+                title: "Diversity and Inclusion",
+                subtitle: "A welcoming environment for all",
+                description: "Our strength lies in our vibrant and diverse workforce. We foster an inclusive culture where everyone belongs.",
+                footerText: "Employee Resource Groups, Inclusive Policies, Diverse Leadership",
             },
             {
                 id: "interactive-4",
                 imageSrc: "/images/careers/interactive-4.png",
                 imageAlt: "Work Life Balance",
+                title: "Work Life Balance",
+                subtitle: "Supporting your personal wellbeing",
+                description: "We recognize the importance of maintaining a healthy harmony between your professional and personal life.",
+                footerText: "Flexible Hours, Remote Options, Wellness Programs",
             },
             // ... Add additional cards depending on CMS constraints
         ]

@@ -44,11 +44,11 @@ export default function CareersPage() {
                 {/* Why AXA Interactive Carousel Section */}
                 <InteractiveCarouselSection data={careersData.whyAxa} />
 
-                {/* Job Vacancies Banner Section */}
-                <JobVacanciesBannerSection data={careersData.jobVacancies} />
-
                 {/* We Care and Dare for Progress Banner */}
                 <TextWithImageBannerSection data={careersData.weCareAndDare} />
+
+                {/* Job Vacancies Banner Section */}
+                <JobVacanciesBannerSection data={careersData.jobVacancies} />
             </div>
         </main>
     );
