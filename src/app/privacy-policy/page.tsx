@@ -195,7 +195,7 @@ export default function PrivacyPolicyPage() {
   return (
     <main className="flex flex-1 flex-col bg-white">
       <div className="bg-white">
-        <Container className="px-2 md:px-4 lg:px-6 py-4 md:py-6">
+        <Container className="py-4 md:py-6">
           <Breadcrumbs
             items={[
               { label: "Home", href: "/" },
@@ -208,12 +208,12 @@ export default function PrivacyPolicyPage() {
         title={privacyIntroSection.title}
         description={privacyIntroSection.description}
       />
-      <Container className="px-2 md:px-4 lg:px-6 pb-20">
+      <Container className="pb-20">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-12">
-          <div className="w-full max-w-[360px] lg:w-[280px] lg:sticky lg:top-[160px] lg:-ml-4">
+          <div className="w-full max-w-[392px] lg:w-[392px] shrink-0 lg:sticky lg:top-[160px]">
             <OnPageSummaryList items={privacySummaryItems} />
           </div>
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <LegalContentSections sections={privacyContentSections} />
           </div>
         </div>
