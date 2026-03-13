@@ -46,17 +46,15 @@ export function HealthProgramsSection({ title, subtitle, programs, category }: H
                 </div>
 
                 <div className="relative h-[556px] md:h-[696px]">
-                    {/* Carousel Track */}
-                    <div
-                        className="flex items-start h-full gap-4 md:gap-[16px] transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-                        style={{
-                            // Slide track to keep active item at left edge. 
-                            // 320px width + 16px gap = 336px step on desktop.
-                            // Mobile step is 280px + 16px = 296px. Handled dynamically via CSS variables or standard JS math.
-                            // For simplicity, we use CSS clamp or standard values.
-                            transform: `translateX(calc(-${activeIndex} * min(392px, calc(376px + 1rem))))`
-                        }}
-                    >
+                    {/* Clipped carousel area */}
+                    <div className="absolute inset-0 overflow-hidden">
+                        {/* Carousel Track */}
+                        <div
+                            className="flex items-start h-full gap-4 md:gap-[16px] transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] [--step:272px] md:[--step:336px]"
+                            style={{
+                                transform: `translateX(calc(-${activeIndex} * var(--step)))`
+                            }}
+                        >
                         {visiblePrograms.map((program, idx) => {
                             const isActive = activeIndex === idx;
                             const description = category === "individual" 
@@ -126,37 +124,39 @@ export function HealthProgramsSection({ title, subtitle, programs, category }: H
                         })}
                     </div>
 
-                    {/* Desktop Right Edge Fade & Next Arrow */}
-                    <div className="hidden md:flex absolute right-0 top-0 h-[696px] w-[400px] pointer-events-none items-center justify-end z-10"
-                        style={{ background: "linear-gradient(92.625deg, rgba(255, 255, 255, 0) 9.76%, rgb(255, 255, 255) 91.28%)" }}
-                    >
-                        {/* Button centered vertically with the collapsed cards (top-0, height 362, center=181) */}
-                        <button
-                            onClick={(e) => { e.stopPropagation(); handleNext(); }}
-                            className="pointer-events-auto flex items-center justify-center w-[54px] h-[54px] rounded-full bg-[#00008f] border border-[#00008f] text-white transition-opacity hover:opacity-90 absolute right-[-20px] top-[181px] -translate-y-1/2 z-20 shadow-lg"
-                            aria-label="Next health program"
-                        >
-                            <ChevronRight className="w-6 h-6" />
-                        </button>
+                        {/* Desktop Right Edge Fade */}
+                        <div
+                            className="hidden md:block absolute right-0 top-0 h-full w-[401px] pointer-events-none z-10"
+                            style={{ background: "linear-gradient(92.625deg, rgba(255, 255, 255, 0) 9.76%, rgb(255, 255, 255) 91.28%)" }}
+                        />
                     </div>
 
-                    {/* Mobile Navigation Controls */}
-                    <div className="flex md:hidden justify-end gap-3 mt-6">
-                        <button
-                            onClick={handlePrev}
-                            className="bg-white border border-gray-200 shadow-sm p-3 rounded-full text-[#00008f] flex items-center justify-center w-12 h-12"
-                            aria-label="Previous health program"
-                        >
-                            <ChevronRight className="w-5 h-5 rotate-180" />
-                        </button>
-                        <button
-                            onClick={handleNext}
-                            className="bg-[#00008f] shadow-sm p-3 rounded-full text-white flex items-center justify-center w-12 h-12"
-                            aria-label="Next health program"
-                        >
-                            <ChevronRight className="w-5 h-5" />
-                        </button>
-                    </div>
+                    {/* Desktop Next Arrow — outside clipped area so it isn't hidden */}
+                    <button
+                        onClick={handleNext}
+                        className="hidden md:flex items-center justify-center w-[54px] h-[54px] rounded-full bg-[#00008f] border border-[#00008f] text-white transition-opacity hover:opacity-90 absolute right-0 top-[181px] -translate-y-1/2 translate-x-1/2 z-20 shadow-lg"
+                        aria-label="Next health program"
+                    >
+                        <ChevronRight className="w-6 h-6" />
+                    </button>
+                </div>
+
+                {/* Mobile Navigation Controls */}
+                <div className="flex md:hidden justify-end gap-3 mt-6">
+                    <button
+                        onClick={handlePrev}
+                        className="bg-white border border-gray-200 shadow-sm p-3 rounded-full text-[#00008f] flex items-center justify-center w-12 h-12"
+                        aria-label="Previous health program"
+                    >
+                        <ChevronRight className="w-5 h-5 rotate-180" />
+                    </button>
+                    <button
+                        onClick={handleNext}
+                        className="bg-[#00008f] shadow-sm p-3 rounded-full text-white flex items-center justify-center w-12 h-12"
+                        aria-label="Next health program"
+                    >
+                        <ChevronRight className="w-5 h-5" />
+                    </button>
                 </div>
             </Container>
         </section>
