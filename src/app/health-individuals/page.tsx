@@ -38,8 +38,6 @@ export default function MedicalIndividualsPage() {
                         plans={medicalPlans}
                         autoScroll
                     />
-                    {/* Medical Packages Comparison Table */}
-                    <ComparisonTableSection data={medicalPackagesData} />
 
                     {/* Health Programs Carousel Section */}
                     <HealthProgramsSection
@@ -49,14 +47,17 @@ export default function MedicalIndividualsPage() {
                         category="individual"
                     />
 
+                    {/* Medical Packages Comparison Table */}
+                    <ComparisonTableSection data={medicalPackagesData} />
+
                     {/* Final Corporate CTA Banner */}
                     <OverlayBannerSection
                         imageSrc="/images/corporate-medical-banner.png"
                         subtitle="Explore Corporate Medical Insurance"
                         title="Supporting your business every step of the way"
                         description="Corporate health plans tailored to your workforce, with adaptable benefits, coverage limits, and network choices."
-                        ctaText="Read More"
-                        ctaHref="#"
+                        ctaText="Call us at 04-727000"
+                        ctaHref="tel:04727000"
                     />
 
                 </div>

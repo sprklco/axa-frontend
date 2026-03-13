@@ -41,9 +41,6 @@ export default function HealthCorporatePage() {
                         autoScroll
                     />
 
-                    {/* Medical Packages Comparison Table */}
-                    <ComparisonTableSection data={corporateMedicalPackagesData} />
-
                     {/* Health Programs Carousel Section */}
                     <HealthProgramsSection
                         title="Get the care you need instantly"
@@ -52,14 +49,17 @@ export default function HealthCorporatePage() {
                         category="corporate"
                     />
 
+                    {/* Medical Packages Comparison Table */}
+                    <ComparisonTableSection data={corporateMedicalPackagesData} />
+
                     {/* Final Corporate CTA Banner */}
                     <OverlayBannerSection
                         imageSrc="/images/health-corporate-overlay-bg.png"
                         subtitle="Explore Private Medical Insurance"
                         title="Health insurance designed for real life"
                         description="Health insurance that supports you and your family through illness or injury, with coverage for hospitalization, consultations, tests, and medicines."
-                        ctaText="Read More"
-                        ctaHref="#"
+                        ctaText="Call us at 04-727000"
+                        ctaHref="tel:04727000"
                     />
 
                 </div>
