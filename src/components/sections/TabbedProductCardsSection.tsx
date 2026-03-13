@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/CTAButton";
+import { PillTabs } from "@/components/ui/PillTabs";
 import { cn } from "@/lib/cn";
 
 export interface ProductCardFeature {
@@ -44,29 +45,17 @@ export function TabbedProductCardsSection({
     const filteredCards = cards.filter((card) => card.tab === activeTab);
 
     return (
-        <section className={cn("bg-white py-12 md:py-16 lg:py-20", className)}>
+        <section className={cn("bg-white py-12 md:py-8 lg:py-8", className)}>
             <Container className="flex flex-col items-center gap-10 md:gap-12">
                 {/* Tab Toggle */}
-                <div className="inline-flex items-center gap-0 rounded-full bg-[#fafafa] p-2">
-                    {tabs.map((tab) => (
-                        <button
-                            key={tab.id}
-                            type="button"
-                            onClick={() => setActiveTab(tab.id)}
-                            className={cn(
-                                "rounded-full px-[18px] py-[13px] font-source-sans text-[18px] leading-[26px] transition-colors duration-200 cursor-pointer",
-                                activeTab === tab.id
-                                    ? "bg-[#00008f] text-white"
-                                    : "text-[#00008f] hover:bg-[#00008f]/5"
-                            )}
-                        >
-                            {tab.label}
-                        </button>
-                    ))}
-                </div>
+                <PillTabs
+                    tabs={tabs}
+                    activeTabId={activeTab}
+                    onTabChange={setActiveTab}
+                />
 
                 {/* Product Cards */}
-                <div className="grid w-full gap-6 md:grid-cols-2 max-w-[1292px]">
+                <div className="grid w-full gap-6 lg:gap-10 lg:grid-cols-2 max-w-[824px] mx-auto">
                     {filteredCards.map((card) => (
                         <div
                             key={card.id}

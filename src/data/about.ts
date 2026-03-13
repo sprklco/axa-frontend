@@ -70,31 +70,32 @@ export const aboutPageData: AboutPageData = {
         "Our people are our greatest strength. Our AXA Values are a core component of our culture. They are a strong element of commitment and of belonging to AXA. These values come to life through our behaviors and how we work, treat each other, commit to our customers and impact society.",
     values: [
         {
-            id: "our-heritage",
-            title: "Our Heritage",
-            subtitle: "The First Receipt from 1904",
+            id: "customer-first",
+            title: "Customer first",
+            subtitle: "All our thinking starts\nwith the customer.",
+            description: "All our thinking starts with the customer.",
+            imageSrc: "/images/about/values/customer-first.svg",
         },
         {
-            id: "transparent-partnership",
-            title: "Transparent\nPartnership",
-            subtitle: "A Legacy of Strong Partnerships and Support",
+            id: "integrity",
+            title: "Integrity",
+            subtitle: "Guided by strong\nmoral principles.",
+            description: "Guided by strong moral principles.",
+            imageSrc: "/images/about/values/integrity.svg",
         },
         {
-            id: "115-years",
-            title: "115 Years of Commitment",
-            subtitle:
-                "Thomas Buberl, CEO of AXA Group visits Lebanon",
+            id: "courage",
+            title: "Courage",
+            subtitle: "We speak our mind and act to make things happen.",
+            description: "We speak our mind and act to make things happen.",
+            imageSrc: "/images/about/values/courage.svg",
         },
         {
-            id: "leadership-continuity",
-            title: "Leadership &\nContinuity",
-            subtitle:
-                "Hassan Shabrawishi, CEO of AXA Africa Holding visits Lebanon",
-        },
-        {
-            id: "strategic-protocol",
-            title: "Signing of the Strategic Protocol",
-            subtitle: "Leadership aligned for the future.",
+            id: "one-axa",
+            title: "One AXA",
+            subtitle: "Being together and being different, makes us better.",
+            description: "Being together and being different, makes us better.",
+            imageSrc: "/images/about/values/one-axa.svg",
         },
     ],
 

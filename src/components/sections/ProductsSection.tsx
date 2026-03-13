@@ -165,7 +165,10 @@ export function ProductsSection({ data, className }: ProductsSectionProps) {
                                         ? "z-10 w-[300px] scale-100 opacity-100"
                                         : "z-0 -mx-20 w-[300px] scale-[0.45] opacity-60 hover:opacity-100"
                                 )}
-                                style={{ transformOrigin: "top center" }}
+                                style={{
+                                    transformOrigin: "top center",
+                                    scrollSnapStop: "always",
+                                }}
                             >
                                 {/* Card Image */}
                                 <div

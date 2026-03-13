@@ -275,7 +275,7 @@ export function MainNavbar() {
                             Pay your insurance
                         </Button>
 
-                        {/* Quote your insurance — filled primary button + dropdown */}
+                        {/* Get an offer — filled primary button + dropdown */}
                         <div ref={quoteRef} className="relative">
                             <Button
                                 variant="primary"
@@ -288,7 +288,7 @@ export function MainNavbar() {
                                 aria-haspopup="true"
                             >
                                 <span className="inline-flex items-center gap-2">
-                                    Quote your insurance
+                                    Get an offer
                                     {/* Dropdown chevron */}
                                     <svg
                                         width="12"
@@ -322,7 +322,7 @@ export function MainNavbar() {
                                         : "opacity-0 -translate-y-1 pointer-events-none"
                                 )}
                                 role="menu"
-                                aria-label="Quote your insurance options"
+                                aria-label="Get an offer options"
                             >
                                 <div className="flex flex-col px-2 pt-6 pb-[19px]">
                                     {QUOTE_ITEMS.map((item) => (

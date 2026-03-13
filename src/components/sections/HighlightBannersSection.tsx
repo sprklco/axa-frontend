@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/CTAButton";
+import { PillTabs } from "@/components/ui/PillTabs";
 import { cn } from "@/lib/cn";
 
 export interface HighlightBanner {
@@ -58,28 +59,12 @@ export function HighlightBannersSection({
         {/* Tabs */}
         {hasMultipleTabs && (
           <div className="flex justify-center">
-            <div className="flex items-center gap-[18px] rounded-full bg-[#fafafa] p-2">
-              {tabs.map((tab) => {
-                const isActive = tab.id === activeTabId;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => setActiveTabId(tab.id)}
-                    className={cn(
-                      "relative flex items-center justify-center rounded-full px-[18px] py-[13px]",
-                      "font-source-sans text-[18px] leading-[26px] transition-colors",
-                      isActive
-                        ? "bg-[#00008f] text-white"
-                        : "text-[#00008f]"
-                    )}
-                    aria-pressed={isActive}
-                  >
-                    {tab.label}
-                  </button>
-                );
-              })}
-            </div>
+            <PillTabs
+              tabs={tabs}
+              activeTabId={activeTabId}
+              onTabChange={setActiveTabId}
+              className="gap-[18px]"
+            />
           </div>
         )}
 

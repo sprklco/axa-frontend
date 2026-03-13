@@ -29,6 +29,8 @@ export interface ValueCard {
     id: string;
     title: string;
     subtitle: string;
+    description: string;
+    imageSrc: string;
 }
 
 export interface TeamMember {

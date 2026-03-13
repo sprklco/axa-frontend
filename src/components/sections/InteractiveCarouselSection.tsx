@@ -16,6 +16,14 @@ export function InteractiveCarouselSection({
 }: InteractiveCarouselSectionProps) {
     const [activeCardId, setActiveCardId] = useState<string>(data.cards[0]?.id || "");
 
+    const activeCard = data.cards.find((c) => c.id === activeCardId);
+    const activeIndex = data.cards.findIndex((c) => c.id === activeCardId);
+
+    // Each collapsed card = 264px + 16px gap = 280px on desktop, 160px + 16px = 176px on mobile
+    // Shift the row left so the active card always sits at the same position
+    const desktopShift = activeIndex * (264 + 16);
+    const mobileShift = activeIndex * (160 + 16);
+
     return (
         <section className={cn("py-[64px] bg-white overflow-hidden", className)}>
             <div className="flex flex-col gap-[64px] items-center text-center max-w-[1440px] mx-auto w-full">
@@ -30,9 +38,27 @@ export function InteractiveCarouselSection({
                     </h2>
                 </div>
 
-                {/* Carousel section */}
-                <div className="w-full relative flex flex-col md:block overflow-hidden md:h-[550px]">
-                    <div className="flex gap-[24px] overflow-x-auto px-4 md:px-[64px] lg:px-[124px] pb-8 pt-4 hide-scrollbar snap-x snap-mandatory">
+                {/* Carousel section — fixed height container */}
+                <div className="w-full overflow-hidden">
+                    {/* Image track — shifts left so active card is always in the same position */}
+                    <div
+                        data-carousel-track
+                        className="flex items-start gap-[16px] pl-[calc(50vw-150px)] md:pl-[398px] h-[192px] md:h-[296px] transition-transform duration-500 ease-in-out"
+                        style={{
+                            "--mobile-shift": `-${mobileShift}px`,
+                            "--desktop-shift": `-${desktopShift}px`,
+                        } as React.CSSProperties}
+                    >
+                        <style>{`
+                            [data-carousel-track] {
+                                transform: translateX(var(--mobile-shift));
+                            }
+                            @media (min-width: 768px) {
+                                [data-carousel-track] {
+                                    transform: translateX(var(--desktop-shift));
+                                }
+                            }
+                        `}</style>
                         {data.cards.map((card) => {
                             const isActive = activeCardId === card.id;
 
@@ -41,79 +67,56 @@ export function InteractiveCarouselSection({
                                     key={card.id}
                                     onClick={() => setActiveCardId(card.id)}
                                     className={cn(
-                                        "relative flex shrink-0 rounded-[8px] overflow-hidden transition-all duration-500 ease-in-out snap-center cursor-pointer items-end justify-start text-left",
+                                        "relative shrink-0 rounded-[8px] overflow-hidden transition-all duration-500 ease-in-out cursor-pointer",
                                         isActive
-                                            ? "flex-col w-[368px] md:w-[480px] lg:w-[576px] h-[200px] md:h-[500px]"
-                                            : "w-[169px] md:w-[220px] lg:w-[264px] h-[112px] md:h-[400px]"
+                                            ? "w-[300px] h-[192px] md:w-[576px] md:h-[296px]"
+                                            : "w-[160px] h-[112px] md:w-[264px] md:h-[184px]"
                                     )}
                                     aria-pressed={isActive}
                                 >
-                                    <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-                                        <Image
-                                            src={card.imageSrc}
-                                            alt={card.imageAlt}
-                                            fill
-                                            className="object-cover"
-                                            sizes="(min-width: 1024px) 576px, (min-width: 768px) 480px, 320px"
-                                        />
-                                        <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/50 from-25% via-65% to-black/70" />
-                                    </div>
-
-                                    {/* Desktop overlay embedded inside card */}
-                                    {isActive ? (
-                                        <div className="hidden md:flex relative z-10 flex-col gap-[32px] p-6 lg:p-[40px] w-full mt-auto">
-                                            <div className="flex flex-col gap-2">
-                                                <h3 className="font-title font-bold text-[24px] md:text-[32px] leading-[32px] md:leading-[40px] text-white">
-                                                    {card.title}
-                                                </h3>
-                                                <p className="font-source-sans font-normal text-[16px] md:text-[20px] leading-[24px] md:leading-[28px] text-[#dddfe4]">
-                                                    {card.subtitle}
-                                                </p>
-                                            </div>
-
-                                            <div className="flex flex-col gap-[6px]">
-                                                <p className="font-source-sans text-[16px] md:text-[18px] leading-[24px] md:leading-[26px] text-white/90 line-clamp-4">
-                                                    {card.description}
-                                                </p>
-                                                <p className="font-source-sans text-[14px] md:text-[16px] leading-[22px] md:leading-[24px] text-white/70 line-clamp-3">
-                                                    {card.footerText}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        <div className="relative z-10 p-4" />
-                                    )}
+                                    <Image
+                                        src={card.imageSrc}
+                                        alt={card.imageAlt}
+                                        fill
+                                        className="object-cover"
+                                        sizes={
+                                            isActive
+                                                ? "(min-width: 768px) 576px, 300px"
+                                                : "(min-width: 768px) 264px, 160px"
+                                        }
+                                    />
                                 </button>
                             );
                         })}
                     </div>
 
-                    {/* Mobile text separated out */}
-                    <div className="flex md:hidden flex-col items-start text-left px-4 mt-2">
-                        {data.cards.map((card) => {
-                            if (activeCardId !== card.id) return null;
-                            return (
-                                <div key={`mobile-text-${card.id}`} className="flex flex-col gap-6 w-full animate-fade-in-up flex-1">
-                                    <div className="flex flex-col gap-2">
-                                        <h3 className="font-title font-bold text-[24px] leading-[32px] text-[#1a1d21]">
-                                            {card.title}
-                                        </h3>
-                                        <p className="font-source-sans font-normal text-[18px] leading-[26px] text-[#606776]">
-                                            {card.subtitle}
-                                        </p>
-                                    </div>
-                                    <div className="flex flex-col gap-[6px]">
-                                        <p className="font-source-sans text-[16px] leading-[24px] text-[#434956]">
-                                            {card.description}
-                                        </p>
-                                        <p className="font-source-sans text-[14px] leading-[22px] text-[#606776]">
-                                            {card.footerText}
-                                        </p>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
+                    {/* Text display section — aligned with active card */}
+                    {activeCard && (
+                        <div key={activeCardId} className="flex flex-col gap-[32px] text-left px-4 pl-[calc(50vw-150px)] md:pl-[398px] mt-[32px] w-full animate-[fadeInUp_0.4s_ease-out]">
+                            <style>{`
+                                @keyframes fadeInUp {
+                                    from { opacity: 0; transform: translateY(12px); }
+                                    to { opacity: 1; transform: translateY(0); }
+                                }
+                            `}</style>
+                            <div className="flex flex-col gap-[8px] max-w-[580px]">
+                                <h3 className="font-brand-text font-bold text-[24px] md:text-[32px] leading-[32px] md:leading-[40px] text-[#1a1d21]">
+                                    {activeCard.title}
+                                </h3>
+                                <p className="font-source-sans font-normal text-[18px] md:text-[20px] leading-[26px] md:leading-[28px] text-[#606776]">
+                                    {activeCard.subtitle}
+                                </p>
+                            </div>
+                            <div className="flex flex-col gap-[6px] max-w-[580px]">
+                                <p className="font-source-sans text-[16px] md:text-[18px] leading-[24px] md:leading-[26px] text-[#434956]">
+                                    {activeCard.description}
+                                </p>
+                                <p className="font-source-sans text-[14px] md:text-[16px] leading-[22px] md:leading-[24px] text-[#606776]">
+                                    {activeCard.footerText}
+                                </p>
+                            </div>
+                        </div>
+                    )}
                 </div>
 
             </div>

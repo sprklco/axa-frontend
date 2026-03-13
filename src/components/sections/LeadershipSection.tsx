@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import type { LeadershipTab, TeamMember } from "@/types/about";
+import { PillTabs } from "@/components/ui/PillTabs";
 
 interface LeadershipSectionProps {
     eyebrow: string;
@@ -67,21 +68,12 @@ export function LeadershipSection({
                 </div>
 
                 {/* Tab switcher */}
-                <div className="mt-4 flex items-center rounded-full bg-[#fafafa] p-2">
-                    {tabs.map((tab) => (
-                        <button
-                            key={tab.id}
-                            type="button"
-                            onClick={() => setActiveTabId(tab.id)}
-                            className={`rounded-full px-[18px] py-[13px] font-source-sans text-[18px] leading-[26px] transition-colors ${activeTabId === tab.id
-                                ? "bg-[#00008f] text-white"
-                                : "text-[#00008f]"
-                                }`}
-                        >
-                            {tab.label}
-                        </button>
-                    ))}
-                </div>
+                <PillTabs
+                    tabs={tabs}
+                    activeTabId={activeTabId}
+                    onTabChange={setActiveTabId}
+                    className="mt-4"
+                />
 
                 {/* Members grid */}
                 <div className="mt-[30px] grid w-full md:w-fit grid-cols-2 md:grid-cols-4 gap-4">

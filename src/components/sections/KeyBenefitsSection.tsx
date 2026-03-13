@@ -1084,10 +1084,10 @@ export function KeyBenefitsSection({
   className,
 }: KeyBenefitsSectionProps) {
   return (
-    <section className={cn("bg-white py-12 md:py-16 lg:py-20", className)}>
+    <section className={cn("bg-white py-12 md:py-8 lg:py-8", className)}>
       <Container className="flex flex-col items-center text-center gap-6">
         {eyebrow && (
-          <p className="font-source-sans text-sm font-semibold tracking-[0.1em] text-[#8080c7] uppercase">
+          <p className="font-source-sans text-sm font-semibold tracking-widest text-[#8080c7] uppercase">
             {eyebrow}
           </p>
         )}
