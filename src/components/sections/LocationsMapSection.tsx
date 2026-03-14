@@ -221,12 +221,12 @@ export function LocationsMapSection({
                 <div className="relative w-full">
                     <div
                         ref={mapRef}
-                        className="h-[360px] md:h-[480px] lg:h-[700px] w-full overflow-hidden rounded-[12px] bg-[#d6e4ff]"
+                        className="h-[500px] md:h-[480px] lg:h-[700px] w-full overflow-hidden rounded-[12px] bg-[#d6e4ff]"
                         aria-label="AXA branch locations map"
                     />
 
-                    {/* Custom zoom controls top-right, styled to match Figma node 18805:31373 */}
-                    <div className="pointer-events-none absolute right-10 top-6 flex flex-col">
+                    {/* Custom zoom controls — hidden on mobile where pinch-to-zoom is standard */}
+                    <div className="pointer-events-none absolute right-10 top-6 hidden flex-col md:flex">
                         <div className="pointer-events-auto flex items-center gap-1 rounded-[10px] border border-[#00008f] bg-[rgba(255,255,255,0.3)] px-1 py-1 backdrop-blur-[32px]">
                             <button
                                 type="button"
